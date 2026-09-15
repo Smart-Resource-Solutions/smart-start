@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 30-Day Success Checklist | SMART Start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<style>
+
+  :root{
+    --navy-deep:#0D1F4F; --navy:#1B3A73; --indigo:#3457A6;
+    --teal:#1F9C93; --teal-deep:#146F68;
+    --cyan:#1ED6E6; --cyan-deep:#0E7C90;
+    --coral:#E8715A; --coral-deep:#C0562F;
+    --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
+    --line:#E4E7F0; --pale:#F4F6FB;
+    --radius-lg:20px; --radius-md:14px; --radius-sm:9px;
+    --shadow-sm:0 2px 10px rgba(13,31,79,.07);
+    --shadow-md:0 14px 34px rgba(13,31,79,.14);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--white); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{margin:0; color:var(--navy-deep);}
+  .serif{font-family:'DM Serif Display',serif; font-weight:400;}
+  p{margin:0 0 12px; font-size:15.5px;}
+  a{color:inherit;}
+  label{font-size:14px; font-weight:700; color:var(--navy-deep); display:block; margin-bottom:6px;}
+  input[type=text], input[type=date], input[type=number], select, textarea{
+    width:100%; font-family:inherit; font-size:14.5px; padding:11px 13px; border-radius:var(--radius-sm);
+    border:1.5px solid var(--line); color:var(--ink); background:#fff; transition:border-color .15s var(--ease);
+  }
+  input[type=text]:focus, input[type=date]:focus, input[type=number]:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(52,87,166,.15);
+  }
+  textarea{resize:vertical; min-height:64px;}
+  :focus-visible{outline:3px solid var(--coral); outline-offset:2px;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+  @media (max-width:600px){.wrap{padding:0 18px;}}
+
+  /* ---------- HEADER ---------- */
+  .ss-header{background:var(--navy-deep); padding:16px 0;}
+  .ss-header-inner{max-width:900px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .ss-wordmark{display:flex; align-items:center; gap:10px;}
+  .ss-logo{height:34px; width:auto; display:block; background:#fff; border-radius:8px; padding:4px 10px; flex-shrink:0;}
+  .ss-wordmark-text{display:flex; flex-direction:column; line-height:1.25;}
+  .ss-wordmark-sub{font-size:11.5px; color:rgba(255,255,255,.62); font-weight:600;}
+  .ss-back-link{background:none; border:1.5px solid rgba(255,255,255,.35); color:#fff; font-size:13px; font-weight:700;
+    padding:9px 16px; border-radius:999px; cursor:pointer; transition:border-color .15s var(--ease);}
+  .ss-back-link:hover{border-color:#fff;}
+
+  /* ---------- INTRO ---------- */
+  .ss-intro{padding:44px 0 8px;}
+  .ss-eyebrow{font-size:12.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--coral-deep); margin-bottom:10px;}
+  .ss-intro h1{font-size:clamp(22px, 5vw, 32px); font-weight:800; letter-spacing:-.01em; line-height:1.2; overflow-wrap:break-word;}
+  .ss-subtitle{font-size:17px; color:var(--navy); font-weight:700; margin-top:10px;}
+  .ss-explain{color:var(--ink-muted); max-width:620px; margin-top:14px;}
+  .ss-scope{background:var(--pale); border-radius:var(--radius-md); padding:16px 18px; margin-top:16px; font-size:13.5px; color:var(--ink-muted);}
+  .ss-scope strong{color:var(--navy-deep);}
+  .ss-reassure{font-size:13px; color:var(--ink-faint); font-style:italic; margin-top:18px;}
+
+  /* ---------- MAIN LAYOUT ---------- */
+  .ss-main{padding:32px 0 20px;}
+  .ss-section{margin-bottom:30px;}
+  .ss-section-head{margin-bottom:16px;}
+  .ss-section-head h2{font-size:20px; font-weight:800;}
+  .ss-section-head p{color:var(--ink-muted); font-size:14px; margin-top:6px;}
+  .ss-card{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-sm);}
+  .ss-card + .ss-card{margin-top:16px;}
+  .ss-field{margin-bottom:16px;}
+  .ss-field:last-child{margin-bottom:0;}
+  .ss-hint{font-size:12.5px; color:var(--ink-faint); margin-top:5px;}
+  .ss-example{background:var(--pale); border-radius:var(--radius-sm); padding:12px 14px; font-size:13px; color:var(--ink-muted); margin:8px 0 12px;}
+  .ss-example strong{color:var(--navy-deep);}
+
+  .ss-grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:820px){.ss-grid-3{grid-template-columns:1fr;}}
+  .ss-grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:700px){.ss-grid-2{grid-template-columns:1fr;}}
+
+  .ss-box-num{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px;
+    background:var(--navy-deep); color:#fff; font-weight:800; font-size:13px; margin-right:8px;}
+  .ss-box-title{display:flex; align-items:center; font-size:17px; font-weight:800; margin-bottom:4px;}
+
+  /* ---------- SCALE / OPTION BUTTONS (bottleneck, decision tree) ---------- */
+  .ss-scale{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  .ss-scale-btn{flex:1; min-width:90px; padding:10px 8px; border-radius:var(--radius-sm); border:1.5px solid var(--line);
+    background:#fff; font-size:13px; font-weight:700; color:var(--ink-muted); cursor:pointer; text-align:center; transition:all .15s var(--ease);}
+  .ss-scale-btn:hover{border-color:var(--navy);}
+  .ss-scale-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
+  .ss-statement{font-size:14.5px; font-weight:700; color:var(--navy-deep); margin-bottom:4px;}
+
+  .ss-choice-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+  .ss-choice-btn{padding:12px 20px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
+    font-size:14px; font-weight:700; color:var(--ink); cursor:pointer; transition:all .15s var(--ease);}
+  .ss-choice-btn:hover{border-color:var(--navy);}
+  .ss-choice-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
+
+  /* ---------- CHECKLIST ---------- */
+  .ss-check-item{display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid var(--line);}
+  .ss-check-item:last-child{border-bottom:none;}
+  .ss-check-item input[type=checkbox]{width:19px; height:19px; margin-top:2px; accent-color:var(--teal-deep); flex-shrink:0;}
+  .ss-check-item label{font-weight:600; color:var(--ink); margin:0; cursor:pointer; font-size:14.5px;}
+  .ss-progress-track{height:10px; background:var(--line); border-radius:999px; overflow:hidden; margin:12px 0 6px;}
+  .ss-progress-fill{height:100%; background:linear-gradient(90deg, var(--teal), var(--cyan)); border-radius:999px; transition:width .3s var(--ease);}
+  .ss-progress-label{font-size:13px; font-weight:700; color:var(--navy-deep);}
+
+  /* ---------- RESULT BANNERS ---------- */
+  .ss-result-primary{background:var(--navy-deep); color:#fff; border-radius:var(--radius-lg); padding:26px 28px; margin-bottom:16px;}
+  .ss-result-primary h3{color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:10px; opacity:.85;}
+  .ss-result-primary .ss-result-name{font-size:23px; font-weight:800; margin-bottom:10px;}
+  .ss-result-primary p{color:rgba(255,255,255,.85);}
+  .ss-result-secondary{background:var(--pale); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:12px;}
+  .ss-result-secondary h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:6px;}
+  .ss-next-box{background:#fff; border:1.5px dashed var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-top:14px;}
+  .ss-next-box h4{font-size:13px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+
+  /* ---------- BUTTONS ---------- */
+  .ss-btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:700;
+    border:none; cursor:pointer; transition:all .15s var(--ease); font-family:inherit;}
+  .ss-btn-primary{background:var(--coral); color:#fff; box-shadow:0 8px 18px rgba(232,113,90,.3);}
+  .ss-btn-primary:hover{background:var(--coral-deep);}
+  .ss-btn-navy{background:var(--navy-deep); color:#fff;}
+  .ss-btn-navy:hover{background:var(--navy);}
+  .ss-btn-outline{background:#fff; color:var(--navy-deep); border:1.5px solid var(--line);}
+  .ss-btn-outline:hover{border-color:var(--navy-deep);}
+  .ss-btn-sm{padding:9px 16px; font-size:13px;}
+  .ss-btn:disabled{opacity:.5; cursor:not-allowed;}
+  .ss-actions{display:flex; gap:12px; flex-wrap:wrap; padding:26px 0 46px; border-top:1px solid var(--line); margin-top:10px;}
+
+  .ss-add-row{background:none; border:1.5px dashed var(--line); border-radius:var(--radius-sm); padding:11px 16px; font-size:13.5px;
+    font-weight:700; color:var(--navy); cursor:pointer; width:100%; text-align:center; margin-top:8px;}
+  .ss-add-row:hover{border-color:var(--navy);}
+  .ss-remove-btn{background:none; border:none; color:var(--ink-faint); font-size:12.5px; font-weight:700; cursor:pointer; padding:4px 0;}
+  .ss-remove-btn:hover{color:var(--coral-deep);}
+  .ss-row-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+
+  .ss-save-note{font-size:12.5px; color:var(--ink-faint); display:flex; align-items:center; gap:6px; margin-top:6px;}
+  .ss-save-dot{width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0;}
+
+  .ss-warning{background:#FBEAE3; border-radius:var(--radius-md); padding:14px 16px; font-size:13px; color:var(--coral-deep); margin-top:14px;}
+  .ss-footer{background:var(--navy-deep); color:rgba(255,255,255,.55); padding:22px 0; font-size:12.5px; text-align:center; margin-top:20px;}
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    .no-print{display:none !important;}
+    body{background:#fff;}
+    .ss-header{background:#fff; border-bottom:2px solid var(--navy-deep); padding:10px 0;}
+    .ss-wordmark-sub{color:var(--navy-deep) !important;}
+    .ss-logo{background:none !important; padding:0 !important; height:28px;}
+    .ss-result-primary{background:#fff !important; color:var(--navy-deep) !important; border:2px solid var(--navy-deep);}
+    .ss-result-primary h3, .ss-result-primary p, .ss-result-primary .ss-result-name{color:var(--navy-deep) !important;}
+    .ss-card, .ss-result-secondary, .ss-next-box{page-break-inside:avoid; box-shadow:none;}
+    textarea{overflow:visible !important;}
+    .wrap{max-width:100%;}
+    a[href]:after{content:"";}
+    .section-title-input, .item-text-input{border:none !important; background:transparent !important; padding:2px 0 !important; box-shadow:none !important;}
+    .item-controls select, .item-controls input[type=date]{border:none !important; background:transparent !important; padding:2px 0 !important; box-shadow:none !important;}
+    .ownership-select, .ownership-other-input{border:none !important; background:transparent !important; padding:2px 0 !important; box-shadow:none !important;}
+  }
+
+  .section-title-input{font-size:17px; font-weight:800; color:var(--navy-deep); border:1.5px solid transparent; border-radius:var(--radius-sm); padding:6px 8px; width:100%; background:transparent;}
+  .section-title-input:hover, .section-title-input:focus{border-color:var(--line); background:#fff;}
+  .item-row{display:flex; align-items:flex-start; gap:10px; padding:10px 0; border-bottom:1px solid var(--line);}
+  .item-row:last-of-type{border-bottom:none;}
+  .item-row input[type=checkbox]{width:19px; height:19px; margin-top:4px; accent-color:var(--teal-deep); flex-shrink:0;}
+  .item-text-input{width:100%; font-size:14.5px; font-weight:600; color:var(--ink); border:1.5px solid transparent; border-radius:var(--radius-sm); padding:6px 8px; margin-bottom:6px; background:transparent;}
+  .item-text-input:hover, .item-text-input:focus{border-color:var(--line); background:#fff;}
+  .item-controls{display:flex; gap:8px; flex-wrap:wrap; align-items:center;}
+  .item-controls select, .item-controls input[type=date], .item-controls input[type=text]{
+    width:auto; font-size:12.5px; padding:6px 9px; border-radius:999px; border:1.5px solid var(--line); color:var(--ink-muted); background:#fff;
+  }
+  .item-remove-btn{background:none; border:none; color:var(--ink-faint); font-size:12px; font-weight:700; cursor:pointer; padding:4px 6px;}
+  .item-remove-btn:hover{color:var(--coral-deep);}
+  .section-remove-btn{background:none; border:none; color:var(--ink-faint); font-size:12.5px; font-weight:700; cursor:pointer;}
+  .section-remove-btn:hover{color:var(--coral-deep);}
+  .ownership-row{display:flex; gap:8px; flex-wrap:wrap; align-items:center; margin:2px 0 14px;}
+  .ownership-label{font-size:11.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint); margin-right:2px;}
+  .ownership-select, .ownership-other-input{width:auto; font-size:12.5px; padding:6px 9px; border-radius:999px; border:1.5px solid var(--line); color:var(--ink-muted); background:#fff;}
+
+</style>
+</head>
+<body>
+<header class="ss-header no-print">
+  <div class="ss-header-inner">
+    <div class="ss-wordmark">
+      <img src="assets/smart-start-logo.png" alt="SMART Start" class="ss-logo">
+      <span class="ss-wordmark-sub">Created by Smart Resource Solutions</span>
+    </div>
+    <button class="ss-back-link" onclick="location.href = SMART_START_HOME_URL">&larr; Back to SMART Start</button>
+  </div>
+</header>
+
+<section class="ss-intro">
+  <div class="wrap">
+    <p class="ss-eyebrow">How do we give the new hire a strong start?</p>
+    <h1 class="serif" id="main-heading">The 30-Day Success Checklist</h1>
+    <p class="ss-subtitle">Give your new hire a clear, structured first month.</p>
+    <p class="ss-explain">Work through this from the moment someone accepts an offer through to a 30 day review. It does not cover deciding whether to hire, defining the role, advertising or interviewing, those come earlier.</p>
+    <p class="ss-reassure">Take your time with this. There are no right or wrong answers, just what this particular hire needs.</p>
+  </div>
+</section>
+
+<main class="wrap ss-main">
+
+  <div class="ss-card" id="personal-details-card">
+    <div class="ss-box-title">Personal details</div>
+    <p class="ss-hint" style="margin-bottom:12px;">Optional. Adding these personalises the checklist above and lets you assign section ownership by name below.</p>
+    <div class="ss-grid-2">
+      <div class="ss-field"><label for="pd-employee">Employee name</label><input type="text" id="pd-employee" oninput="updatePersonalDetail('employeeName', this.value)"></div>
+      <div class="ss-field"><label for="pd-role">Role</label><input type="text" id="pd-role" oninput="updatePersonalDetail('role', this.value)"></div>
+      <div class="ss-field"><label for="pd-manager">Manager</label><input type="text" id="pd-manager" oninput="updatePersonalDetail('manager', this.value)"></div>
+      <div class="ss-field"><label for="pd-startdate">Start date</label><input type="date" id="pd-startdate" oninput="updatePersonalDetail('startDate', this.value)"></div>
+    </div>
+  </div>
+
+  <div class="ss-progress-label" id="progress-label"></div>
+  <div class="ss-progress-track"><div class="ss-progress-fill" id="progress-fill" style="width:0%;"></div></div>
+  <p class="ss-hint" style="margin-top:10px;">Every section and item here is editable. Rename a section, add or remove items, add your own section, and set who is responsible and a due date where it helps.</p>
+
+  <div id="sections-area" style="margin-top:18px;"></div>
+
+  <button class="ss-add-row no-print" onclick="addSection()">+ Add a custom section</button>
+
+  <div class="ss-card" style="margin-top:24px;">
+    <div class="ss-box-title">30-day review</div>
+    <p class="ss-hint" style="margin-bottom:12px;">Prompts for the manager to discuss with the new hire.</p>
+    <ul style="margin:0 0 14px; padding-left:18px; font-size:14.5px;">
+      <li style="margin-bottom:6px;">What's going well?</li>
+      <li style="margin-bottom:6px;">What's unclear?</li>
+      <li style="margin-bottom:6px;">What has been harder than expected?</li>
+      <li style="margin-bottom:6px;">What support is needed?</li>
+      <li style="margin-bottom:6px;">Are priorities still right?</li>
+      <li style="margin-bottom:6px;">What should the next 30 days focus on?</li>
+    </ul>
+    <label for="review-notes">Notes from the review</label>
+    <textarea id="review-notes" rows="4" oninput="updateReviewNotes(this.value)"></textarea>
+  </div>
+
+  <p class="ss-save-note no-print" id="save-note" style="display:none;"><span class="ss-save-dot"></span> Progress is saved in this browser.</p>
+  <div class="ss-actions no-print">
+    <button class="ss-btn ss-btn-navy" onclick="window.print()">Print / Save as PDF</button>
+    <button class="ss-btn ss-btn-outline" onclick="downloadWord()">Download as Word</button>
+    <button class="ss-btn ss-btn-outline" onclick="clearAll()">Clear / Start again</button>
+    <button class="ss-btn ss-btn-outline" onclick="location.href = SMART_START_HOME_URL">Back to SMART Start</button>
+  </div>
+</main>
+<footer class="ss-footer no-print">
+  <div class="wrap">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</div>
+</footer>
+<script>
+
+  const SMART_START_HOME_URL = "index.html";
+  const BOTTLENECK_FINDER_URL = "smart-start-bottleneck-finder.html";
+  const PRIORITY_FILTER_URL = "smart-start-priority-filter.html";
+  const DECISION_TREE_URL = "smart-start-decision-tree.html";
+  const ROLE_BUILDER_URL = "smart-start-3-box-role-builder.html";
+  const SUCCESS_CHECKLIST_URL = "smart-start-30-day-success-checklist.html";
+  const JD_TEMPLATE_URL = "smart-start-jd-person-spec-template.html";
+  const JOB_ADVERT_URL = "smart-start-job-advert-template.html";
+  const INTERVIEW_SCORECARD_URL = "smart-start-interview-scorecard.html";
+
+  const STORAGE_KEY = "smartStartSuccessChecklist";
+  const OWNERSHIP_CATEGORIES = ["manager","newstarter","shared","other"];
+
+  // Turns an ownership category into a label, using the employee and
+  // manager names from personalDetails where they have been entered,
+  // and falling back to generic role labels where they have not.
+  function ownerLabel(category, otherName){
+    const manager = (personalDetails.manager || '').trim();
+    const employee = (personalDetails.employeeName || '').trim();
+    if(category === 'manager') return manager ? (manager + ' - Manager') : 'Manager';
+    if(category === 'newstarter') return employee ? (employee + ' - New starter') : 'New starter';
+    if(category === 'shared') return (manager && employee) ? ('Shared - ' + manager + ' and ' + employee) : 'Shared';
+    if(category === 'other') return (otherName || '').trim() || 'Someone else';
+    return '';
+  }
+
+  // Default sections and items. Everything here is a starting point,
+  // not a fixed structure: sections can be renamed, items can be added
+  // or removed, and whole custom sections can be added, per business.
+  function defaultSections(){
+    return [
+      { id:"before", title:"Before day one", notes:"", owner:"", ownerOtherName:"", items:[
+        mkItem("Contract and paperwork complete"),
+        mkItem("Equipment prepared"),
+        mkItem("System access arranged"),
+        mkItem("Workspace ready, where relevant"),
+        mkItem("Manager knows what happens on day one"),
+        mkItem("First week planned"),
+        mkItem("Key meetings booked"),
+        mkItem("Relevant information prepared"),
+        mkItem("Team knows the person is joining")
+      ]},
+      { id:"dayone", title:"Day one", notes:"", owner:"", ownerOtherName:"", items:[
+        mkItem("Personal welcome"),
+        mkItem("Practical orientation"),
+        mkItem("Introductions"),
+        mkItem("Explain why the role exists"),
+        mkItem("Explain key outcomes"),
+        mkItem("Discuss responsibilities and decision making"),
+        mkItem("Explain immediate priorities"),
+        mkItem("Clarify who to ask for help")
+      ]},
+      { id:"week1", title:"First week", notes:"", owner:"", ownerOtherName:"", items:[
+        mkItem("Key relationships introduced"),
+        mkItem("Systems and process training"),
+        mkItem("Early tasks agreed"),
+        mkItem("Regular manager check ins"),
+        mkItem("Questions encouraged"),
+        mkItem("Expectations clarified"),
+        mkItem("Initial feedback given")
+      ]},
+      { id:"weeks24", title:"Weeks 2 to 4", notes:"", owner:"", ownerOtherName:"", items:[
+        mkItem("Early objectives reviewed"),
+        mkItem("Progress discussed"),
+        mkItem("Blockers identified"),
+        mkItem("Further training arranged"),
+        mkItem("Feedback given both ways"),
+        mkItem("Workload checked"),
+        mkItem("Role clarity reviewed"),
+        mkItem("First month review booked")
+      ]}
+    ];
+  }
+
+  let itemCounter = 0;
+  let sectionCounter = 0;
+  function mkItem(text){
+    itemCounter++;
+    return { id:"item" + itemCounter, text: text || "", checked:false, responsible:"", responsibleOther:"", dueDate:"" };
+  }
+  function mkSection(title){
+    sectionCounter++;
+    return { id:"section" + sectionCounter + "-" + Date.now(), title: title || "Untitled section", notes:"", owner:"", ownerOtherName:"", items:[mkItem("")] };
+  }
+
+  let sections = defaultSections();
+  let reviewNotes = "";
+  let personalDetails = { employeeName:"", role:"", manager:"", startDate:"" };
+
+  function loadSaved(){
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : null;
+      if(parsed && Array.isArray(parsed.sections) && parsed.sections.length){
+        sections = parsed.sections;
+        sections.forEach(s => {
+          if(typeof s.owner === 'undefined') s.owner = "";
+          if(typeof s.ownerOtherName === 'undefined') s.ownerOtherName = "";
+        });
+        reviewNotes = parsed.reviewNotes || "";
+      }
+      if(parsed && parsed.personalDetails){
+        personalDetails = Object.assign(personalDetails, parsed.personalDetails);
+      }
+    } catch(e){}
+  }
+  function persist(){
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({sections, reviewNotes, personalDetails}));
+      document.getElementById('save-note').style.display = 'flex';
+    } catch(e){}
+  }
+
+  function findSection(sectionId){ return sections.find(s => s.id === sectionId); }
+  function findItem(sectionId, itemId){
+    const s = findSection(sectionId);
+    return s ? s.items.find(i => i.id === itemId) : null;
+  }
+
+  function updateReviewNotes(value){ reviewNotes = value; persist(); }
+
+  function updateHeading(){
+    const heading = document.getElementById('main-heading');
+    const name = (personalDetails.employeeName || '').trim();
+    heading.textContent = name ? (name + "'s 30-Day Success Checklist") : "The 30-Day Success Checklist";
+  }
+
+  // Names feed into the ownership dropdown labels, so any change to
+  // them re-renders the sections as well as the heading.
+  function updatePersonalDetail(field, value){
+    personalDetails[field] = value;
+    persist();
+    updateHeading();
+    renderSections();
+  }
+
+  function updateSectionOwner(sectionId, value){
+    const s = findSection(sectionId);
+    if(s) s.owner = value;
+    persist();
+    renderSections();
+  }
+  function updateSectionOwnerOther(sectionId, value){
+    const s = findSection(sectionId);
+    if(s) s.ownerOtherName = value;
+    persist();
+  }
+
+  function updateSectionTitle(sectionId, value){
+    const s = findSection(sectionId);
+    if(s) s.title = value;
+    persist();
+  }
+  function updateSectionNotes(sectionId, value){
+    const s = findSection(sectionId);
+    if(s) s.notes = value;
+    persist();
+  }
+  function addSection(){
+    sections.push(mkSection(""));
+    persist();
+    renderSections();
+  }
+  function removeSection(sectionId){
+    if(sections.length <= 1) return;
+    sections = sections.filter(s => s.id !== sectionId);
+    persist();
+    renderSections();
+  }
+
+  function addItemToSection(sectionId){
+    const s = findSection(sectionId);
+    if(!s) return;
+    s.items.push(mkItem(""));
+    persist();
+    renderSections();
+  }
+  function removeItem(sectionId, itemId){
+    const s = findSection(sectionId);
+    if(!s) return;
+    s.items = s.items.filter(i => i.id !== itemId);
+    persist();
+    renderSections();
+  }
+  function toggleItemChecked(sectionId, itemId){
+    const item = findItem(sectionId, itemId);
+    if(item) item.checked = !item.checked;
+    persist();
+    updateProgress();
+  }
+  function updateItemText(sectionId, itemId, value){
+    const item = findItem(sectionId, itemId);
+    if(item) item.text = value;
+    persist();
+  }
+  function updateItemResponsible(sectionId, itemId, value){
+    const item = findItem(sectionId, itemId);
+    if(item) item.responsible = value;
+    persist();
+    renderSections();
+  }
+  function updateItemResponsibleOther(sectionId, itemId, value){
+    const item = findItem(sectionId, itemId);
+    if(item) item.responsibleOther = value;
+    persist();
+  }
+  function updateItemDueDate(sectionId, itemId, value){
+    const item = findItem(sectionId, itemId);
+    if(item) item.dueDate = value;
+    persist();
+  }
+
+  function allItems(){
+    const items = [];
+    sections.forEach(s => s.items.forEach(i => items.push(i)));
+    return items;
+  }
+  function updateProgress(){
+    const items = allItems();
+    const total = items.length;
+    const done = items.filter(i => i.checked).length;
+    document.getElementById('progress-label').textContent = done + ' of ' + total + ' completed';
+    document.getElementById('progress-fill').style.width = (total ? (done / total) * 100 : 0) + '%';
+  }
+
+  function escapeHtml(str){
+    return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+  }
+
+  // Builds one item row. Template literals throughout, so section.id and
+  // item.id (always plain generated strings, never containing quotes) can
+  // be embedded directly as single-quoted JS arguments with no manual
+  // escaping to get wrong.
+  function buildItemRowHtml(section, item){
+    const responsibleOptionsHtml = OWNERSHIP_CATEGORIES.map(cat =>
+      `<option value="${cat}"${item.responsible === cat ? ' selected' : ''}>${escapeHtml(ownerLabel(cat, cat === 'other' ? item.responsibleOther : null))}</option>`
+    ).join('');
+    const otherFieldHtml = item.responsible === 'other'
+      ? `<input type="text" class="ownership-other-input" placeholder="Who?" value="${escapeHtml(item.responsibleOther)}" oninput="updateItemResponsibleOther('${section.id}','${item.id}', this.value)" aria-label="Who">`
+      : '';
+    return `
+      <div class="item-row">
+        <input type="checkbox" ${item.checked ? 'checked' : ''} onchange="toggleItemChecked('${section.id}','${item.id}')" aria-label="Mark item complete">
+        <div style="flex:1;">
+          <input type="text" class="item-text-input" value="${escapeHtml(item.text)}" placeholder="Item" oninput="updateItemText('${section.id}','${item.id}', this.value)" aria-label="Item text">
+          <div class="item-controls">
+            <select class="ownership-select" onchange="updateItemResponsible('${section.id}','${item.id}', this.value)" aria-label="Responsible">
+              <option value=""${item.responsible ? '' : ' selected'}>Use section owner</option>
+              ${responsibleOptionsHtml}
+            </select>
+            ${otherFieldHtml}
+            <input type="date" value="${item.dueDate || ''}" oninput="updateItemDueDate('${section.id}','${item.id}', this.value)" aria-label="Due date">
+            <button type="button" class="item-remove-btn no-print" onclick="removeItem('${section.id}','${item.id}')">Remove</button>
+          </div>
+        </div>
+      </div>`;
+  }
+
+  function buildSectionCardHtml(section){
+    const itemsHtml = section.items.map(item => buildItemRowHtml(section, item)).join('');
+    const removeSectionBtn = sections.length > 1
+      ? `<button type="button" class="section-remove-btn no-print" onclick="removeSection('${section.id}')">Remove section</button>`
+      : '';
+    const ownerOptionsHtml = OWNERSHIP_CATEGORIES.map(cat =>
+      `<option value="${cat}"${section.owner === cat ? ' selected' : ''}>${escapeHtml(ownerLabel(cat, cat === 'other' ? section.ownerOtherName : null))}</option>`
+    ).join('');
+    const ownerOtherFieldHtml = section.owner === 'other'
+      ? `<input type="text" class="ownership-other-input" placeholder="Name" value="${escapeHtml(section.ownerOtherName)}" oninput="updateSectionOwnerOther('${section.id}', this.value)" aria-label="Owner name">`
+      : '';
+    const ownershipRowHtml = `
+      <div class="ownership-row">
+        <span class="ownership-label">Who owns this section?</span>
+        <select class="ownership-select" onchange="updateSectionOwner('${section.id}', this.value)" aria-label="Who owns this section">
+          <option value="">Choose owner</option>
+          ${ownerOptionsHtml}
+        </select>
+        ${ownerOtherFieldHtml}
+      </div>`;
+    return `
+      <div class="ss-row-head">
+        <input type="text" class="section-title-input" value="${escapeHtml(section.title)}" placeholder="Section name" oninput="updateSectionTitle('${section.id}', this.value)" aria-label="Section name">
+        ${removeSectionBtn}
+      </div>
+      ${ownershipRowHtml}
+      ${itemsHtml}
+      <button type="button" class="ss-add-row no-print" onclick="addItemToSection('${section.id}')">+ Add item</button>
+      <div class="ss-field" style="margin-top:14px;">
+        <label>Notes</label>
+        <textarea rows="2" oninput="updateSectionNotes('${section.id}', this.value)">${escapeHtml(section.notes)}</textarea>
+      </div>`;
+  }
+
+  function renderSections(){
+    const area = document.getElementById('sections-area');
+    area.innerHTML = '';
+    sections.forEach(section => {
+      const card = document.createElement('div');
+      card.className = 'ss-card';
+      card.innerHTML = buildSectionCardHtml(section);
+      area.appendChild(card);
+    });
+    updateProgress();
+  }
+
+  function clearAll(){
+    sections = defaultSections();
+    reviewNotes = "";
+    personalDetails = { employeeName:"", role:"", manager:"", startDate:"" };
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    document.getElementById('review-notes').value = "";
+    document.getElementById('save-note').style.display = 'none';
+    fillPersonalDetailsFields();
+    updateHeading();
+    renderSections();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+  function fillPersonalDetailsFields(){
+    document.getElementById('pd-employee').value = personalDetails.employeeName || "";
+    document.getElementById('pd-role').value = personalDetails.role || "";
+    document.getElementById('pd-manager').value = personalDetails.manager || "";
+    document.getElementById('pd-startdate').value = personalDetails.startDate || "";
+  }
+
+  // ============================================================
+  // WORD (.docx) EXPORT
+  // Builds a genuine OOXML Word document (a real .docx, not an HTML
+  // file wearing a .doc extension) entirely in the browser using
+  // JSZip, then triggers a normal download. Nothing is uploaded or
+  // sent anywhere, the file is assembled and saved locally.
+  // ============================================================
+  function xmlEscape(str){
+    return (str || '').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+  function docxParagraph(text, opts){
+    opts = opts || {};
+    const sizeTag = opts.size ? `<w:sz w:val="${opts.size}"/>` : '';
+    const boldTag = opts.bold ? '<w:b/>' : '';
+    const runProps = (opts.bold || opts.size) ? `<w:rPr>${boldTag}${sizeTag}</w:rPr>` : '';
+    const pProps = opts.spacingBefore ? `<w:pPr><w:spacing w:before="${opts.spacingBefore}"/></w:pPr>` : '';
+    return `<w:p>${pProps}<w:r>${runProps}<w:t xml:space="preserve">${xmlEscape(text)}</w:t></w:r></w:p>`;
+  }
+
+  function buildDocxParagraphsXml(){
+    let xml = '';
+    const employeeName = (personalDetails.employeeName || '').trim();
+    const title = employeeName ? (employeeName + "'s 30-Day Success Checklist") : 'The 30-Day Success Checklist';
+    xml += docxParagraph(title, {bold:true, size:'32'});
+    xml += docxParagraph('Smart Resource Solutions', {size:'18'});
+    const detailBits = [];
+    if((personalDetails.role || '').trim()) detailBits.push('Role: ' + personalDetails.role.trim());
+    if((personalDetails.manager || '').trim()) detailBits.push('Manager: ' + personalDetails.manager.trim());
+    if((personalDetails.startDate || '').trim()) detailBits.push('Start date: ' + personalDetails.startDate.trim());
+    if(detailBits.length) xml += docxParagraph(detailBits.join('   |   '));
+    xml += docxParagraph('');
+
+    sections.forEach(section => {
+      xml += docxParagraph(section.title, {bold:true, size:'26', spacingBefore:'240'});
+      const sectionOwnerLabel = section.owner ? ownerLabel(section.owner, section.ownerOtherName) : '';
+      if(sectionOwnerLabel) xml += docxParagraph('Owner: ' + sectionOwnerLabel);
+      section.items.forEach(item => {
+        const box = item.checked ? '[x]' : '[ ]';
+        const dueText = item.dueDate ? ' (Due: ' + item.dueDate + ')' : '';
+        xml += docxParagraph(box + ' ' + item.text + dueText);
+        const itemLabel = item.responsible ? ownerLabel(item.responsible, item.responsibleOther) : '';
+        if(itemLabel && itemLabel !== sectionOwnerLabel){
+          xml += docxParagraph('    Responsible: ' + itemLabel);
+        }
+      });
+      if(section.notes){
+        xml += docxParagraph('Notes: ' + section.notes);
+      }
+    });
+
+    xml += docxParagraph('30-day review', {bold:true, size:'26', spacingBefore:'240'});
+    const reviewQuestions = [
+      "What's going well?",
+      "What's unclear?",
+      "What has been harder than expected?",
+      "What support is needed?",
+      "Are priorities still right?",
+      "What should the next 30 days focus on?"
+    ];
+    reviewQuestions.forEach(q => { xml += docxParagraph('- ' + q); });
+    if(reviewNotes){
+      xml += docxParagraph('Notes from the review: ' + reviewNotes, {spacingBefore:'120'});
+    }
+    return xml;
+  }
+
+  function downloadWord(){
+    if(typeof JSZip === 'undefined'){
+      alert('Word export could not load. Please check your connection and try again.');
+      return;
+    }
+    const contentTypesXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+      '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+      '<Default Extension="xml" ContentType="application/xml"/>' +
+      '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+      '</Types>';
+    const relsXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+      '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+      '</Relationships>';
+    const documentXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+      '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+      '<w:body>' + buildDocxParagraphsXml() + '<w:sectPr/></w:body></w:document>';
+
+    const zip = new JSZip();
+    zip.file('[Content_Types].xml', contentTypesXml);
+    zip.folder('_rels').file('.rels', relsXml);
+    zip.folder('word').file('document.xml', documentXml);
+
+    zip.generateAsync({ type:'blob', mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document' }).then(function(blob){
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = '30-day-success-checklist.docx';
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(function(){ URL.revokeObjectURL(url); }, 1000);
+    }).catch(function(){
+      alert('Sorry, the Word file could not be created. Please try again.');
+    });
+  }
+
+  // Expands every textarea to its full content height just before printing,
+  // so nothing gets clipped or scrolled off on the printed page or PDF.
+  (function(){
+    let originalHeights = [];
+    window.addEventListener('beforeprint', function(){
+      originalHeights = [];
+      document.querySelectorAll('textarea').forEach(function(t){
+        originalHeights.push([t, t.style.height]);
+        t.style.height = 'auto';
+        t.style.height = (t.scrollHeight + 4) + 'px';
+      });
+    });
+    window.addEventListener('afterprint', function(){
+      originalHeights.forEach(function(pair){ pair[0].style.height = pair[1]; });
+    });
+  })();
+
+  loadSaved();
+  document.getElementById('review-notes').value = reviewNotes || "";
+  fillPersonalDetailsFields();
+  updateHeading();
+  renderSections();
+  if(allItems().some(i => i.checked) || reviewNotes || Object.keys(personalDetails).some(k => personalDetails[k])) document.getElementById('save-note').style.display = 'flex';
+</script>
+</body>
+</html>

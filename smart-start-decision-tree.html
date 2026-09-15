@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Hire, Redesign, Automate or Outsource? | SMART Start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy-deep:#0D1F4F; --navy:#1B3A73; --indigo:#3457A6;
+    --teal:#1F9C93; --teal-deep:#146F68;
+    --cyan:#1ED6E6; --cyan-deep:#0E7C90;
+    --coral:#E8715A; --coral-deep:#C0562F;
+    --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
+    --line:#E4E7F0; --pale:#F4F6FB;
+    --radius-lg:20px; --radius-md:14px; --radius-sm:9px;
+    --shadow-sm:0 2px 10px rgba(13,31,79,.07);
+    --shadow-md:0 14px 34px rgba(13,31,79,.14);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--white); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{margin:0; color:var(--navy-deep);}
+  .serif{font-family:'DM Serif Display',serif; font-weight:400;}
+  p{margin:0 0 12px; font-size:15.5px;}
+  a{color:inherit;}
+  label{font-size:14px; font-weight:700; color:var(--navy-deep); display:block; margin-bottom:6px;}
+  input[type=text], input[type=date], input[type=number], select, textarea{
+    width:100%; font-family:inherit; font-size:14.5px; padding:11px 13px; border-radius:var(--radius-sm);
+    border:1.5px solid var(--line); color:var(--ink); background:#fff; transition:border-color .15s var(--ease);
+  }
+  input[type=text]:focus, input[type=date]:focus, input[type=number]:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(52,87,166,.15);
+  }
+  textarea{resize:vertical; min-height:64px;}
+  :focus-visible{outline:3px solid var(--coral); outline-offset:2px;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+  @media (max-width:600px){.wrap{padding:0 18px;}}
+
+  /* ---------- HEADER ---------- */
+  .ss-header{background:var(--navy-deep); padding:16px 0;}
+  .ss-header-inner{max-width:900px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .ss-wordmark{display:flex; align-items:center; gap:10px;}
+  .ss-logo{height:34px; width:auto; display:block; background:#fff; border-radius:8px; padding:4px 10px; flex-shrink:0;}
+  .ss-wordmark-text{display:flex; flex-direction:column; line-height:1.25;}
+  .ss-wordmark-sub{font-size:11.5px; color:rgba(255,255,255,.62); font-weight:600;}
+  .ss-back-link{background:none; border:1.5px solid rgba(255,255,255,.35); color:#fff; font-size:13px; font-weight:700;
+    padding:9px 16px; border-radius:999px; cursor:pointer; transition:border-color .15s var(--ease);}
+  .ss-back-link:hover{border-color:#fff;}
+
+  /* ---------- INTRO ---------- */
+  .ss-intro{padding:44px 0 8px;}
+  .ss-eyebrow{font-size:12.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--coral-deep); margin-bottom:10px;}
+  .ss-intro h1{font-size:clamp(22px, 5vw, 32px); font-weight:800; letter-spacing:-.01em; line-height:1.2; overflow-wrap:break-word;}
+  .ss-subtitle{font-size:17px; color:var(--navy); font-weight:700; margin-top:10px;}
+  .ss-explain{color:var(--ink-muted); max-width:620px; margin-top:14px;}
+  .ss-scope{background:var(--pale); border-radius:var(--radius-md); padding:16px 18px; margin-top:16px; font-size:13.5px; color:var(--ink-muted);}
+  .ss-scope strong{color:var(--navy-deep);}
+  .ss-reassure{font-size:13px; color:var(--ink-faint); font-style:italic; margin-top:18px;}
+
+  /* ---------- MAIN LAYOUT ---------- */
+  .ss-main{padding:32px 0 20px;}
+  .ss-section{margin-bottom:30px;}
+  .ss-section-head{margin-bottom:16px;}
+  .ss-section-head h2{font-size:20px; font-weight:800;}
+  .ss-section-head p{color:var(--ink-muted); font-size:14px; margin-top:6px;}
+  .ss-card{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-sm);}
+  .ss-card + .ss-card{margin-top:16px;}
+  .ss-field{margin-bottom:16px;}
+  .ss-field:last-child{margin-bottom:0;}
+  .ss-hint{font-size:12.5px; color:var(--ink-faint); margin-top:5px;}
+  .ss-example{background:var(--pale); border-radius:var(--radius-sm); padding:12px 14px; font-size:13px; color:var(--ink-muted); margin:8px 0 12px;}
+  .ss-example strong{color:var(--navy-deep);}
+
+  .ss-grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:820px){.ss-grid-3{grid-template-columns:1fr;}}
+  .ss-grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:700px){.ss-grid-2{grid-template-columns:1fr;}}
+
+  .ss-box-num{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px;
+    background:var(--navy-deep); color:#fff; font-weight:800; font-size:13px; margin-right:8px;}
+  .ss-box-title{display:flex; align-items:center; font-size:17px; font-weight:800; margin-bottom:4px;}
+
+  /* ---------- SCALE / OPTION BUTTONS (bottleneck, decision tree) ---------- */
+  .ss-scale{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  .ss-scale-btn{flex:1; min-width:90px; padding:10px 8px; border-radius:var(--radius-sm); border:1.5px solid var(--line);
+    background:#fff; font-size:13px; font-weight:700; color:var(--ink-muted); cursor:pointer; text-align:center; transition:all .15s var(--ease);}
+  .ss-scale-btn:hover{border-color:var(--navy);}
+  .ss-scale-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
+  .ss-statement{font-size:14.5px; font-weight:700; color:var(--navy-deep); margin-bottom:4px;}
+
+  .ss-choice-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+  .ss-choice-btn{padding:12px 20px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
+    font-size:14px; font-weight:700; color:var(--ink); cursor:pointer; transition:all .15s var(--ease);}
+  .ss-choice-btn:hover{border-color:var(--navy);}
+  .ss-choice-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
+
+  /* ---------- CHECKLIST ---------- */
+  .ss-check-item{display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid var(--line);}
+  .ss-check-item:last-child{border-bottom:none;}
+  .ss-check-item input[type=checkbox]{width:19px; height:19px; margin-top:2px; accent-color:var(--teal-deep); flex-shrink:0;}
+  .ss-check-item label{font-weight:600; color:var(--ink); margin:0; cursor:pointer; font-size:14.5px;}
+  .ss-progress-track{height:10px; background:var(--line); border-radius:999px; overflow:hidden; margin:12px 0 6px;}
+  .ss-progress-fill{height:100%; background:linear-gradient(90deg, var(--teal), var(--cyan)); border-radius:999px; transition:width .3s var(--ease);}
+  .ss-progress-label{font-size:13px; font-weight:700; color:var(--navy-deep);}
+
+  /* ---------- RESULT BANNERS ---------- */
+  .ss-result-primary{background:var(--navy-deep); color:#fff; border-radius:var(--radius-lg); padding:26px 28px; margin-bottom:16px;}
+  .ss-result-primary h3{color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:10px; opacity:.85;}
+  .ss-result-primary .ss-result-name{font-size:23px; font-weight:800; margin-bottom:10px;}
+  .ss-result-primary p{color:rgba(255,255,255,.85);}
+  .ss-result-secondary{background:var(--pale); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:12px;}
+  .ss-result-secondary h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:6px;}
+  .ss-next-box{background:#fff; border:1.5px dashed var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-top:14px;}
+  .ss-next-box h4{font-size:13px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+
+  /* ---------- BUTTONS ---------- */
+  .ss-btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:700;
+    border:none; cursor:pointer; transition:all .15s var(--ease); font-family:inherit;}
+  .ss-btn-primary{background:var(--coral); color:#fff; box-shadow:0 8px 18px rgba(232,113,90,.3);}
+  .ss-btn-primary:hover{background:var(--coral-deep);}
+  .ss-btn-navy{background:var(--navy-deep); color:#fff;}
+  .ss-btn-navy:hover{background:var(--navy);}
+  .ss-btn-outline{background:#fff; color:var(--navy-deep); border:1.5px solid var(--line);}
+  .ss-btn-outline:hover{border-color:var(--navy-deep);}
+  .ss-btn-sm{padding:9px 16px; font-size:13px;}
+  .ss-btn:disabled{opacity:.5; cursor:not-allowed;}
+  .ss-actions{display:flex; gap:12px; flex-wrap:wrap; padding:26px 0 46px; border-top:1px solid var(--line); margin-top:10px;}
+
+  .ss-add-row{background:none; border:1.5px dashed var(--line); border-radius:var(--radius-sm); padding:11px 16px; font-size:13.5px;
+    font-weight:700; color:var(--navy); cursor:pointer; width:100%; text-align:center; margin-top:8px;}
+  .ss-add-row:hover{border-color:var(--navy);}
+  .ss-remove-btn{background:none; border:none; color:var(--ink-faint); font-size:12.5px; font-weight:700; cursor:pointer; padding:4px 0;}
+  .ss-remove-btn:hover{color:var(--coral-deep);}
+  .ss-row-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+
+  .ss-save-note{font-size:12.5px; color:var(--ink-faint); display:flex; align-items:center; gap:6px; margin-top:6px;}
+  .ss-save-dot{width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0;}
+
+  .ss-warning{background:#FBEAE3; border-radius:var(--radius-md); padding:14px 16px; font-size:13px; color:var(--coral-deep); margin-top:14px;}
+  .ss-footer{background:var(--navy-deep); color:rgba(255,255,255,.55); padding:22px 0; font-size:12.5px; text-align:center; margin-top:20px;}
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    .no-print{display:none !important;}
+    body{background:#fff;}
+    .ss-header{background:#fff; border-bottom:2px solid var(--navy-deep); padding:10px 0;}
+    .ss-wordmark-sub{color:var(--navy-deep) !important;}
+    .ss-logo{background:none !important; padding:0 !important; height:28px;}
+    .ss-result-primary{background:#fff !important; color:var(--navy-deep) !important; border:2px solid var(--navy-deep);}
+    .ss-result-primary h3, .ss-result-primary p, .ss-result-primary .ss-result-name{color:var(--navy-deep) !important;}
+    .ss-card, .ss-result-secondary, .ss-next-box{page-break-inside:avoid; box-shadow:none;}
+    textarea{overflow:visible !important;}
+    .wrap{max-width:100%;}
+    a[href]:after{content:"";}
+  }
+
+</style>
+</head>
+<body>
+<header class="ss-header no-print">
+  <div class="ss-header-inner">
+    <div class="ss-wordmark">
+      <img src="assets/smart-start-logo.png" alt="SMART Start" class="ss-logo">
+      <span class="ss-wordmark-sub">Created by Smart Resource Solutions</span>
+    </div>
+    <button class="ss-back-link" onclick="location.href = SMART_START_HOME_URL">&larr; Back to SMART Start</button>
+  </div>
+</header>
+
+<section class="ss-intro">
+  <div class="wrap">
+    <p class="ss-eyebrow">How should this need be solved?</p>
+    <h1 class="serif">Hire, Redesign, Automate or Outsource?</h1>
+    <p class="ss-subtitle">Work out the smartest way to get the work done.</p>
+    <p class="ss-explain">Come to this with one reasonably clear need in mind. Answer a short series of questions and this will suggest the most likely route, from stopping the work altogether through to recruiting.</p>
+    <div class="ss-scope">
+      <strong>What this does not do:</strong> it does not diagnose where a bottleneck is coming from, and it does not rank several competing priorities. The Bottleneck Finder and the Priority Filter can help with those first.
+    </div>
+    <p class="ss-reassure">Take your time with this. There are no right or wrong answers, just what's realistic for this particular need.</p>
+  </div>
+</section>
+
+<main class="wrap ss-main">
+
+  <div class="ss-card">
+    <label for="need-input">What work, problem or capability are you trying to address?</label>
+    <textarea id="need-input" rows="2" placeholder="e.g. Following up sales enquiries within 24 hours" oninput="saveNeed(this.value)"></textarea>
+  </div>
+
+  <div id="tree-area" style="margin-top:20px;"></div>
+
+  <div id="result-area" style="display:none;"></div>
+
+  <p class="ss-save-note no-print" id="save-note" style="display:none;"><span class="ss-save-dot"></span> Your progress is saved in this browser.</p>
+  <div class="ss-actions no-print">
+    <button class="ss-btn ss-btn-navy" onclick="window.print()">Print / Save as PDF</button>
+    <button class="ss-btn ss-btn-outline" onclick="clearAll()">Clear / Start again</button>
+    <button class="ss-btn ss-btn-outline" onclick="location.href = SMART_START_HOME_URL">Back to SMART Start</button>
+  </div>
+</main>
+<footer class="ss-footer no-print">
+  <div class="wrap">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</div>
+</footer>
+<script>
+
+  const SMART_START_HOME_URL = "index.html";
+  const BOTTLENECK_FINDER_URL = "smart-start-bottleneck-finder.html";
+  const PRIORITY_FILTER_URL = "smart-start-priority-filter.html";
+  const DECISION_TREE_URL = "smart-start-decision-tree.html";
+  const ROLE_BUILDER_URL = "smart-start-3-box-role-builder.html";
+  const SUCCESS_CHECKLIST_URL = "smart-start-30-day-success-checklist.html";
+  const JD_TEMPLATE_URL = "smart-start-jd-person-spec-template.html";
+  const JOB_ADVERT_URL = "smart-start-job-advert-template.html";
+  const INTERVIEW_SCORECARD_URL = "smart-start-interview-scorecard.html";
+
+  // Each step has a question, a set of choices, and either a next step id
+  // per choice or an outcome key. "note" choices (partly/not sure at step
+  // 1) show a message but still let the user continue exploring.
+  const STEPS = {
+    q1: { text:"Does this work genuinely need to be done at all?",
+      choices:[
+        { label:"Yes", next:"q2" },
+        { label:"Partly", note:"Consider simplifying or removing part of this work before adding any capacity to it.", next:"q2" },
+        { label:"Not sure", note:"It's worth getting clearer on this before committing time or budget to it.", next:"q2" }
+      ] },
+    q2: { text:"Could clearer ownership or redistributing the work among the current team solve this?",
+      choices:[
+        { label:"Yes", outcome:"redistribute" },
+        { label:"No", next:"q3" },
+        { label:"Maybe", next:"q3" }
+      ] },
+    q3: { text:"Could the process be simplified before adding any capacity?",
+      choices:[
+        { label:"Yes", outcome:"redesign" },
+        { label:"No", next:"q4" }
+      ] },
+    q4: { text:"Is the work repetitive or rules based enough for technology, automation or AI to help?",
+      choices:[
+        { label:"Yes", outcome:"automate" },
+        { label:"No", next:"q5" },
+        { label:"Not sure", next:"q5" }
+      ] },
+    q5: { text:"Could someone already in the business be trained or developed to take this on?",
+      choices:[
+        { label:"Yes", outcome:"develop" },
+        { label:"No", next:"q6" }
+      ] },
+    q6: { text:"Does this need specialist expertise the business doesn't currently have in house?",
+      choices:[
+        { label:"Yes", next:"q7", flag:"specialist" },
+        { label:"No", next:"q7" }
+      ] },
+    q7: { text:"Is the need temporary, occasional or project based, rather than ongoing?",
+      choices:[
+        { label:"Yes", next:"q7b" },
+        { label:"No", next:"q8" }
+      ] },
+    q7b: { text:"Could freelance, contractor or temporary support cover this?",
+      choices:[
+        { label:"Yes, specialist freelance or contractor support", outcome:"freelance" },
+        { label:"Yes, general temporary support", outcome:"temporary" },
+        { label:"Not sure", outcome:"moreclarity" }
+      ] },
+    q8: { text:"Is there enough predictable, ongoing work to justify a permanent role?",
+      choices:[
+        { label:"Yes", next:"q9" },
+        { label:"No", outcome:"moreclarity" }
+      ] },
+    q9: { text:"Does the work need to sit inside the business, because it needs ongoing ownership, knowledge, relationships or control?",
+      choices:[
+        { label:"Yes", outcome:"recruit" },
+        { label:"No", outcome:"outsource" }
+      ] }
+  };
+
+  const OUTCOMES = {
+    stop:{ name:"Stop or reduce the work", explain:"The clearest next step is deciding what to stop, simplify or remove, before any capacity is added to it.",
+      before:["Confirm with whoever asked for this whether it's genuinely needed.","Identify what could be simplified or dropped altogether."] },
+    redistribute:{ name:"Redistribute it", explain:"Clearer ownership or a different split of work across the current team looks like the most direct answer.",
+      before:["Agree who will own this and by when.","Check nobody is already at capacity before handing work over."] },
+    redesign:{ name:"Redesign the process", explain:"Simplifying how the work gets done looks likely to ease this before any capacity needs to be added.",
+      before:["Map the current steps and spot the ones adding the least value.","Agree who owns making the change."] },
+    automate:{ name:"Explore AI or automation", explain:"This looks repetitive or rules based enough that technology could help. This does not automatically mean replacing a person, it means exploring where a tool could take on part of the work.",
+      before:["Identify the specific repetitive steps, not the whole task.","Check what tools or systems the business already has before buying something new."] },
+    develop:{ name:"Develop someone internally", explain:"Training or developing an existing person looks like a realistic way to build this capability.",
+      before:["Confirm the person has capacity to take on development alongside their current role.","Agree what success looks like and by when."] },
+    freelance:{ name:"Use freelance or contractor support", explain:"Specialist, time-limited support looks like a good fit for this need.",
+      before:["Be clear on the scope and outcome you need, not just hours.","Check current UK guidance on contractor and employment status before engaging anyone."] },
+    temporary:{ name:"Use temporary support", explain:"General temporary support looks like a sensible way to cover this without a permanent commitment.",
+      before:["Confirm how long the support is likely to be needed.","Agree who will manage and brief them."] },
+    moreclarity:{ name:"More clarity needed", explain:"There isn't yet enough certainty here to commit to a particular route.",
+      before:["Revisit this once the picture is clearer, perhaps in a month or after a specific event.","The Priority Filter can help if this is competing with other things for attention."] },
+    recruit:{ name:"Consider recruiting an employee", explain:"This looks like it needs to sit inside the business on an ongoing basis, which points towards recruiting.",
+      before:["Confirm budget and management capacity are genuinely in place.","Use the 3-Box Role Builder before writing a job description."] },
+    outsource:{ name:"Outsource", explain:"This doesn't need to sit inside the business day to day, so outsourcing looks like a realistic route.",
+      before:["Get clear on the outcome you want, not just the task.","Check current UK guidance on contractor and employment status if the arrangement is ongoing."] }
+  };
+
+  const STORAGE_KEY = "smartStartDecisionTree";
+  let state = { need:"", currentStep:"q1", history:[], notes:[], outcome:null, flags:{} };
+
+  function loadSaved(){
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : null;
+      if(parsed && parsed.currentStep) state = parsed;
+    } catch(e){}
+  }
+  function persist(){
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(state));
+      document.getElementById('save-note').style.display = 'flex';
+    } catch(e){}
+  }
+
+  function saveNeed(value){ state.need = value; persist(); }
+
+  function choose(choice){
+    if(choice.flag) state.flags[choice.flag] = true;
+    if(choice.note) state.notes.push(choice.note);
+    state.history.push(state.currentStep);
+    if(choice.outcome){
+      state.outcome = choice.outcome;
+    } else {
+      state.currentStep = choice.next;
+    }
+    persist();
+    render();
+  }
+
+  function goBack(){
+    if(state.outcome){ state.outcome = null; }
+    else if(state.history.length){ state.currentStep = state.history.pop(); }
+    persist();
+    render();
+  }
+
+  function render(){
+    const treeArea = document.getElementById('tree-area');
+    const resultArea = document.getElementById('result-area');
+
+    if(state.outcome){
+      treeArea.innerHTML = '';
+      const o = OUTCOMES[state.outcome];
+      let html = '<div class="ss-result-primary"><h3>Your most likely route</h3><div class="ss-result-name">' + o.name + '</div><p>' + o.explain + '</p></div>';
+      html += '<div class="ss-next-box"><h4>Before you act</h4><ul style="margin:0; padding-left:18px;">';
+      o.before.forEach(b => html += '<li style="margin-bottom:6px; font-size:14.5px;">' + b + '</li>');
+      html += '</ul></div>';
+      if(state.notes.length){
+        html += '<div class="ss-result-secondary"><h4>Also worth remembering</h4>' + state.notes.map(n => '<p>' + n + '</p>').join('') + '</div>';
+      }
+      if(state.outcome === 'recruit'){
+        html += '<div class="ss-next-box"><h4>What to do next</h4><p>Use the 3-Box Role Builder to get clear on outcomes, ownership and success before you write a job description.</p></div>';
+      }
+      html += '<div class="no-print" style="margin-top:16px;"><button class="ss-btn ss-btn-outline ss-btn-sm" onclick="goBack()">Back to the previous question</button></div>';
+      resultArea.innerHTML = html;
+      resultArea.style.display = 'block';
+      resultArea.scrollIntoView({behavior:'smooth', block:'start'});
+      return;
+    }
+
+    resultArea.style.display = 'none';
+    resultArea.innerHTML = '';
+    const step = STEPS[state.currentStep];
+    let html = '<div class="ss-card">';
+    html += '<div class="ss-section-head"><h2>' + step.text + '</h2></div>';
+    html += '<div class="ss-choice-row" role="group" aria-label="' + step.text.replace(/"/g,"'") + '">';
+    step.choices.forEach((c, i) => {
+      html += '<button type="button" class="ss-choice-btn" onclick=\'choose(' + JSON.stringify(c).replace(/'/g, "&#39;") + ')\'>' + c.label + '</button>';
+    });
+    html += '</div></div>';
+    if(state.history.length){
+      html += '<div class="no-print" style="margin-top:14px;"><button class="ss-btn ss-btn-outline ss-btn-sm" onclick="goBack()">Back</button></div>';
+    }
+    treeArea.innerHTML = html;
+  }
+
+  function clearAll(){
+    state = { need:"", currentStep:"q1", history:[], notes:[], outcome:null, flags:{} };
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    document.getElementById('need-input').value = "";
+    document.getElementById('save-note').style.display = 'none';
+    render();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+
+  // Expands every textarea to its full content height just before printing,
+  // so nothing gets clipped or scrolled off on the printed page or PDF.
+  (function(){
+    let originalHeights = [];
+    window.addEventListener('beforeprint', function(){
+      originalHeights = [];
+      document.querySelectorAll('textarea').forEach(function(t){
+        originalHeights.push([t, t.style.height]);
+        t.style.height = 'auto';
+        t.style.height = (t.scrollHeight + 4) + 'px';
+      });
+    });
+    window.addEventListener('afterprint', function(){
+      originalHeights.forEach(function(pair){ pair[0].style.height = pair[1]; });
+    });
+  })();
+
+  loadSaved();
+  document.getElementById('need-input').value = state.need || "";
+  render();
+  if(state.need || state.history.length) document.getElementById('save-note').style.display = 'flex';
+</script>
+</body>
+</html>

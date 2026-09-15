@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The 3-Box Role Builder | SMART Start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy-deep:#0D1F4F; --navy:#1B3A73; --indigo:#3457A6;
+    --teal:#1F9C93; --teal-deep:#146F68;
+    --cyan:#1ED6E6; --cyan-deep:#0E7C90;
+    --coral:#E8715A; --coral-deep:#C0562F;
+    --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
+    --line:#E4E7F0; --pale:#F4F6FB;
+    --radius-lg:20px; --radius-md:14px; --radius-sm:9px;
+    --shadow-sm:0 2px 10px rgba(13,31,79,.07);
+    --shadow-md:0 14px 34px rgba(13,31,79,.14);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--white); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{margin:0; color:var(--navy-deep);}
+  .serif{font-family:'DM Serif Display',serif; font-weight:400;}
+  p{margin:0 0 12px; font-size:15.5px;}
+  a{color:inherit;}
+  label{font-size:14px; font-weight:700; color:var(--navy-deep); display:block; margin-bottom:6px;}
+  input[type=text], input[type=date], input[type=number], select, textarea{
+    width:100%; font-family:inherit; font-size:14.5px; padding:11px 13px; border-radius:var(--radius-sm);
+    border:1.5px solid var(--line); color:var(--ink); background:#fff; transition:border-color .15s var(--ease);
+  }
+  input[type=text]:focus, input[type=date]:focus, input[type=number]:focus, select:focus, textarea:focus{
+    outline:none; border-color:var(--navy); box-shadow:0 0 0 3px rgba(52,87,166,.15);
+  }
+  textarea{resize:vertical; min-height:64px;}
+  :focus-visible{outline:3px solid var(--coral); outline-offset:2px;}
+  .wrap{max-width:900px; margin:0 auto; padding:0 24px;}
+  @media (max-width:600px){.wrap{padding:0 18px;}}
+
+  /* ---------- HEADER ---------- */
+  .ss-header{background:var(--navy-deep); padding:16px 0;}
+  .ss-header-inner{max-width:900px; margin:0 auto; padding:0 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .ss-wordmark{display:flex; align-items:center; gap:10px;}
+  .ss-logo{height:34px; width:auto; display:block; background:#fff; border-radius:8px; padding:4px 10px; flex-shrink:0;}
+  .ss-wordmark-text{display:flex; flex-direction:column; line-height:1.25;}
+  .ss-wordmark-sub{font-size:11.5px; color:rgba(255,255,255,.62); font-weight:600;}
+  .ss-back-link{background:none; border:1.5px solid rgba(255,255,255,.35); color:#fff; font-size:13px; font-weight:700;
+    padding:9px 16px; border-radius:999px; cursor:pointer; transition:border-color .15s var(--ease);}
+  .ss-back-link:hover{border-color:#fff;}
+
+  /* ---------- INTRO ---------- */
+  .ss-intro{padding:44px 0 8px;}
+  .ss-eyebrow{font-size:12.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--coral-deep); margin-bottom:10px;}
+  .ss-intro h1{font-size:clamp(22px, 5vw, 32px); font-weight:800; letter-spacing:-.01em; line-height:1.2; overflow-wrap:break-word;}
+  .ss-subtitle{font-size:17px; color:var(--navy); font-weight:700; margin-top:10px;}
+  .ss-explain{color:var(--ink-muted); max-width:620px; margin-top:14px;}
+  .ss-scope{background:var(--pale); border-radius:var(--radius-md); padding:16px 18px; margin-top:16px; font-size:13.5px; color:var(--ink-muted);}
+  .ss-scope strong{color:var(--navy-deep);}
+  .ss-reassure{font-size:13px; color:var(--ink-faint); font-style:italic; margin-top:18px;}
+
+  /* ---------- MAIN LAYOUT ---------- */
+  .ss-main{padding:32px 0 20px;}
+  .ss-section{margin-bottom:30px;}
+  .ss-section-head{margin-bottom:16px;}
+  .ss-section-head h2{font-size:20px; font-weight:800;}
+  .ss-section-head p{color:var(--ink-muted); font-size:14px; margin-top:6px;}
+  .ss-card{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:24px; box-shadow:var(--shadow-sm);}
+  .ss-card + .ss-card{margin-top:16px;}
+  .ss-field{margin-bottom:16px;}
+  .ss-field:last-child{margin-bottom:0;}
+  .ss-hint{font-size:12.5px; color:var(--ink-faint); margin-top:5px;}
+  .ss-example{background:var(--pale); border-radius:var(--radius-sm); padding:12px 14px; font-size:13px; color:var(--ink-muted); margin:8px 0 12px;}
+  .ss-example strong{color:var(--navy-deep);}
+
+  .ss-grid-3{display:grid; grid-template-columns:repeat(3,1fr); gap:18px;}
+  @media (max-width:820px){.ss-grid-3{grid-template-columns:1fr;}}
+  .ss-grid-2{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
+  @media (max-width:700px){.ss-grid-2{grid-template-columns:1fr;}}
+
+  .ss-box-num{display:inline-flex; align-items:center; justify-content:center; width:28px; height:28px; border-radius:8px;
+    background:var(--navy-deep); color:#fff; font-weight:800; font-size:13px; margin-right:8px;}
+  .ss-box-title{display:flex; align-items:center; font-size:17px; font-weight:800; margin-bottom:4px;}
+
+  /* ---------- SCALE / OPTION BUTTONS (bottleneck, decision tree) ---------- */
+  .ss-scale{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
+  .ss-scale-btn{flex:1; min-width:90px; padding:10px 8px; border-radius:var(--radius-sm); border:1.5px solid var(--line);
+    background:#fff; font-size:13px; font-weight:700; color:var(--ink-muted); cursor:pointer; text-align:center; transition:all .15s var(--ease);}
+  .ss-scale-btn:hover{border-color:var(--navy);}
+  .ss-scale-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
+  .ss-statement{font-size:14.5px; font-weight:700; color:var(--navy-deep); margin-bottom:4px;}
+
+  .ss-choice-row{display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;}
+  .ss-choice-btn{padding:12px 20px; border-radius:999px; border:1.5px solid var(--line); background:#fff;
+    font-size:14px; font-weight:700; color:var(--ink); cursor:pointer; transition:all .15s var(--ease);}
+  .ss-choice-btn:hover{border-color:var(--navy);}
+  .ss-choice-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
+
+  /* ---------- CHECKLIST ---------- */
+  .ss-check-item{display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid var(--line);}
+  .ss-check-item:last-child{border-bottom:none;}
+  .ss-check-item input[type=checkbox]{width:19px; height:19px; margin-top:2px; accent-color:var(--teal-deep); flex-shrink:0;}
+  .ss-check-item label{font-weight:600; color:var(--ink); margin:0; cursor:pointer; font-size:14.5px;}
+  .ss-progress-track{height:10px; background:var(--line); border-radius:999px; overflow:hidden; margin:12px 0 6px;}
+  .ss-progress-fill{height:100%; background:linear-gradient(90deg, var(--teal), var(--cyan)); border-radius:999px; transition:width .3s var(--ease);}
+  .ss-progress-label{font-size:13px; font-weight:700; color:var(--navy-deep);}
+
+  /* ---------- RESULT BANNERS ---------- */
+  .ss-result-primary{background:var(--navy-deep); color:#fff; border-radius:var(--radius-lg); padding:26px 28px; margin-bottom:16px;}
+  .ss-result-primary h3{color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:10px; opacity:.85;}
+  .ss-result-primary .ss-result-name{font-size:23px; font-weight:800; margin-bottom:10px;}
+  .ss-result-primary p{color:rgba(255,255,255,.85);}
+  .ss-result-secondary{background:var(--pale); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:12px;}
+  .ss-result-secondary h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:6px;}
+  .ss-next-box{background:#fff; border:1.5px dashed var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-top:14px;}
+  .ss-next-box h4{font-size:13px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+
+  /* ---------- BUTTONS ---------- */
+  .ss-btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:700;
+    border:none; cursor:pointer; transition:all .15s var(--ease); font-family:inherit;}
+  .ss-btn-primary{background:var(--coral); color:#fff; box-shadow:0 8px 18px rgba(232,113,90,.3);}
+  .ss-btn-primary:hover{background:var(--coral-deep);}
+  .ss-btn-navy{background:var(--navy-deep); color:#fff;}
+  .ss-btn-navy:hover{background:var(--navy);}
+  .ss-btn-outline{background:#fff; color:var(--navy-deep); border:1.5px solid var(--line);}
+  .ss-btn-outline:hover{border-color:var(--navy-deep);}
+  .ss-btn-sm{padding:9px 16px; font-size:13px;}
+  .ss-btn:disabled{opacity:.5; cursor:not-allowed;}
+  .ss-actions{display:flex; gap:12px; flex-wrap:wrap; padding:26px 0 46px; border-top:1px solid var(--line); margin-top:10px;}
+
+  .ss-add-row{background:none; border:1.5px dashed var(--line); border-radius:var(--radius-sm); padding:11px 16px; font-size:13.5px;
+    font-weight:700; color:var(--navy); cursor:pointer; width:100%; text-align:center; margin-top:8px;}
+  .ss-add-row:hover{border-color:var(--navy);}
+  .ss-remove-btn{background:none; border:none; color:var(--ink-faint); font-size:12.5px; font-weight:700; cursor:pointer; padding:4px 0;}
+  .ss-remove-btn:hover{color:var(--coral-deep);}
+  .ss-row-head{display:flex; justify-content:space-between; align-items:center; margin-bottom:8px;}
+
+  .ss-save-note{font-size:12.5px; color:var(--ink-faint); display:flex; align-items:center; gap:6px; margin-top:6px;}
+  .ss-save-dot{width:7px; height:7px; border-radius:50%; background:var(--teal); flex-shrink:0;}
+
+  .ss-warning{background:#FBEAE3; border-radius:var(--radius-md); padding:14px 16px; font-size:13px; color:var(--coral-deep); margin-top:14px;}
+  .ss-footer{background:var(--navy-deep); color:rgba(255,255,255,.55); padding:22px 0; font-size:12.5px; text-align:center; margin-top:20px;}
+
+  /* ---------- PRINT ---------- */
+  @media print{
+    .no-print{display:none !important;}
+    body{background:#fff;}
+    .ss-header{background:#fff; border-bottom:2px solid var(--navy-deep); padding:10px 0;}
+    .ss-wordmark-sub{color:var(--navy-deep) !important;}
+    .ss-logo{background:none !important; padding:0 !important; height:28px;}
+    .ss-result-primary{background:#fff !important; color:var(--navy-deep) !important; border:2px solid var(--navy-deep);}
+    .ss-result-primary h3, .ss-result-primary p, .ss-result-primary .ss-result-name{color:var(--navy-deep) !important;}
+    .ss-card, .ss-result-secondary, .ss-next-box{page-break-inside:avoid; box-shadow:none;}
+    textarea{overflow:visible !important;}
+    .wrap{max-width:100%;}
+    a[href]:after{content:"";}
+    /* When a role snapshot has been generated, print only the clean
+       snapshot, not the worksheet fields, examples or buttons. */
+    body.has-snapshot #worksheet-cards{display:none !important;}
+    body.has-snapshot #snapshot-area{display:block !important; border:none; box-shadow:none; padding:0;}
+  }
+
+</style>
+</head>
+<body>
+<header class="ss-header no-print">
+  <div class="ss-header-inner">
+    <div class="ss-wordmark">
+      <img src="assets/smart-start-logo.png" alt="SMART Start" class="ss-logo">
+      <span class="ss-wordmark-sub">Created by Smart Resource Solutions</span>
+    </div>
+    <button class="ss-back-link" onclick="location.href = SMART_START_HOME_URL">&larr; Back to SMART Start</button>
+  </div>
+</header>
+
+<section class="ss-intro">
+  <div class="wrap">
+    <p class="ss-eyebrow">What does a new person need to achieve?</p>
+    <h1 class="serif">The 3-Box Role Builder</h1>
+    <p class="ss-subtitle">Get clear on what the role needs to achieve before you write the job description.</p>
+    <p class="ss-explain">Before you start with a job title or a list of tasks, step back and define why the role is needed, what the person should achieve and what they will own.</p>
+    <p class="ss-explain">This should only take a few minutes. You can transfer your answers into the Job Description + Person Specification Template when you're ready.</p>
+    <p class="ss-reassure">Take your time with this. There are no right or wrong answers, just what this role genuinely needs to achieve.</p>
+  </div>
+</section>
+
+<main class="wrap ss-main">
+
+  <div id="worksheet-cards">
+
+  <div class="ss-card">
+    <label for="problem-input">Why does this role need to exist?</label>
+    <p class="ss-hint" style="margin-bottom:4px;">What problem, opportunity or business need are you trying to address?</p>
+    <p class="ss-hint" style="margin-bottom:8px;">Keep this focused on the business need rather than the job title.</p>
+    <textarea id="problem-input" rows="2" placeholder="e.g. We're losing sales because enquiries aren't followed up quickly enough" oninput="update('problem', this.value)"></textarea>
+  </div>
+
+  <div class="ss-card">
+    <div class="ss-box-title"><span class="ss-box-num">1</span> Outcomes</div>
+    <p class="ss-hint" style="margin-bottom:4px;">What needs to be different because this person is here?</p>
+    <p class="ss-hint" style="margin-bottom:12px;">Think about results rather than tasks. What are the 3 most important things this person should make happen?</p>
+    <div class="ss-example"><strong>Instead of:</strong> "Manage customer enquiries." <strong>Think:</strong> "Improve how customer enquiries are handled so they are responded to consistently and followed through."</div>
+    <div id="outcomes-list"></div>
+  </div>
+
+  <div class="ss-card">
+    <div class="ss-box-title"><span class="ss-box-num">2</span> Ownership</div>
+    <p class="ss-hint" style="margin-bottom:4px;">What will this person be expected to own?</p>
+    <p class="ss-hint" style="margin-bottom:12px;">Think about the areas they should take responsibility for, rather than every individual task they might do.</p>
+    <div id="ownership-list"></div>
+    <div class="ss-field" style="margin-top:16px;">
+      <label for="decisions-input">What should they be able to decide or act on without needing approval?</label>
+      <textarea id="decisions-input" rows="3" oninput="update('decisions', this.value)"></textarea>
+    </div>
+  </div>
+
+  <div class="ss-card">
+    <div class="ss-box-title"><span class="ss-box-num">3</span> Success</div>
+    <p class="ss-hint" style="margin-bottom:4px;">How will you know the role is working?</p>
+    <p class="ss-hint" style="margin-bottom:12px;">What would you expect to see if this person was succeeding?</p>
+    <div class="ss-example">Examples: improved delivery, increased capacity, better customer outcomes, stronger commercial results, fewer delays, improved quality, clearer ownership, reduced pressure on the owner or manager.</div>
+    <div id="success-list"></div>
+  </div>
+
+  <div class="ss-section" style="margin-top:24px;">
+    <button class="ss-btn ss-btn-primary" onclick="showSnapshot()">Create my role snapshot</button>
+  </div>
+
+  </div>
+
+  <div id="snapshot-area" style="display:none;"></div>
+
+  <p class="ss-save-note no-print" id="save-note" style="display:none;"><span class="ss-save-dot"></span> Your work is saved in this browser.</p>
+  <div class="ss-actions no-print">
+    <button class="ss-btn ss-btn-navy" onclick="window.print()">Print / Save as PDF</button>
+    <button class="ss-btn ss-btn-outline" onclick="clearAll()">Clear / Start again</button>
+    <button class="ss-btn ss-btn-outline" onclick="location.href = SMART_START_HOME_URL">Back to SMART Start</button>
+  </div>
+</main>
+<footer class="ss-footer no-print">
+  <div class="wrap">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</div>
+</footer>
+<script>
+
+  const SMART_START_HOME_URL = "index.html";
+  const BOTTLENECK_FINDER_URL = "smart-start-bottleneck-finder.html";
+  const PRIORITY_FILTER_URL = "smart-start-priority-filter.html";
+  const DECISION_TREE_URL = "smart-start-decision-tree.html";
+  const ROLE_BUILDER_URL = "smart-start-3-box-role-builder.html";
+  const SUCCESS_CHECKLIST_URL = "smart-start-30-day-success-checklist.html";
+  const JD_TEMPLATE_URL = "smart-start-jd-person-spec-template.html";
+  const JOB_ADVERT_URL = "smart-start-job-advert-template.html";
+  const INTERVIEW_SCORECARD_URL = "smart-start-interview-scorecard.html";
+
+  const STORAGE_KEY = "smartStartRoleBuilder";
+  const TRANSFER_KEY = "smartStartRoleToJdTransfer";
+  const MAX_OUTCOMES = 3, MAX_OWNERSHIP = 5, MAX_SUCCESS = 5;
+
+  let data = {
+    problem:"", decisions:"",
+    outcomes:["",""], ownership:["","",""], success:["",""]
+  };
+
+  function loadSaved(){
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      const parsed = raw ? JSON.parse(raw) : null;
+      if(parsed) data = Object.assign(data, parsed);
+    } catch(e){}
+  }
+  function persist(){
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
+      document.getElementById('save-note').style.display = 'flex';
+    } catch(e){}
+  }
+
+  function update(field, value){ data[field] = value; persist(); }
+
+  function updateItem(listName, i, value){
+    data[listName][i] = value;
+    persist();
+  }
+  function addItem(listName, max){
+    if(data[listName].length >= max) return;
+    data[listName].push("");
+    persist();
+    renderLists();
+  }
+  function removeItem(listName, i){
+    data[listName].splice(i,1);
+    persist();
+    renderLists();
+  }
+
+  function renderList(listName, containerId, max, placeholder){
+    const container = document.getElementById(containerId);
+    container.innerHTML = '';
+    data[listName].forEach((val, i) => {
+      const row = document.createElement('div');
+      row.className = 'ss-field';
+      let inner = '<div class="ss-row-head"><label style="margin-bottom:0;">' + (i+1) + '.</label>';
+      if(data[listName].length > 1) inner += '<button type="button" class="ss-remove-btn no-print" onclick="removeItem(\'' + listName + '\',' + i + ')">Remove</button>';
+      inner += '</div><input type="text" value="' + (val||'').replace(/"/g,'&quot;') + '" placeholder="' + placeholder + '" oninput="updateItem(\'' + listName + '\',' + i + ', this.value)">';
+      row.innerHTML = inner;
+      container.appendChild(row);
+    });
+    const addBtn = document.createElement('button');
+    addBtn.type = 'button';
+    addBtn.className = 'ss-add-row no-print';
+    addBtn.textContent = '+ Add another';
+    addBtn.style.display = data[listName].length >= max ? 'none' : 'block';
+    addBtn.onclick = () => addItem(listName, max);
+    container.appendChild(addBtn);
+  }
+
+  function renderLists(){
+    renderList('outcomes', 'outcomes-list', MAX_OUTCOMES, 'e.g. Consistently respond to enquiries within 24 hours');
+    renderList('ownership', 'ownership-list', MAX_OWNERSHIP, 'e.g. The sales pipeline from enquiry to quote');
+    renderList('success', 'success-list', MAX_SUCCESS, 'e.g. Response time consistently under 24 hours');
+  }
+
+  function nonEmpty(arr){ return arr.filter(v => v && v.trim().length); }
+
+  function showSnapshot(){
+    const outcomes = nonEmpty(data.outcomes);
+    const ownership = nonEmpty(data.ownership);
+    const success = nonEmpty(data.success);
+    const problem = (data.problem || '').trim();
+    const decisions = (data.decisions || '').trim();
+    const area = document.getElementById('snapshot-area');
+    area.style.display = 'block';
+    document.body.classList.add('has-snapshot');
+
+    let html = '<div class="ss-section-head" style="margin-top:30px;"><h2>Your role snapshot</h2></div>';
+
+    if(problem){
+      html += '<div class="ss-result-primary"><h3>Why this role exists</h3><p>' + problem + '</p></div>';
+    }
+
+    if(outcomes.length){
+      html += '<div class="ss-card"><h4 style="font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy-deep); margin-bottom:10px;">Top outcomes</h4>';
+      html += '<ul style="margin:0; padding-left:18px;">' + outcomes.map(o => '<li style="margin-bottom:6px;">' + o + '</li>').join('') + '</ul></div>';
+    }
+
+    if(ownership.length){
+      html += '<div class="ss-card"><h4 style="font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy-deep); margin-bottom:10px;">What they will own</h4>';
+      html += '<ul style="margin:0; padding-left:18px;">' + ownership.map(o => '<li style="margin-bottom:6px;">' + o + '</li>').join('') + '</ul></div>';
+    }
+
+    if(decisions){
+      html += '<div class="ss-card"><h4 style="font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy-deep); margin-bottom:10px;">Decision-making and authority</h4>';
+      html += '<p>' + decisions + '</p></div>';
+    }
+
+    if(success.length){
+      html += '<div class="ss-card"><h4 style="font-size:13px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy-deep); margin-bottom:10px;">What success looks like</h4>';
+      html += '<ul style="margin:0; padding-left:18px;">' + success.map(o => '<li style="margin-bottom:6px;">' + o + '</li>').join('') + '</ul></div>';
+    }
+
+    html += '<div class="ss-next-box no-print"><h4>Ready for the formal document?</h4><p>Happy with the shape of the role? Take this thinking into the Job Description + Person Specification Template and add the practical details and person requirements.</p><button class="ss-btn ss-btn-navy ss-btn-sm" onclick="transferToJd()" style="margin-top:8px;">Turn this into a job description &rarr;</button></div>';
+
+    area.innerHTML = html;
+    area.scrollIntoView({behavior:'smooth', block:'start'});
+  }
+
+  // Saves a one-off snapshot of the current thinking under a dedicated
+  // transfer key, separate from the working draft in STORAGE_KEY, then
+  // sends the user on to the JD + Person Specification Template. Nothing
+  // here is sent anywhere external, it is only ever written to this
+  // browser's own localStorage.
+  function transferToJd(){
+    const transfer = {
+      whyRoleExists: (data.problem || '').trim(),
+      outcomes: nonEmpty(data.outcomes),
+      ownership: nonEmpty(data.ownership),
+      decisions: (data.decisions || '').trim(),
+      success: nonEmpty(data.success),
+      transferTimestamp: new Date().toISOString()
+    };
+    try { localStorage.setItem(TRANSFER_KEY, JSON.stringify(transfer)); } catch(e){ /* fail quietly */ }
+    location.href = JD_TEMPLATE_URL;
+  }
+
+  function clearAll(){
+    data = { problem:"", decisions:"", outcomes:["",""], ownership:["","",""], success:["",""] };
+    try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
+    document.getElementById('problem-input').value = "";
+    document.getElementById('decisions-input').value = "";
+    document.getElementById('snapshot-area').style.display = 'none';
+    document.getElementById('snapshot-area').innerHTML = '';
+    document.getElementById('save-note').style.display = 'none';
+    document.body.classList.remove('has-snapshot');
+    renderLists();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+
+
+  // Expands every textarea to its full content height just before printing,
+  // so nothing gets clipped or scrolled off on the printed page or PDF.
+  (function(){
+    let originalHeights = [];
+    window.addEventListener('beforeprint', function(){
+      originalHeights = [];
+      document.querySelectorAll('textarea').forEach(function(t){
+        originalHeights.push([t, t.style.height]);
+        t.style.height = 'auto';
+        t.style.height = (t.scrollHeight + 4) + 'px';
+      });
+    });
+    window.addEventListener('afterprint', function(){
+      originalHeights.forEach(function(pair){ pair[0].style.height = pair[1]; });
+    });
+  })();
+
+  loadSaved();
+  document.getElementById('problem-input').value = data.problem || "";
+  document.getElementById('decisions-input').value = data.decisions || "";
+  renderLists();
+  if(data.problem || data.outcomes.some(v=>v)) document.getElementById('save-note').style.display = 'flex';
+</script>
+</body>
+</html>
