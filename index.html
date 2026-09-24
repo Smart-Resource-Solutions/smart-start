@@ -863,15 +863,13 @@
   }
 
   // ============================================================
-  // FREE CLARITY CALL
-  // Every "Book a free clarity call" button on the site calls talkWithUs(),
-  // which reads this one BOOKING_URL constant, so there is a single place
-  // to wire up the real Microsoft Bookings link before launch.
-  // TODO: set BOOKING_URL to the real Hiring & Growth Clarity Call booking
-  // page. Until it is set, the buttons will not navigate anywhere, which
-  // is preferable to sending the visitor to a fake or placeholder page.
+  // BOOK A CALL
+  // Every "Book a call" button on the site calls talkWithUs(), which
+  // reads this one BOOKING_URL constant, so there is a single place
+  // to update if the link ever changes. This is the public "Bookings
+  // with Me" meeting type link, which does not carry an expiry date.
   // ============================================================
-  const BOOKING_URL = '';
+  const BOOKING_URL = 'https://bookings.cloud.microsoft/bookwithme/user/319e9c220c3247e398b495473a8666f2@smartresourcesolutions.com/meetingtype/lTNFLhdYVEiYfqVDLhMhFQ2?anonymous&ismsaljsauthenabled&ep=mCardFromTile';
   function talkWithUs(){
     if(BOOKING_URL) window.location.href = BOOKING_URL;
   }
