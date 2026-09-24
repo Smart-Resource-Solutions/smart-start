@@ -20,6 +20,8 @@
     --teal-deep:#146F68;
     --coral:#E8715A;
     --coral-deep:#C0562F;
+    --action-blue:#2563EB;
+    --action-blue-deep:#1D4ED8;
     --cream:#FBF7F0;
     --white:#FFFFFF;
     --ink:#12203D;
@@ -193,27 +195,30 @@
     .hero-photo-credit{margin-top:34px;}
   }
 
-  /* ---------- RECENT CHECK-INS ---------- */
-  #recent-checkins-section{display:none;}
-  .recent-card{
-    background:var(--cream); border-radius:var(--radius-lg); padding:26px 30px;
-    display:flex; flex-wrap:wrap; gap:22px; align-items:center; justify-content:space-between;
+  /* ---------- FIND THE RIGHT RESOURCE (homepage router) ---------- */
+  .router-options{display:grid; grid-template-columns:1fr 1fr; gap:14px; margin-top:8px;}
+  @media (max-width:700px){.router-options{grid-template-columns:1fr;}}
+  .router-card{
+    display:flex; flex-direction:column; gap:8px; text-align:left; background:#F4F6FB;
+    border:1.5px solid var(--line); border-radius:var(--radius-md); padding:16px 18px;
+    cursor:pointer; transition:border-color .15s ease, background .15s ease; font-family:inherit;
   }
-  .recent-list{display:flex; gap:14px; flex-wrap:wrap; flex:1; min-width:260px;}
-  .recent-item{
-    background:#fff; border-radius:var(--radius-md); padding:14px 18px; min-width:180px;
-    box-shadow:var(--shadow-sm); display:flex; flex-direction:column; gap:4px;
-  }
-  .recent-item-date{font-size:12px; font-weight:700; color:var(--ink-faint); text-transform:uppercase; letter-spacing:0.04em;}
-  .recent-item-title{font-size:14.5px; font-weight:700; color:var(--navy-deep);}
-  .recent-item-view{font-size:12.5px; font-weight:700; color:var(--coral-deep); background:none; border:none; cursor:pointer; padding:0; text-align:left; margin-top:2px;}
-  .recent-actions{display:flex; flex-direction:column; gap:10px; align-items:flex-start;}
+  .router-card:hover{border-color:var(--navy-deep); background:#fff;}
+  .router-card-need{font-size:15px; font-weight:700; color:var(--navy-deep); line-height:1.4;}
+  .router-card-sub{font-size:13px; color:var(--ink-muted); line-height:1.45; display:block; margin-top:2px;}
+  .router-card-route{font-size:14.5px; font-weight:800; color:var(--navy-deep);}
 
   /* ---------- DIAGNOSTIC ---------- */
   .diagnostic-box{
     background:#fff; border-radius:var(--radius-lg);
-    padding:38px; box-shadow:var(--shadow-md); max-width:660px; margin:0 auto;
+    padding:38px; box-shadow:var(--shadow-md); max-width:760px; margin:0 auto;
   }
+  .start-here-panel{background:var(--navy-deep); text-align:center; padding:56px 40px;}
+  .start-here-panel .eyebrow{color:var(--action-blue); background:rgba(255,255,255,0.08);}
+  .start-here-panel h2{color:#fff; margin-top:0;}
+  .start-here-panel .diagnostic-subheadline{color:rgba(255,255,255,0.8); font-weight:400; max-width:520px; margin:14px auto 26px;}
+  .btn-start-here{background:var(--action-blue); font-size:16px; padding:16px 34px;}
+  .btn-start-here:hover{background:var(--action-blue-deep);}
   .diagnostic-eyebrow{
     display:inline-flex; align-items:center; font-size:12.5px; font-weight:700; color:var(--coral-deep);
     background:var(--g-organisation-pale); padding:7px 14px; border-radius:999px; margin-bottom:18px;
@@ -371,23 +376,14 @@
      classes fw-goals/fw-roles/etc., no longer a public "framework" page) ---------- */
 
   /* ---------- SUPPORT ---------- */
-  .offer-grid{display:grid; grid-template-columns:repeat(2,1fr); gap:18px;}
-  @media (max-width:760px){.offer-grid{grid-template-columns:1fr;}}
-  .offer-card{
-    background:#fff; border-radius:var(--radius-md); padding:24px; box-shadow:var(--shadow-sm);
-    border-top:4px solid var(--navy-deep);
-  }
-  .offer-name{font-size:12px; font-weight:800; color:var(--navy-deep); text-transform:uppercase; letter-spacing:0.05em; margin-bottom:8px;}
-  .offer-card p{font-size:13.5px; color:var(--ink-muted); margin:0 0 10px;}
-  .offer-supporting{font-size:12px; color:var(--ink-faint); margin:0;}
-
   .final-cta{
     display:grid; grid-template-columns:0.9fr 1.1fr; gap:0; margin-top:36px;
     border-radius:var(--radius-lg); overflow:hidden; background:var(--navy-deep); color:#fff;
   }
   @media (max-width:760px){.final-cta{grid-template-columns:1fr;}}
   .final-cta-photo{min-height:220px;}
-  .final-cta-copy{padding:38px; display:flex; flex-direction:column; justify-content:center;}
+  .final-cta-photo img{width:100%; height:100%; min-height:220px; object-fit:cover; display:block;}
+  .final-cta-copy{padding:38px; display:flex; flex-direction:column; justify-content:center; align-items:flex-start;}
   .final-cta h3{font-size:22px; color:#fff; margin-bottom:12px;}
   .final-cta p{color:rgba(255,255,255,0.8); margin:0 0 20px; max-width:440px;}
 
@@ -436,10 +432,10 @@
     <div class="hero-photo-inner">
       <p class="eyebrow hero-photo-label">SMART START</p>
       <p class="hero-photo-sub">A free resource hub for growing businesses</p>
-      <h1 class="hero-h1 serif hero-photo-headline">Let's work out what your business needs next.</h1>
-      <p class="hero-photo-copy">Step back, understand what's really happening in your business and team, and find the right place to focus, whether that turns out to be hiring or something else entirely.</p>
+      <h1 class="hero-h1 serif hero-photo-headline">Need more capacity? Let's work out where it can come from.</h1>
+      <p class="hero-photo-copy">SMART Start is a set of free resources to help you work out whether that's hiring, reorganising the work, automating it, or something else entirely.</p>
       <div class="hero-actions">
-        <button class="btn btn-primary" onclick="scrollToDiagnostic()">See what's happening in my business</button>
+        <button class="btn btn-primary" onclick="scrollToDiagnostic()">Start here</button>
         <button class="btn btn-outline-light" onclick="scrollToRoutes()">Explore resources</button>
       </div>
       <div class="hero-photo-credit">
@@ -449,109 +445,56 @@
     </div>
   </section>
 
-  <!-- RECENT CHECK-INS (shown only if the visitor has opted to remember results on this device) -->
-  <section class="section-tight band-cream" id="recent-checkins-section">
+  <!-- FIND THE RIGHT RESOURCE: a lightweight router, not a diagnostic -->
+  <section class="section-tight band-cream" id="diagnostic">
     <div class="wrap">
-      <div class="recent-card">
-        <div>
-          <div class="eyebrow" style="margin-bottom:6px;">Your recent check-ins</div>
-          <div class="recent-list" id="recent-checkins-list"></div>
-        </div>
-        <div class="recent-actions">
-          <button class="btn btn-secondary btn-sm" onclick="retakeDiagnostic()">Run the check again</button>
-          <button class="remember-clear" onclick="clearSavedResults()">Clear my saved results</button>
-        </div>
+      <div class="diagnostic-box start-here-panel">
+        <h2 class="serif">Let's create more capacity for your business to grow.</h2>
+        <p class="diagnostic-subheadline">Answer a few quick questions to see where you could free up capacity, what may need to change and where to focus first.</p>
+        <button type="button" class="btn btn-primary btn-start-here" onclick="location.href='smart-start-bottleneck-finder.html'">Start here &rarr;</button>
       </div>
     </div>
   </section>
 
-  <!-- DIAGNOSTIC -->
-  <section class="section band-cream" id="diagnostic">
+  <section class="section-tight band-cream" style="padding-top:0;">
     <div class="wrap">
-      <div class="diagnostic-box">
-
-        <div id="diagnostic-intro">
-          <span class="diagnostic-eyebrow">SMART START CHECK-IN</span>
-          <h2>Find the bottleneck. Know where to focus next.</h2>
-          <p class="diagnostic-subheadline">Answer 8 quick questions and get the right resource in under 3 minutes.</p>
-          <div>
-            <p>SMART Start helps you identify where the pressure is coming from and what might make the biggest difference next.</p>
-            <p>You may need to hire. You may not.</p>
-          </div>
-          <p class="diagnostic-note">There are no right or wrong answers. Choose what best reflects what's happening in the business today.</p>
-
-          <div class="remember-control">
-            <input type="checkbox" id="remember-checkbox" onchange="onRememberToggle(this.checked)">
-            <div>
-              <label for="remember-checkbox">Remember my results on this device</label>
-              <p>We'll store your recent SMART Start check-ins in this browser so you can return to them. No account, name or email required.</p>
-              <button class="remember-clear" onclick="clearSavedResults()">Clear my saved results</button>
-            </div>
-          </div>
-
-          <div>
-            <button class="btn btn-primary" onclick="startDiagnostic()">Start the 3-minute check-in</button>
-          </div>
-        </div>
-
-        <div id="question-view" style="display:none;">
-          <span class="q-progress-label" id="q-progress-label">Question 1 of 8</span>
-          <div class="q-progress-track"><div class="q-progress-fill" id="q-progress-fill"></div></div>
-          <h3 class="q-text" id="q-text"></h3>
-          <p class="diagnostic-note" id="q-hint" style="display:none; margin-top:-10px;"></p>
-          <div class="q-options" id="q-options" role="group" aria-labelledby="q-text"></div>
-          <div class="q-nav-row">
-            <button class="btn-secondary btn" id="q-back" onclick="goBack()">Back</button>
-            <button class="btn btn-primary" id="q-next" onclick="goNext()" disabled>Next &rarr;</button>
-          </div>
-        </div>
-
-        <div id="result-view" style="display:none;">
-          <div class="results-intro">
-            <h2 id="results-heading">Here's where I'd start</h2>
-            <p>A starting point based on your answers: a guide, not a personalised business plan.</p>
-          </div>
-          <div id="priority-list"></div>
-
-          <div class="call-band">
-            <h3>Want to talk it through?</h3>
-            <p>If you're still unsure what your business or team needs next, book a free 30-minute Hiring &amp; Growth Clarity Call. There's no obligation. It's simply a chance to talk through what's happening and get some clarity on your next step.</p>
-            <!-- TODO: link this button to the real booking page once available -->
-            <button class="btn btn-on-navy" style="background:#fff; color:var(--teal-deep);" onclick="talkWithUs()">Book a free clarity call</button>
-          </div>
-
-          <div class="results-actions">
-            <button class="btn btn-secondary btn-sm" onclick="showView('tools')">View all SMART Start resources</button>
-            <button class="link-btn" onclick="retakeDiagnostic()">Run the check again</button>
-          </div>
-        </div>
-
+      <div class="section-head" style="margin-bottom:20px;">
+        <h3 class="serif" style="font-size:20px;">Already know what you need?</h3>
+        <p>If you already have a good idea where you need support, jump straight to the area that sounds closest.</p>
+      </div>
+      <div class="router-options">
+        <button type="button" class="router-card" onclick="location.href='smart-start-task-decision-audit.html'">
+          <span class="router-card-need">Everything still seems to come through me<span class="router-card-sub">Work out what you should keep, stop, delegate, automate or hand over.</span></span>
+          <span class="router-card-route">Task and Decision Audit &rarr;</span>
+        </button>
+        <button type="button" class="router-card" onclick="location.href='smart-start-roles-responsibilities-map.html'">
+          <span class="router-card-need">Not clear who owns what<span class="router-card-sub">Clarify responsibilities and where work or decisions may be falling between people.</span></span>
+          <span class="router-card-route">Roles and Responsibilities Map &rarr;</span>
+        </button>
+        <button type="button" class="router-card" onclick="location.href='smart-start-process-audit.html'">
+          <span class="router-card-need">The way we work is slowing us down<span class="router-card-sub">Look at repeated problems, bottlenecks and processes creating unnecessary work.</span></span>
+          <span class="router-card-route">Process Audit &rarr;</span>
+        </button>
+        <button type="button" class="router-card" onclick="showHiringTemplates()">
+          <span class="router-card-need">Ready to recruit, or just hired someone<span class="router-card-sub">Get the role clear, recruit consistently and support the first month properly.</span></span>
+          <span class="router-card-route">Hiring resources &rarr;</span>
+        </button>
+        <button type="button" class="router-card" onclick="location.href='smart-start-freelancer-contractor-checklist.html'">
+          <span class="router-card-need">Freelance or contract support could be the answer<span class="router-card-sub">Check what to think through before bringing in a freelancer or contractor.</span></span>
+          <span class="router-card-route">Freelancer and Contractor Checklist &rarr;</span>
+        </button>
       </div>
     </div>
   </section>
 
-  <!-- EXPLORE SMART START: plain-English route cards (G.R.O.W.T.H. remains the
-       internal category system powering these, but is not named to visitors) -->
-  <section class="section band-white" id="resource-routes">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow">EXPLORE SMART START</p>
-        <h2 class="section-h2 serif">Where do you want to focus?</h2>
-        <p>Choose an area to explore practical resources, or use the check-in above if you're not sure where to begin.</p>
-      </div>
-      <div class="fw-grid" id="fw-grid-home"></div>
-    </div>
-  </section>
-
-  <!-- YOUR SMART START RESOURCES -->
+  <!-- EXPLORE SMART START -->
   <section class="section band-white" id="home-tools-section">
     <div class="wrap">
       <div class="tools-section-head">
         <div class="section-head" style="margin-bottom:0;">
-          <p class="eyebrow">YOUR SMART START RESOURCES</p>
-          <h2 class="section-h2 serif" id="home-tools-heading">What would help you right now?</h2>
-          <p id="home-tools-sub">Choose an area that's relevant to what's happening in your business, or dip into a resource whenever you need it.</p>
-          <p class="library-note" style="margin:14px 0 0;">You don't need to work through everything. Start with the resource SMART Start recommends, then explore another if it becomes relevant.</p>
+          <p class="eyebrow">EXPLORE SMART START</p>
+          <h2 class="section-h2 serif">Practical support for the different challenges that come with growth</h2>
+          <p>SMART Start brings together practical resources to help you make clearer decisions about priorities, roles, ways of working, capacity, hiring and your existing team.</p>
         </div>
         <div>
           <!-- Photo: supplied resources-section photograph, embedded as base64 below -->
@@ -560,33 +503,18 @@
           </div>
         </div>
       </div>
-      <div class="tool-grid" id="home-tools-grid"></div>
-      <div style="margin-top:24px;">
-        <button class="btn btn-secondary btn-sm" onclick="showView('tools')">View all SMART Start resources</button>
-      </div>
+      <div class="fw-grid" id="fw-grid-home"></div>
     </div>
   </section>
 
-  <!-- HIRING STARTER TEMPLATES: practical templates, kept separate from the five core resources -->
-  <section class="section band-cream">
-    <div class="wrap">
-      <div class="section-head">
-        <p class="eyebrow" style="color:var(--teal-deep);">HIRING STARTER TEMPLATES</p>
-        <h2 class="section-h2 serif">Hiring starter templates</h2>
-        <p>If hiring is the right next step, these practical templates can help you put the basics in place.</p>
-      </div>
-      <div class="tool-grid" id="hiring-templates-grid"></div>
-    </div>
-  </section>
-
-  <!-- SECOND FREE CALL CTA -->
+  <!-- PERSONALISED SUPPORT CTA -->
   <section class="section band-white" style="padding-top:0;">
     <div class="wrap">
       <div class="call-band" style="background:linear-gradient(135deg, var(--navy-deep), var(--indigo));">
-        <h3>Still not sure where to begin?</h3>
-        <p>A free, no-obligation Hiring &amp; Growth Clarity Call is simply a chance to talk through what's happening and get some clarity on your next step.</p>
+        <h3>Want help putting this into practice?</h3>
+        <p>If you're ready for more personalised support, book a call and let's talk through what needs to happen next and how we can help you get there.</p>
         <!-- TODO: link this button to the real booking page once available -->
-        <button class="btn btn-on-navy" onclick="talkWithUs()">Book a free clarity call</button>
+        <button class="btn btn-on-navy" onclick="talkWithUs()">Book a call</button>
       </div>
     </div>
   </section>
@@ -626,45 +554,19 @@
     <div class="wrap">
       <div class="section-head">
         <p class="eyebrow">A BIT OF EXTRA SUPPORT</p>
-        <h2 class="section-h2 serif">Would it help to talk this through?</h2>
-        <p>The free resources here are designed to give you genuine, standalone value. If you'd like more support applying what you find, or want someone alongside you, here's what else is available.</p>
-      </div>
-
-      <div class="offer-grid">
-        <div class="offer-card">
-          <div class="offer-name">SMART Exchange</div>
-          <h3 class="card-heading">Do it with guidance</h3>
-          <p>Get clarity on what your business and team need, work through it with support, and take action with accountability along the way.</p>
-          <p class="offer-supporting">Practical workshops, Founder Question Time, facilitated roundtables and optional one-to-one mentoring.</p>
-        </div>
-        <div class="offer-card">
-          <div class="offer-name">SMART Review</div>
-          <h3 class="card-heading">Get an outside view</h3>
-          <p>A structured review of what's happening across your business, team and people needs, with clear recommendations on where to focus next.</p>
-        </div>
-        <div class="offer-card">
-          <div class="offer-name">SMART Hire</div>
-          <h3 class="card-heading">Fully managed recruitment</h3>
-          <p>We manage the full recruitment process for a defined vacancy, from the brief and targeted search through to assessment, interviews and offer.</p>
-        </div>
-        <div class="offer-card">
-          <div class="offer-name">SMART Partner</div>
-          <h3 class="card-heading">Build ongoing people and recruitment capability</h3>
-          <p>Embedded people, workforce and recruitment support if you're preparing to grow or already managing growth.</p>
-          <p class="offer-supporting">This can include workforce planning, role design, capability gaps, recruitment systems, hiring-manager support and recruitment delivery where needed.</p>
-        </div>
+        <h2 class="section-h2 serif">Want help putting this into practice?</h2>
+        <p>You've worked out what needs to happen. Now it's about making it happen. If you'd like support with that, book a call and let's talk through the right next step.</p>
       </div>
 
       <div class="final-cta">
-        <!-- TODO: insert a genuine photograph of Nicola here (natural conversation or approachable portrait) -->
-        <div class="photo photo-coral final-cta-photo" style="border-radius:0; border:none;">
-          <span class="photo-label">PHOTO NEEDED: Nicola in a natural conversation or approachable portrait</span>
+        <div class="final-cta-photo">
+          <img src="assets/support-call-photo.jpg" alt="Two people talking over coffee">
         </div>
         <div class="final-cta-copy">
-          <h3>Still not sure where to begin?</h3>
-          <p>A free Hiring &amp; Growth Clarity Call gives us the chance to talk through what's happening and identify a practical next step. No obligation.</p>
+          <h3>Want help putting this into practice?</h3>
+          <p>If you're ready for more personalised support, book a call and let's talk through what needs to happen next and how we can help you get there.</p>
           <!-- TODO: link this button to the real booking page once available -->
-          <button class="btn btn-primary" onclick="talkWithUs()">Book a free clarity call</button>
+          <button class="btn btn-primary" onclick="talkWithUs()">Book a call</button>
         </div>
       </div>
     </div>
@@ -708,7 +610,7 @@
 
   function scrollToRoutes(){
     showView('start');
-    const el = document.getElementById('resource-routes');
+    const el = document.getElementById('home-tools-section');
     if(el) setTimeout(() => el.scrollIntoView({behavior:'smooth', block:'start'}), 50);
   }
 
@@ -741,7 +643,19 @@
   function showToolsByCategory(category){
     showView('tools');
     activeArea = category;
+    activeKeyFilter = null;
     document.querySelectorAll('.filter-chip').forEach(c => c.classList.toggle('active', c.getAttribute('data-area') === category));
+    renderToolLibrary();
+  }
+
+  // Shows exactly the three hiring-paperwork templates, regardless of what
+  // else picks up the "talent" area tag over time. Deliberately a fixed key
+  // list, not an area filter, see the "I'm ready to recruit" router card.
+  function showHiringTemplates(){
+    showView('tools');
+    activeArea = 'all';
+    activeKeyFilter = ['jdtemplate', 'jobadvert', 'interviewscorecard'];
+    document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
     renderToolLibrary();
   }
 
@@ -763,98 +677,6 @@
     });
   }
 
-  // ============================================================
-  // DIAGNOSTIC DATA
-  // 8 questions route the visitor to one of five core resources
-  // (bottleneck / priority / decision / rolebuilder / checklist).
-  // Each question is 'single' (one answer), 'multi2' (up to two
-  // answers) or 'multi' (any number). Every selected option's tags
-  // are summed into per-resource scores; see calculatePriorities()
-  // and showResults() for how the top result and up to two secondary
-  // results are chosen. This routes the visitor to the right
-  // resource; it does not attempt to solve the underlying problem
-  // inside the check-in itself.
-  // ============================================================
-  const QUESTIONS = [
-    { text:"What's making you look for extra capacity, capability or support right now?", type:"multi2", options:[
-      { label:"We're struggling to keep up with the workload", tags:{decision:1, bottleneck:1} },
-      { label:"There's a growth opportunity we don't have capacity for", tags:{priority:2} },
-      { label:"We're missing a skill or capability", tags:{decision:2} },
-      { label:"Too much work sits with me or another key person", tags:{bottleneck:3} },
-      { label:"Customers, delivery or quality are starting to suffer", tags:{bottleneck:2, decision:1} },
-      { label:"Someone has left or is leaving", tags:{decision:2} },
-      { label:"An existing role or team member isn't working as it should", tags:{bottleneck:3} },
-      { label:"We need to work more efficiently", tags:{decision:2} },
-      { label:"We think AI or technology could help, but don't know how", tags:{decision:3} },
-      { label:"We think some work could be outsourced, but don't know where to start", tags:{decision:3} },
-      { label:"We're not sure what the answer is, we just know something needs to change", tags:{bottleneck:3} }
-    ]},
-    { text:"What does the business most need to achieve over the next 6 to 12 months?", type:"single", options:[
-      { label:"Grow revenue or win more customers", tags:{priority:1} },
-      { label:"Deliver more work without service or quality dropping", tags:{bottleneck:1, decision:1} },
-      { label:"Improve profitability or reduce cost", tags:{priority:1, decision:1} },
-      { label:"Launch something new", tags:{priority:1} },
-      { label:"Free the owner or senior team from day-to-day work", tags:{bottleneck:2, decision:1} },
-      { label:"Add a capability we don't currently have", tags:{decision:2, rolebuilder:1} },
-      { label:"Improve how the current team is working", tags:{bottleneck:2} },
-      { label:"Several things are competing for attention and we're not sure what should come first", tags:{priority:3} },
-      { label:"We're not clear enough on the priorities yet", tags:{priority:3} }
-    ]},
-    { text:"Where is the biggest pressure showing up?", type:"multi2", options:[
-      { label:"Owner or management workload", tags:{bottleneck:2} },
-      { label:"Team capacity", tags:{decision:1, priority:1} },
-      { label:"Unclear roles or ownership", tags:{bottleneck:3} },
-      { label:"Missing skills or expertise", tags:{decision:2, rolebuilder:1} },
-      { label:"Processes or ways of working", tags:{bottleneck:2, decision:1} },
-      { label:"An existing performance or people issue", tags:{bottleneck:3} },
-      { label:"Customer delivery or quality", tags:{bottleneck:1, decision:1} },
-      { label:"We can't yet pinpoint it", tags:{bottleneck:3} }
-    ]},
-    { text:"Which options have you already explored?", type:"multi", options:[
-      { label:"Redistributing work", tags:{} },
-      { label:"Clarifying roles and responsibilities", tags:{} },
-      { label:"Improving or simplifying a process", tags:{} },
-      { label:"Technology, automation or AI", tags:{} },
-      { label:"Training or developing someone internally", tags:{} },
-      { label:"Outsourcing", tags:{} },
-      { label:"Freelance, contractor or temporary support", tags:{} },
-      { label:"Recruiting an employee", tags:{} },
-      { label:"We haven't properly explored the options yet", tags:{decision:2} }
-    ]},
-    { text:"How much of the problem do you think could be solved without adding another permanent employee?", type:"single", options:[
-      { label:"Quite a lot", tags:{decision:3} },
-      { label:"Some of it, but we would probably still need more capacity", tags:{decision:2, rolebuilder:1} },
-      { label:"Very little, we genuinely have too much ongoing work", tags:{rolebuilder:2} },
-      { label:"Very little, because we don't have the capability we need", tags:{rolebuilder:2, decision:1} },
-      { label:"There is an existing team or performance issue that needs resolving", tags:{bottleneck:3} },
-      { label:"We're not sure", tags:{bottleneck:1, decision:1} }
-    ]},
-    { text:"How predictable is the need over the next 12 months?", type:"single", options:[
-      { label:"We have enough recurring work for an ongoing role", tags:{rolebuilder:2} },
-      { label:"The need is recurring, but probably not full-time", tags:{decision:2} },
-      { label:"It depends on future sales, funding or contracts", tags:{decision:1, priority:1} },
-      { label:"It is mainly project-based or temporary", tags:{decision:2} },
-      { label:"We only need specialist expertise occasionally", tags:{decision:2} },
-      { label:"We're not sure", tags:{decision:1} }
-    ]},
-    { text:"If bringing someone in is the answer, how clear are you about what they need to achieve?", type:"single", options:[
-      { label:"Very clear, we know the outcomes and what success looks like", tags:{} },
-      { label:"Fairly clear, we know broadly what we need", tags:{rolebuilder:1} },
-      { label:"We mostly have a list of tasks", tags:{rolebuilder:3} },
-      { label:"We have a job title in mind, but haven't defined the outcomes", tags:{rolebuilder:3} },
-      { label:"We're not clear yet", tags:{rolebuilder:2} },
-      { label:"We're not at that stage", tags:{decision:1} }
-    ]},
-    { text:"Where are you now? Choose the option that best describes where you are today.", type:"single", options:[
-      { label:"We're not yet sure recruitment is the answer", tags:{decision:1} },
-      { label:"We're defining what the role needs to achieve", tags:{rolebuilder:2} },
-      { label:"We're preparing the job description and advert", tags:{jdtemplate:1} },
-      { label:"We're advertising or looking for candidates", tags:{interviewscorecard:1} },
-      { label:"We're interviewing or comparing candidates", tags:{interviewscorecard:2} },
-      { label:"We've chosen someone and they're due to start", tags:{checklist:2} },
-      { label:"They've recently started", tags:{checklist:2} }
-    ]}
-  ];
 
   // ============================================================
   // RESOURCES
@@ -878,44 +700,41 @@
   // and routing that points to it.
   // ============================================================
   const TOOL_URLS = {
-    "The Bottleneck Finder": "smart-start-bottleneck-finder.html",
-    "The Priority Filter": "smart-start-priority-filter.html",
-    "Hire, Redesign, Automate or Outsource?": "smart-start-decision-tree.html",
-    "The 3-Box Role Builder": "smart-start-3-box-role-builder.html",
-    "The 30-Day Success Checklist": "smart-start-30-day-success-checklist.html",
+    "Where is your business getting stuck?": "smart-start-bottleneck-finder.html",
+    "What should you focus on first?": "smart-start-priority-filter.html",
+    "What's the smartest way to get the work done?": "smart-start-decision-tree.html",
+    "What does this role need to achieve?": "smart-start-3-box-role-builder.html",
+    "30-Day Success Checklist": "smart-start-30-day-success-checklist.html",
     "Job Description + Person Specification Template": "smart-start-jd-person-spec-template.html",
     "Job Advert Template": "smart-start-job-advert-template.html",
-    "Interview Scorecard": "smart-start-interview-scorecard.html"
+    "Interview Scorecard": "smart-start-interview-scorecard.html",
+    "Task and Decision Audit": "smart-start-task-decision-audit.html",
+    "Delegation Brief": "smart-start-delegation-brief.html",
+    "The Process Audit": "smart-start-process-audit.html",
+    "The Roles and Responsibilities Map": "smart-start-roles-responsibilities-map.html",
+    "The Capability Filter": "smart-start-capability-filter.html",
+    "Freelancer and Contractor Checklist": "smart-start-freelancer-contractor-checklist.html",
+    "4 Areas to Review Before You Hire": "smart-start-4-areas-review-before-hire.html"
   };
 
   const RESOURCE_ORDER = ['bottleneck','priority','decision','rolebuilder','checklist','jdtemplate','jobadvert','interviewscorecard'];
 
   const TOOLS = [
-    { key:"bottleneck", name:"The Bottleneck Finder", areas:["roles","organisation","health"],
-      coreQuestion:"Where is the pressure coming from?",
-      blurb:"Spot where work, ownership or capacity is getting stuck.",
-      format:"Diagnostic grid",
-      resultExplanation:"Your answers suggest it isn't yet clear where the pressure is really coming from, whether that's workload, ownership, process or an existing performance issue." },
-    { key:"priority", name:"The Priority Filter", areas:["goals","workforce"],
-      coreQuestion:"What needs attention first?",
-      blurb:"Score and rank competing priorities to see what needs attention first.",
-      format:"Prioritisation worksheet",
-      resultExplanation:"Your answers suggest there's more than one thing competing for attention, so it's worth getting clear on what deserves focus first." },
-    { key:"decision", name:"Hire, Redesign, Automate or Outsource?", areas:["organisation","workforce","talent"],
-      coreQuestion:"What's the smartest way to get the work done?",
-      blurb:"Do we hire, redesign, automate or outsource?",
-      format:"Visual decision tree",
-      resultExplanation:"Your answers suggest the need is reasonably clear, so it's worth exploring whether hiring, redesigning, automating or outsourcing is the smartest way to solve it." },
-    { key:"rolebuilder", name:"The 3-Box Role Builder", areas:["roles","talent"],
-      coreQuestion:"If we need someone, what exactly do we need them to deliver?",
-      blurb:"Define the outcomes, ownership and measures of success before you recruit.",
-      format:"Role builder",
-      resultExplanation:"Your answers suggest bringing someone in may be the right direction, so it's worth getting clear on outcomes, ownership and success before you recruit." },
-    { key:"checklist", name:"The 30-Day Success Checklist", areas:["talent"],
-      coreQuestion:"How do we give the new hire a strong start?",
-      blurb:"Give your new hire a clear, structured first month.",
-      format:"Checklist",
-      resultExplanation:"It sounds like someone has already been hired or is due to start soon, so the focus now is giving them a strong start." }
+    { key:"bottleneck", name:"Where is your business getting stuck?", areas:["roles","organisation","health"],
+      blurb:"Answer a few quick statements and see what may need attention first.",
+      format:"Diagnostic grid" },
+    { key:"priority", name:"What should you focus on first?", areas:["goals","workforce"],
+      blurb:"Compare competing priorities and decide where to focus your time, money and energy.",
+      format:"Prioritisation worksheet" },
+    { key:"decision", name:"What's the smartest way to get the work done?", areas:["organisation","workforce","talent"],
+      blurb:"Explore whether to redesign, automate, outsource, develop someone internally or hire.",
+      format:"Visual decision tree" },
+    { key:"rolebuilder", name:"What does this role need to achieve?", areas:["roles","talent"],
+      blurb:"Clarify the outcomes, ownership and measures of success before writing the job description.",
+      format:"Role builder" },
+    { key:"checklist", name:"30-Day Success Checklist", areas:["talent"],
+      blurb:"Give your new starter a strong first month.",
+      format:"Checklist" }
   ];
 
   // Practical hiring starter templates. Kept separate from the five
@@ -925,21 +744,44 @@
   const HIRING_TEMPLATES = [
     { key:"jdtemplate", name:"Job Description + Person Specification Template", areas:["talent"],
       blurb:"A practical editable template for turning a clearly defined role into a useful job description and person specification.",
-      format:"Editable template",
-      resultExplanation:"Your answers suggest the role is clear enough to put into a formal job description and person specification." },
+      format:"Editable template" },
     { key:"jobadvert", name:"Job Advert Template", areas:["talent"],
       blurb:"A simple structure for writing a clearer job advert covering the role, outcomes, opportunity and practical details.",
-      format:"Editable template",
-      resultExplanation:"Your answers suggest the role is defined and ready to be turned into candidate facing advert copy." },
+      format:"Editable template" },
     { key:"interviewscorecard", name:"Interview Scorecard", areas:["talent"],
       blurb:"A simple way to compare candidates consistently against the things that matter for the role rather than relying on instinct alone.",
       format:"Scorecard",
-      resultExplanation:"Your answers suggest you're already meeting candidates, so it's worth comparing them consistently against the evidence.",
       criteria:["Criteria","Importance","Score","Evidence","Concerns","Overall recommendation"] }
   ];
 
+  // Micro-resources reached primarily as results from "Where is your business
+  // getting stuck?", also independently discoverable in the resource library.
+  const MICRO_RESOURCES = [
+    { key:"taskdecisionaudit", name:"Task and Decision Audit", areas:["roles","workforce"],
+      blurb:"Look back over your week and work out what could stop, be automated, be delegated or be outsourced.",
+      format:"Interactive audit" },
+    { key:"delegationbrief", name:"Delegation Brief", areas:["roles"],
+      blurb:"A short brief for anything you're handing off, so it doesn't boomerang back to you.",
+      format:"Interactive template" },
+    { key:"processaudit", name:"The Process Audit", areas:["organisation"],
+      blurb:"Work out whether a process problem is a single task living in one person's head, or something involving several people that's become clunky.",
+      format:"Guide" },
+    { key:"rolesmap", name:"The Roles and Responsibilities Map", areas:["roles"],
+      blurb:"See everything the business actually does, and who is genuinely holding it.",
+      format:"Mapping exercise" },
+    { key:"capabilityfilter", name:"The Capability Filter", areas:["workforce","talent"],
+      blurb:"Four areas to check before deciding a missing skill needs a new hire.",
+      format:"Guide" },
+    { key:"freelancerchecklist", name:"Freelancer and Contractor Checklist", areas:["talent"],
+      blurb:"What to get right before engaging a freelancer or contractor, including the legal basics.",
+      format:"Checklist" },
+    { key:"fourareas", name:"4 Areas to Review Before You Hire", areas:["workforce"],
+      blurb:"Four ways to free up real capacity before you write a job description.",
+      format:"Guide" }
+  ];
+
   function resourceByKey(key){
-    return TOOLS.find(t => t.key === key) || HIRING_TEMPLATES.find(t => t.key === key);
+    return TOOLS.find(t => t.key === key) || HIRING_TEMPLATES.find(t => t.key === key) || MICRO_RESOURCES.find(t => t.key === key);
   }
 
   // Every resource button calls this. If the resource's real URL has been
@@ -975,9 +817,11 @@
   }
 
   let activeArea = 'all';
+  let activeKeyFilter = null;
 
   function setAreaFilter(area, chipEl){
     activeArea = area;
+    activeKeyFilter = null;
     document.querySelectorAll('.filter-chip').forEach(c => c.classList.remove('active'));
     chipEl.classList.add('active');
     renderToolLibrary();
@@ -987,8 +831,10 @@
     const container = document.getElementById('tool-groups');
     container.innerHTML = '';
 
-    const allResources = TOOLS.concat(HIRING_TEMPLATES);
-    const visibleTools = allResources.filter(t => activeArea === 'all' || (t.areas && t.areas.includes(activeArea)));
+    const allResources = TOOLS.concat(HIRING_TEMPLATES).concat(MICRO_RESOURCES);
+    const visibleTools = activeKeyFilter
+      ? allResources.filter(t => activeKeyFilter.includes(t.key))
+      : allResources.filter(t => activeArea === 'all' || (t.areas && t.areas.includes(activeArea)));
 
     AREA_ORDER.forEach(area => {
       const areaTools = visibleTools.filter(t => t.areas && t.areas.includes(area));
@@ -1011,476 +857,9 @@
     if(visibleTools.length === 0){
       const empty = document.createElement('p');
       empty.className = 'library-note';
-      empty.textContent = 'Resources for this area are being finalised. In the meantime, the main check-in above is the best place to start.';
+      empty.textContent = 'Resources for this area are being finalised. In the meantime, use the questions above to work out where to focus first.';
       container.appendChild(empty);
     }
-  }
-
-  // ============================================================
-  // HIRING STARTER TEMPLATES (separate from the five core resources)
-  // ============================================================
-  function renderHiringTemplates(){
-    const grid = document.getElementById('hiring-templates-grid');
-    if(!grid) return;
-    grid.innerHTML = '';
-    HIRING_TEMPLATES.forEach(t => grid.appendChild(buildToolCard(t)));
-  }
-
-  // ============================================================
-  // HOME PAGE RESOURCE PREVIEW
-  // Shows the five core resources in order before the diagnostic is
-  // completed, or the resources tied to the visitor's most recent
-  // result once one exists.
-  // ============================================================
-  function renderHomeToolsSection(){
-    const saved = loadCompletedResult();
-    const grid = document.getElementById('home-tools-grid');
-    grid.innerHTML = '';
-
-    if(saved && saved.primary){
-      document.getElementById('home-tools-heading').textContent = 'Recommended for you';
-      document.getElementById('home-tools-sub').textContent = "Resources linked to your last result. Dip in whenever you need to.";
-      const keys = [saved.primary].concat(saved.also || []);
-      keys.forEach(key => {
-        const resource = resourceByKey(key);
-        if(resource) grid.appendChild(buildToolCard(resource));
-      });
-    } else {
-      document.getElementById('home-tools-heading').textContent = 'What would help you right now?';
-      document.getElementById('home-tools-sub').textContent = "Choose an area that's relevant to what's happening in your business, or dip into a resource whenever you need it.";
-      TOOLS.forEach(resource => grid.appendChild(buildToolCard(resource)));
-    }
-  }
-
-  // ============================================================
-  // DIAGNOSTIC STATE
-  // Each answer is stored as an array of selected option indices
-  // (0, 1 or 2 items depending on the question type), so both
-  // single- and multi-select questions share the same shape.
-  // ============================================================
-  let currentQ = 0;
-  let answers = QUESTIONS.map(() => []);
-  const DIAGNOSTIC_VERSION = 2; // bumped when the question set changes shape, so old saved data is safely ignored rather than causing errors
-  const PROGRESS_KEY = 'smartStartDiagnosticProgress';
-  const HISTORY_KEY = 'smartStartHistory';   // up to 3 completed check-ins
-  const REMEMBER_KEY = 'smartStartRemember'; // 'true' / 'false'
-
-  function startDiagnostic(){
-    const saved = loadProgress();
-    if(saved && saved.answers){
-      answers = saved.answers;
-      currentQ = saved.step || 0;
-    } else {
-      answers = QUESTIONS.map(() => []);
-      currentQ = 0;
-    }
-    document.getElementById('diagnostic-intro').style.display = 'none';
-    document.getElementById('result-view').style.display = 'none';
-    document.getElementById('question-view').style.display = 'block';
-    renderQuestion();
-  }
-
-  function renderQuestion(){
-    const q = QUESTIONS[currentQ];
-    const type = q.type || 'single';
-    document.getElementById('q-progress-label').textContent = 'Question ' + (currentQ + 1) + ' of ' + QUESTIONS.length;
-    document.getElementById('q-progress-fill').style.width = (((currentQ + 1) / QUESTIONS.length) * 100) + '%';
-    document.getElementById('q-text').textContent = q.text;
-
-    const hint = document.getElementById('q-hint');
-    if(type === 'multi2'){ hint.textContent = 'Choose up to two.'; hint.style.display = 'block'; }
-    else if(type === 'multi'){ hint.textContent = 'Choose as many as apply.'; hint.style.display = 'block'; }
-    else { hint.style.display = 'none'; }
-
-    const selected = answers[currentQ] || [];
-    const container = document.getElementById('q-options');
-    container.innerHTML = '';
-    q.options.forEach((opt, i) => {
-      const isSelected = selected.indexOf(i) > -1;
-      const label = document.createElement('label');
-      label.className = 'q-option' + (isSelected ? ' is-selected' : '');
-      const inputType = type === 'single' ? 'radio' : 'checkbox';
-      label.innerHTML =
-        '<input type="' + inputType + '" name="q-answer" value="' + i + '"' + (isSelected ? ' checked' : '') + '>' +
-        '<span class="q-option-radio" aria-hidden="true"></span>' +
-        '<span class="q-option-text">' + opt.label + '</span>';
-      label.querySelector('input').addEventListener('change', () => toggleOption(i));
-      container.appendChild(label);
-    });
-
-    document.getElementById('q-back').style.visibility = currentQ === 0 ? 'hidden' : 'visible';
-    const nextBtn = document.getElementById('q-next');
-    nextBtn.textContent = (currentQ === QUESTIONS.length - 1 ? 'See my starting point' : 'Next') + ' \u2192';
-    nextBtn.disabled = selected.length === 0;
-  }
-
-  // Handles both single-select (radio, one answer replaces the rest)
-  // and multi-select questions (checkbox, up to two for 'multi2' or
-  // unlimited for 'multi'). Re-renders the question so the selection
-  // state and the Next button stay in sync.
-  function toggleOption(i){
-    const q = QUESTIONS[currentQ];
-    const type = q.type || 'single';
-    let selected = answers[currentQ] || [];
-    if(type === 'single'){
-      selected = [i];
-    } else {
-      const idx = selected.indexOf(i);
-      if(idx > -1){
-        selected = selected.slice(0, idx).concat(selected.slice(idx + 1));
-      } else {
-        if(type === 'multi2' && selected.length >= 2) return; // cap reached, ignore further clicks
-        selected = selected.concat([i]);
-      }
-    }
-    answers[currentQ] = selected;
-    renderQuestion();
-    saveProgress();
-  }
-
-  function goNext(){
-    const selected = answers[currentQ] || [];
-    if(selected.length === 0) return;
-    if(currentQ < QUESTIONS.length - 1){
-      currentQ++;
-      renderQuestion();
-    } else {
-      showResults();
-    }
-  }
-
-  function goBack(){
-    if(currentQ > 0){
-      currentQ--;
-      renderQuestion();
-    }
-  }
-
-  // Sums each selected option's tags into per-resource scores. Q8's
-  // "already hired / due to start soon" answer overrides everything
-  // else, since a completed hire calls for the 30-Day Success
-  // Checklist regardless of earlier-stage signals.
-  // Holds a one-off custom explanation for a resource when a specific
-  // routing rule fires (see applyRoutingOverrides), keyed by resource
-  // key. buildPriorityCard() prefers this over the resource's default
-  // resultExplanation when present. Reset on every calculatePriorities().
-  let overrideExplanations = {};
-
-  const OVERLOAD_EXPLANATION = "There is a real pressure point in the business, but the cause is not clear enough yet to assume another permanent employee is the answer. Start by identifying where work, ownership or capacity is getting stuck.";
-  const ROLE_CLARITY_EXPLANATION = "Hiring may well be the right next step, but the role needs defining before you take it to market. Start by getting clear on the outcomes, ownership and measures of success.";
-  const VACANCY_EXPLANATION = "You may need to replace the capacity, but this is a good opportunity to check whether the old role should be replaced in exactly the same form.";
-
-  // Applies the business logic that a simple additive tag total cannot
-  // express on its own: severity is never treated as proof that
-  // recruitment is the answer, a vacancy is never auto-replaced like
-  // for like, role clarity can override an otherwise hire-ready signal,
-  // and Question 8 refines the recommendation based on where the user
-  // is in the recruitment journey. Mutates and returns scores.
-  function applyRoutingOverrides(scores){
-    overrideExplanations = {};
-
-    const q1 = answers[0] || [];           // capacity / pressure signals, up to 2
-    const q3 = answers[2] || [];           // where the pressure shows up, up to 2
-    const q4 = answers[3] || [];           // options already explored, any number
-    const q7 = answers[6] || [];           // role outcome clarity, single
-    const q8 = answers[7] || [];           // recruitment stage, single
-    const q8Index = q8.length ? q8[0] : null;
-
-    const vacancy = q1.indexOf(5) > -1;              // "Someone has left or is leaving"
-    const causeUnclear = q3.indexOf(7) > -1;         // "We can't yet pinpoint it"
-    const alternativesUnexplored = q4.indexOf(8) > -1; // "We haven't properly explored the options yet"
-    const q7Unclear = q7.some(i => [2,3,4].indexOf(i) > -1); // list of tasks / job title unclear / not clear yet
-
-    const maxScore = () => Math.max(scores.bottleneck, scores.priority, scores.decision, scores.rolebuilder,
-      scores.checklist, scores.jdtemplate, scores.jobadvert, scores.interviewscorecard);
-
-    // --- Part 4: overload / firefighting never equals confirmation to
-    // recruit. When bottleneck is already the leading signal and either
-    // the cause is unclear or alternatives have not been explored, keep
-    // it primary and use the more careful "not clear enough yet" framing
-    // rather than letting a severe situation drift towards "just hire".
-    if(scores.bottleneck > 0 && scores.bottleneck >= maxScore() && (causeUnclear || alternativesUnexplored)){
-      overrideExplanations.bottleneck = OVERLOAD_EXPLANATION;
-    }
-
-    // --- Part 5: a vacancy is never automatically a like for like
-    // replacement. If the role that has become vacant is not clearly
-    // defined and the alternatives have not been explored, nudge towards
-    // working out how the need should now be solved rather than assuming
-    // recruitment. This only applies while the user hasn't already told
-    // us (via Question 8) that they are further along than that.
-    if(vacancy && q7Unclear && alternativesUnexplored && (q8Index === null || q8Index === 0)){
-      scores.decision = Math.max(scores.decision, scores.rolebuilder + 1, maxScore());
-      overrideExplanations.decision = VACANCY_EXPLANATION;
-    }
-
-    // --- Part 7: stage based routing from Question 8. Later, more
-    // concrete stages take precedence over earlier ones. Role clarity
-    // (Part 6) can override an otherwise hire ready signal within the
-    // stages where that judgement call applies.
-    if(q8Index === 6 || q8Index === 5){
-      // Chosen / due to start, or recently started: the 30-Day Success
-      // Checklist is primary regardless of earlier signals. Role Builder
-      // only surfaces as a secondary if outcomes or ownership are still
-      // genuinely unclear, never as the main action.
-      scores.checklist = maxScore() + 10;
-      if(q7Unclear){ scores.rolebuilder = Math.max(scores.rolebuilder, scores.checklist - 1); }
-    } else if(q8Index === 4){
-      // Interviewing or comparing candidates.
-      if(q7Unclear){
-        scores.rolebuilder = maxScore() + 10;
-        scores.interviewscorecard = Math.max(scores.interviewscorecard, scores.rolebuilder - 1);
-        overrideExplanations.rolebuilder = ROLE_CLARITY_EXPLANATION;
-      } else {
-        scores.interviewscorecard = maxScore() + 10;
-      }
-    } else if(q8Index === 3){
-      // Advertising or looking for candidates. Do not send them backwards
-      // to the Job Advert Template unless role clarity is genuinely weak.
-      if(q7Unclear){
-        scores.rolebuilder = maxScore() + 10;
-        scores.jobadvert = Math.max(scores.jobadvert, scores.rolebuilder - 2);
-        overrideExplanations.rolebuilder = ROLE_CLARITY_EXPLANATION;
-      } else {
-        scores.interviewscorecard = maxScore() + 10;
-      }
-    } else if(q8Index === 2){
-      // Preparing the job description and advert. This is exactly the
-      // role clarity override: an otherwise hire ready business can
-      // still need to define the role first.
-      if(q7Unclear){
-        scores.rolebuilder = maxScore() + 10;
-        overrideExplanations.rolebuilder = ROLE_CLARITY_EXPLANATION;
-      } else {
-        scores.jdtemplate = maxScore() + 10;
-        scores.jobadvert = Math.max(scores.jobadvert, scores.jdtemplate - 2);
-      }
-    } else if(q8Index === 1){
-      // Defining what the role needs to achieve: the Role Builder is
-      // exactly what this stage is for.
-      scores.rolebuilder = maxScore() + 10;
-      scores.jdtemplate = Math.max(scores.jdtemplate, 1);
-      overrideExplanations.rolebuilder = ROLE_CLARITY_EXPLANATION;
-    }
-    // q8Index === 0 or null ("not yet sure recruitment is the answer"):
-    // deliberately no override here. The earlier answers (bottleneck,
-    // priority, decision) decide, and the hiring execution templates stay
-    // at whatever they scored from Questions 1 to 7, which is zero unless
-    // another answer has strongly justified them.
-
-    return scores;
-  }
-
-  function calculatePriorities(){
-    const scores = {
-      bottleneck:0, priority:0, decision:0, rolebuilder:0, checklist:0,
-      jdtemplate:0, jobadvert:0, interviewscorecard:0
-    };
-    QUESTIONS.forEach((q, qIndex) => {
-      (answers[qIndex] || []).forEach(optIndex => {
-        const tags = q.options[optIndex].tags;
-        Object.keys(tags).forEach(key => { scores[key] += tags[key]; });
-      });
-    });
-    applyRoutingOverrides(scores);
-    return RESOURCE_ORDER.map(key => ({ key, score: scores[key] })).sort((a, b) => b.score - a.score);
-  }
-
-  function buildPriorityCard(resourceKey, isPrimary){
-    const resource = resourceByKey(resourceKey);
-    const explanation = overrideExplanations[resourceKey] || resource.resultExplanation;
-    const area = resource.areas[0];
-    const hasUrl = !!TOOL_URLS[resource.name];
-    const btnCls = 'btn ' + (isPrimary ? 'btn-on-navy' : 'btn-primary') + ' btn-sm';
-    const cta = hasUrl
-      ? '<button class="' + btnCls + '" onclick="openTool(\'' + resource.name.replace(/'/g,"") + '\')">Open resource</button>'
-      : '<button class="' + btnCls + '" disabled style="opacity:.6; cursor:not-allowed;">Resource being finalised</button>';
-    const card = document.createElement('div');
-    card.className = 'priority-card ' + (isPrimary ? 'is-primary' : 'is-secondary');
-    card.innerHTML =
-      '<span class="priority-cat" style="color:' + (isPrimary ? '#fff' : 'var(--g-' + area + ')') + ';">' + (isPrimary ? 'Start here' : 'Also worth exploring') + ' &middot; ' + resource.format + '</span>' +
-      '<h3>' + resource.name + '</h3>' +
-      '<p class="p-explain">' + explanation + '</p>' +
-      '<p class="p-why">Why it matters: ' + resource.blurb + '</p>' +
-      '<div class="priority-cta-row">' + cta + '</div>';
-    return card;
-  }
-
-  // Renders the diagnostic result: at most one primary resource plus
-  // up to two secondary ones worth exploring, never all five ranked,
-  // and never a manufactured problem when nothing stands out.
-  function renderPriorityList(rankedResources, containerId){
-    const container = document.getElementById(containerId);
-    container.innerHTML = '';
-
-    const top = rankedResources[0];
-    if(!top || top.score <= 0){
-      const note = document.createElement('div');
-      note.className = 'result-nothing';
-      note.innerHTML = '<p>Nothing is standing out as an obvious pressure point right now. That\u2019s a good opportunity to explore SMART Start based on what you\u2019re trying to achieve next.</p>';
-      container.appendChild(note);
-      return;
-    }
-
-    container.appendChild(buildPriorityCard(top.key, true));
-
-    const also = rankedResources.slice(1).filter(r => r.score > 0).slice(0, 2);
-    if(also.length){
-      const label = document.createElement('div');
-      label.className = 'priority-group-label';
-      label.textContent = 'Also worth exploring';
-      container.appendChild(label);
-      also.forEach(r => container.appendChild(buildPriorityCard(r.key, false)));
-    }
-  }
-
-  function showResults(){
-    const rankedResources = calculatePriorities();
-    document.getElementById('question-view').style.display = 'none';
-    document.getElementById('result-view').style.display = 'block';
-    renderPriorityList(rankedResources, 'priority-list');
-    saveCompletedResult(rankedResources);
-    clearProgress();
-    renderHomeToolsSection();
-    renderRecentCheckins();
-  }
-
-  function retakeDiagnostic(){
-    clearProgress();
-    answers = QUESTIONS.map(() => []);
-    currentQ = 0;
-    document.getElementById('result-view').style.display = 'none';
-    document.getElementById('question-view').style.display = 'none';
-    document.getElementById('diagnostic-intro').style.display = 'block';
-    scrollToDiagnostic();
-  }
-
-  // ============================================================
-  // LOCAL STORAGE
-  // Nothing is written to this browser unless the visitor ticks
-  // "Remember my results on this device". With it unticked, the
-  // diagnostic still works fully; it simply runs in-memory for that
-  // visit and nothing is stored. No name, email or other personal
-  // detail is ever stored in any of these keys. Saved data is
-  // versioned (DIAGNOSTIC_VERSION) so that an older save from before
-  // the 8-question structure is safely treated as absent rather than
-  // causing errors.
-  // ============================================================
-  function isRemembering(){
-    try { return localStorage.getItem(REMEMBER_KEY) === 'true'; } catch(e) { return false; }
-  }
-
-  function onRememberToggle(checked){
-    try {
-      if(checked){ localStorage.setItem(REMEMBER_KEY, 'true'); }
-      else { localStorage.setItem(REMEMBER_KEY, 'false'); clearProgress(); }
-    } catch(e) { /* storage unavailable, fail quietly */ }
-  }
-
-  function saveProgress(){
-    if(!isRemembering()) return;
-    try { localStorage.setItem(PROGRESS_KEY, JSON.stringify({ v: DIAGNOSTIC_VERSION, answers: answers, step: currentQ })); }
-    catch(e) { /* storage unavailable, fail quietly */ }
-  }
-  function loadProgress(){
-    if(!isRemembering()) return null;
-    try {
-      const raw = localStorage.getItem(PROGRESS_KEY);
-      if(!raw) return null;
-      const parsed = JSON.parse(raw);
-      if(!parsed || parsed.v !== DIAGNOSTIC_VERSION || !Array.isArray(parsed.answers)) return null;
-      return parsed;
-    } catch(e) { return null; }
-  }
-  function clearProgress(){
-    try { localStorage.removeItem(PROGRESS_KEY); } catch(e) { /* fail quietly */ }
-  }
-
-  function loadHistory(){
-    try {
-      const raw = localStorage.getItem(HISTORY_KEY);
-      if(!raw) return [];
-      const parsed = JSON.parse(raw);
-      if(!parsed || parsed.v !== DIAGNOSTIC_VERSION || !Array.isArray(parsed.items)) return [];
-      return parsed.items;
-    } catch(e) { return []; }
-  }
-
-  function saveCompletedResult(rankedResources){
-    if(!isRemembering()) return;
-    const top = rankedResources[0];
-    if(!top || top.score <= 0) return; // nothing meaningful to remember
-    const also = rankedResources.slice(1).filter(r => r.score > 0).slice(0, 2).map(r => r.key);
-    const entry = { date: new Date().toISOString(), primary: top.key, also: also };
-    // TODO: this is also where a future CRM or database call could be added,
-    // to store the result against the visitor's email once one is connected.
-    const history = loadHistory();
-    history.unshift(entry);
-    try { localStorage.setItem(HISTORY_KEY, JSON.stringify({ v: DIAGNOSTIC_VERSION, items: history.slice(0, 3) })); }
-    catch(e) { /* fail quietly */ }
-  }
-
-  // Returns the most recent completed result, used for "Recommended for
-  // you" resources on the home page.
-  function loadCompletedResult(){
-    const history = loadHistory();
-    return history.length ? history[0] : null;
-  }
-
-  function clearSavedResults(){
-    try {
-      localStorage.removeItem(HISTORY_KEY);
-      localStorage.removeItem(PROGRESS_KEY);
-      localStorage.setItem(REMEMBER_KEY, 'false');
-    } catch(e) { /* fail quietly */ }
-    const box = document.getElementById('remember-checkbox');
-    if(box) box.checked = false;
-    renderRecentCheckins();
-    renderHomeToolsSection();
-  }
-
-  function formatDate(iso){
-    try {
-      const d = new Date(iso);
-      return d.toLocaleDateString(undefined, { day:'numeric', month:'long' });
-    } catch(e) { return ''; }
-  }
-
-  function renderRecentCheckins(){
-    const section = document.getElementById('recent-checkins-section');
-    const list = document.getElementById('recent-checkins-list');
-    const history = isRemembering() ? loadHistory() : [];
-    if(!history.length){ section.style.display = 'none'; return; }
-
-    list.innerHTML = '';
-    history.forEach((entry, idx) => {
-      const resource = resourceByKey(entry.primary);
-      const item = document.createElement('div');
-      item.className = 'recent-item';
-      item.innerHTML =
-        '<span class="recent-item-date">' + formatDate(entry.date) + '</span>' +
-        '<span class="recent-item-title">Start with: ' + (resource ? resource.name : entry.primary) + '</span>' +
-        '<button class="recent-item-view">View this result</button>';
-      item.querySelector('.recent-item-view').onclick = () => viewSavedResult(idx);
-      list.appendChild(item);
-    });
-    section.style.display = 'block';
-
-    const box = document.getElementById('remember-checkbox');
-    if(box) box.checked = isRemembering();
-  }
-
-  function viewSavedResult(index){
-    const history = loadHistory();
-    const entry = history[index];
-    if(!entry) return;
-    const ranked = [{ key: entry.primary, score: 3 }].concat((entry.also || []).map(k => ({ key:k, score:1 })));
-    showView('start');
-    document.getElementById('diagnostic-intro').style.display = 'none';
-    document.getElementById('question-view').style.display = 'none';
-    document.getElementById('result-view').style.display = 'block';
-    renderPriorityList(ranked, 'priority-list');
-    scrollToDiagnostic();
   }
 
   // ============================================================
@@ -1502,12 +881,7 @@
   // ============================================================
   window.addEventListener('DOMContentLoaded', () => {
     buildRouteCards('fw-grid-home');
-    renderHomeToolsSection();
-    renderHiringTemplates();
     renderToolLibrary();
-    renderRecentCheckins();
-    const box = document.getElementById('remember-checkbox');
-    if(box) box.checked = isRemembering();
   });
 
 </script>

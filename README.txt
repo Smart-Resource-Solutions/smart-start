@@ -24,8 +24,16 @@ repository, keeping the structure exactly as it is:
     smart-start-job-advert-template.html
     smart-start-interview-scorecard.html
     smart-start-30-day-success-checklist.html
+    smart-start-task-decision-audit.html
+    smart-start-delegation-brief.html
+    smart-start-process-audit.html
+    smart-start-roles-responsibilities-map.html
+    smart-start-capability-filter.html
+    smart-start-freelancer-contractor-checklist.html
+    smart-start-4-areas-review-before-hire.html
     assets/
         smart-start-logo.png
+        support-call-photo.jpg
     README.txt
 
 Do not move index.html into a subfolder, and do not rename any of the
@@ -34,13 +42,22 @@ inside every page's <script> block (see "Renaming files" below).
 
 3. KEEP THE ASSETS FOLDER INTACT
 -----------------------------------
-The SMART Start logo lives at:
+Two images live in the assets folder:
 
     assets/smart-start-logo.png
+    assets/support-call-photo.jpg
 
-Every page references it with the relative path "assets/smart-start-logo.png".
-If the assets folder is renamed, moved, or not uploaded, the logo will
-show as a broken image on every page.
+Every page references the logo with the relative path
+"assets/smart-start-logo.png", and the homepage's Support page
+references the photo the same way. If the assets folder is renamed,
+moved, or not uploaded in full, those images will show as broken on
+the site.
+
+Note: support-call-photo.jpg is about 2.2MB. The site will work fine
+as is, but it is worth compressing that file (any online JPEG
+compressor, aiming for under 300-400KB, will do) before or after
+going live, since it is by far the largest thing anyone visiting the
+Support page has to download.
 
 4. ENABLE GITHUB PAGES
 -------------------------
@@ -75,18 +92,29 @@ identical across all pages for exactly this reason):
     const JOB_ADVERT_URL = "smart-start-job-advert-template.html";
     const INTERVIEW_SCORECARD_URL = "smart-start-interview-scorecard.html";
 
+Note: smart-start-task-decision-audit.html is newer than the rest of
+the package and does not yet share this same constants block or the
+shared page header/footer the other nine pages use (it carries its
+own, separately-styled header from a different layout). If you rename
+it, the only place that needs updating right now is TASK_DECISION_AUDIT_URL
+inside smart-start-bottleneck-finder.html.
+
 The hub (index.html) also has its own list of the same URLs, in a
 constant called TOOL_URLS, which drives every "Open resource" button
-on the hub - update that too if you rename a file.
+on the hub - update that too if you rename a file. It does not yet
+include an entry for the Task and Decision Audit, since that page
+isn't wired into the hub's routing or resource cards yet.
 
 7. LOCALSTORAGE AND SAME-ORIGIN HOSTING
 -------------------------------------------
-Every tool (the Bottleneck Finder, Priority Filter, Decision Tree,
-3-Box Role Builder, JD + Person Specification Template, Job Advert
-Template, Interview Scorecard and 30-Day Success Checklist) saves the
-visitor's in-progress work to their own browser's localStorage, so it
-is still there if they come back later. The 3-Box Role Builder also
-uses localStorage to hand its answers across to the JD + Person
+Every tool ("Where is your business getting stuck?", "What should you
+focus on first?", "What's the smartest way to get the work done?",
+"What does this role need to achieve?", the Job Description + Person
+Specification Template, Job Advert Template, Interview Scorecard and
+30-Day Success Checklist) saves the visitor's in-progress work to
+their own browser's localStorage, so it is still there if they come
+back later. "What does this role need to achieve?" also uses
+localStorage to hand its answers across to the JD + Person
 Specification Template when someone clicks "Turn this into a job
 description".
 
@@ -94,7 +122,7 @@ This only works reliably if every page is hosted on the SAME origin
 (the same domain, e.g. all under https://<username>.github.io/<repo>/).
 Hosting some pages elsewhere, or opening pages directly from a local
 disk with file:// URLs instead of through the published site, will
-break the saved-progress and Role Builder to JD handoff features.
+break the saved-progress and role-to-JD handoff features.
 
 No visitor data is ever sent anywhere externally - everything stays in
 that visitor's own browser.

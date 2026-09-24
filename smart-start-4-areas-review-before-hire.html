@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>4 Areas to Review Before You Hire | SMART Start</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--navy-deep:#0D1F4F;--navy:#1B3A73;--indigo:#3457A6;--teal:#1F9C93;--teal-deep:#146F68;--cyan:#1ED6E6;--cyan-deep:#0E7C90;--coral:#E8715A;--coral-deep:#C0562F;--pale:#F4F6FB;--line:#E4E7F0;--grey-text:#6B7A99;--ink:#12203D;--ink-muted:#4C5A78;--ink-faint:#8A93AC;--white:#fff;--shadow:0 4px 24px rgba(13,31,79,.08);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Manrope',sans-serif;background:var(--pale);color:var(--ink);min-height:100vh;}
+.serif{font-family:'DM Serif Display',serif;font-weight:400;}
+.hdr{background:var(--navy-deep);padding:0;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.25);}
+.hdr-inner{max-width:860px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.hdr-logo{display:flex;align-items:center;gap:10px;}
+.hdr-logo-img{height:32px;width:auto;display:block;background:#fff;border-radius:8px;padding:4px 10px;flex-shrink:0;}
+.hdr-logo-sub{font-size:11.5px;color:rgba(255,255,255,.62);font-weight:600;}
+.hdr-actions{display:flex;gap:10px;}
+.btn-hdr{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:8px 18px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-hdr:hover{background:rgba(255,255,255,.18);}
+.hero{background:linear-gradient(135deg,var(--navy-deep),var(--navy));padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-40%;right:-10%;width:400px;height:400px;border-radius:50%;background:rgba(30,214,230,.06);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-5%;width:300px;height:300px;border-radius:50%;background:rgba(232,113,90,.08);pointer-events:none;}
+.hero-eye{position:relative;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:14px;}
+.hero-title{position:relative;font-size:clamp(24px,5vw,38px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:12px;}
+.hero-title em{color:var(--cyan);font-style:italic;}
+.hero-sub{position:relative;font-size:16px;color:rgba(255,255,255,.78);line-height:1.6;max-width:560px;margin:0 auto 24px;}
+.hero-badges{position:relative;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.85);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;}
+.main{max-width:860px;margin:0 auto;padding:32px 24px 60px;}
+.scope-box{background:#fff;border:1.5px solid var(--line);border-radius:14px;padding:16px 18px;margin-bottom:24px;font-size:13.5px;color:var(--grey-text);}
+.scope-box strong{color:var(--navy-deep);}
+.area-block{margin-bottom:18px;background:#fff;border:1.5px solid var(--line);border-radius:16px;padding:24px 26px;box-shadow:var(--shadow);}
+.area-head{display:flex;align-items:center;gap:14px;margin-bottom:12px;}
+.area-num{width:34px;height:34px;border-radius:50%;background:var(--navy-deep);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:800;font-size:15px;flex-shrink:0;}
+.area-head h3{font-family:'DM Serif Display',serif;font-weight:400;font-size:19px;color:var(--navy-deep);}
+.area-block p{font-size:14.5px;color:var(--ink);margin-bottom:12px;}
+.area-block p:last-child{margin-bottom:0;}
+.area-prompt{background:var(--pale);border-radius:10px;padding:12px 16px;font-size:13.5px;color:var(--navy-deep);font-weight:700;margin-bottom:12px;}
+.area-prompt span{display:block;font-size:11px;text-transform:uppercase;letter-spacing:.03em;font-weight:800;color:var(--grey-text);margin-bottom:4px;}
+.area-link{display:inline-flex;align-items:center;gap:6px;background:var(--pale);border-radius:999px;padding:8px 16px;font-size:13px;font-weight:700;color:var(--navy-deep);text-decoration:none;border:1.5px solid var(--line);}
+.area-link:hover{border-color:var(--navy-deep);}
+.out-of-scope{font-size:12px;color:var(--ink-faint);font-style:italic;}
+.challenge-box{background:#FDF1EC;border-radius:14px;padding:20px 22px;margin:24px 0 20px;border-left:4px solid var(--coral-deep);}
+.challenge-box h4{font-size:12px;text-transform:uppercase;letter-spacing:.04em;font-weight:800;color:var(--coral-deep);margin-bottom:8px;}
+.challenge-box p{font-size:14.5px;color:var(--ink);}
+.next-box{background:var(--navy-deep);border-radius:14px;padding:20px 22px;margin-bottom:20px;}
+.next-box h4{font-size:12px;text-transform:uppercase;letter-spacing:.04em;font-weight:800;color:rgba(255,255,255,.65);margin-bottom:8px;}
+.next-box p{color:rgba(255,255,255,.92);font-size:14.5px;margin-bottom:14px;}
+footer{padding:20px 0 46px;text-align:center;color:var(--ink-faint);font-size:12.5px;}
+@media print{
+  .no-print{display:none!important;}
+  body{background:#fff;}
+  .hdr{background:#fff;border-bottom:2px solid var(--navy-deep);}
+  .hdr-logo-sub{color:var(--navy-deep)!important;}
+  .hero{background:#fff!important;}
+  .hero-eye,.hero-title,.hero-sub,.badge{color:var(--navy-deep)!important;}
+  .area-block,.challenge-box,.next-box{page-break-inside:avoid;box-shadow:none;}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-logo">
+      <img src="assets/smart-start-logo.png" alt="SMART Start" class="hdr-logo-img">
+      <span class="hdr-logo-sub">Created by Smart Resource Solutions</span>
+    </div>
+    <div class="hdr-actions no-print">
+      <button class="btn-hdr" onclick="location.href='index.html'">&larr; Back to SMART Start</button>
+      <button class="btn-hdr" onclick="window.print()">Print</button>
+    </div>
+  </div>
+</div>
+<div class="hero">
+  <span class="hero-eye">Capacity result</span>
+  <h1 class="hero-title serif">4 Areas to Review <em>Before You Hire</em></h1>
+  <p class="hero-sub">Feeling permanently at capacity doesn't always mean you need more people. Work through these four before you write a job description.</p>
+  <div class="hero-badges">
+    <div class="badge">About 10 minutes</div>
+    <div class="badge">Your data stays in this browser</div>
+  </div>
+</div>
+
+<div class="main">
+
+  <div class="scope-box">
+    <strong>Why these four, in this order:</strong> each one can free up real capacity without adding headcount. Hiring is the most expensive and hardest to reverse option on the list, so it's worth being genuinely sure the other four don't already solve it.
+  </div>
+
+  <div class="area-block">
+    <div class="area-head"><div class="area-num">1</div><h3>Audit your processes</h3></div>
+    <p>Map out your current workflows. Bottlenecks, redundant steps, or places where work quietly gets stuck often eat more capacity than a busy week does, and eliminating that friction can free up time immediately, without anyone working longer hours.</p>
+    <a class="area-link no-print" href="smart-start-process-audit.html">Go to the Process Audit &rarr;</a>
+  </div>
+
+  <div class="area-block">
+    <div class="area-head"><div class="area-num">2</div><h3>Leverage automation</h3></div>
+    <p>Look for repetitive, manual tasks, data entry, scheduling, invoicing, that could be handled by software instead of a person. Moving someone off admin and onto the work that actually needs them can increase real capacity overnight.</p>
+    <a class="area-link no-print" href="smart-start-task-decision-audit.html">Go to the Task and Decision Audit &rarr;</a>
+  </div>
+
+  <div class="area-block">
+    <div class="area-head"><div class="area-num">3</div><h3>Cross-train your team</h3></div>
+    <p>If work only moves because one specific person happens to be available, that isn't really a capacity problem, it's a single point of failure wearing a capacity costume. Cross-training spreads the ability to do a task across more than one person, so a busy period can be absorbed by whoever has room, not just whoever holds that particular skill.</p>
+    <div class="area-prompt"><span>Ask yourself</span>Which tasks currently only move because one specific person is available to do them?</div>
+    <a class="area-link no-print" href="smart-start-roles-responsibilities-map.html">Go to the Roles and Responsibilities Map &rarr;</a>
+  </div>
+
+  <div class="area-block">
+    <div class="area-head"><div class="area-num">4</div><h3>Review what your capacity is actually spent on</h3></div>
+    <p>Sometimes a business feels permanently at capacity because it's chasing low margin, high effort work. Freeing up capacity doesn't always mean creating more of it, sometimes it means being more deliberate about what earns a place on the team's plate at all.</p>
+    <div class="area-prompt"><span>Ask yourself</span>Which clients, products or services take up far more effort than they're worth, and what would genuinely happen if you said no to the least profitable of them?</div>
+    <p class="out-of-scope">This one is a commercial and pricing question more than a people or team one, worth a proper look with whoever handles your numbers, SMART Start's tools don't cover this area directly.</p>
+  </div>
+
+  <div class="challenge-box">
+    <h4>Before you write a job description</h4>
+    <p>Do not skip straight to hiring because it feels like the fastest fix. It's usually the slowest, most expensive, and hardest to reverse option of the four above.</p>
+  </div>
+
+  <div class="next-box">
+    <h4>Your next step</h4>
+    <p>If you've genuinely worked through all four and there's still an ongoing gap that nothing here closes, "What does this role need to achieve?" will help you define it properly before you write anything.</p>
+    <a class="btn-hdr" href="smart-start-3-box-role-builder.html">Define the role</a>
+  </div>
+
+</div>
+
+<footer>SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</footer>
+
+</body>
+</html>

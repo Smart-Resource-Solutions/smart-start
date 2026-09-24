@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Process Audit | SMART Start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy-deep:#0D1F4F; --navy:#1B3A73; --indigo:#3457A6;
+    --teal:#1F9C93; --teal-deep:#146F68;
+    --cyan:#1ED6E6; --cyan-deep:#0E7C90;
+    --coral:#E8715A; --coral-deep:#C0562F;
+    --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
+    --line:#E4E7F0; --pale:#F4F6FB; --pale-disclaimer:#EEF3FA;
+    --radius-lg:20px; --radius-md:14px; --radius-sm:9px;
+    --shadow-sm:0 2px 10px rgba(13,31,79,.07);
+    --shadow-md:0 14px 34px rgba(13,31,79,.14);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{margin:0; background:var(--pale); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{margin:0; color:var(--navy-deep);}
+  .serif{font-family:'DM Serif Display',serif; font-weight:400;}
+  p{margin:0 0 12px; font-size:15.5px;}
+  a{color:inherit;}
+  :focus-visible{outline:3px solid var(--coral); outline-offset:2px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+  @media (max-width:600px){.wrap{padding:0 18px;}}
+
+  /* ---------- HEADER ---------- */
+  .hdr{background:var(--navy-deep); padding:0; position:sticky; top:0; z-index:100; box-shadow:0 2px 20px rgba(0,0,0,.25);}
+  .hdr-inner{max-width:860px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .hdr-logo{display:flex; align-items:center; gap:10px;}
+  .hdr-logo-img{height:32px; width:auto; display:block; background:#fff; border-radius:8px; padding:4px 10px; flex-shrink:0;}
+  .hdr-logo-sub{font-size:11.5px; color:rgba(255,255,255,.62); font-weight:600;}
+  .hdr-actions{display:flex; gap:10px;}
+  .btn-hdr{background:rgba(255,255,255,.08); color:#fff; border:1.5px solid rgba(255,255,255,.25); padding:8px 18px; border-radius:50px;
+    font-size:13px; font-weight:700; cursor:pointer; font-family:'Manrope',sans-serif; transition:all .2s;}
+  .btn-hdr:hover{background:rgba(255,255,255,.18);}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(135deg,var(--navy-deep),var(--navy)); padding:44px 24px 36px; text-align:center; position:relative; overflow:hidden;}
+  .hero::before{content:''; position:absolute; top:-40%; right:-10%; width:400px; height:400px; border-radius:50%; background:rgba(30,214,230,.06); pointer-events:none;}
+  .hero::after{content:''; position:absolute; bottom:-30%; left:-5%; width:300px; height:300px; border-radius:50%; background:rgba(232,113,90,.08); pointer-events:none;}
+  .hero-eye{position:relative; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); display:block; margin-bottom:14px;}
+  .hero-title{position:relative; font-size:clamp(26px,5vw,40px); font-weight:400; color:#fff; line-height:1.15; margin-bottom:12px;}
+  .hero-title em{color:var(--cyan); font-style:italic;}
+  .hero-sub{position:relative; font-size:16px; color:rgba(255,255,255,.78); line-height:1.6; max-width:560px; margin:0 auto 24px;}
+  .hero-badges{position:relative; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+  .badge{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.85); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px;}
+
+  /* ---------- MAIN ---------- */
+  .ss-main{padding:32px 0 20px;}
+  .ss-card{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:24px 26px; margin-bottom:20px; box-shadow:var(--shadow-sm);}
+  .ss-box-title{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:12px;}
+  .scope-box{background:#fff; border:1.5px solid var(--line); border-radius:14px; padding:16px 18px; margin-bottom:24px; font-size:13.5px; color:var(--ink-muted);}
+  .scope-box strong{color:var(--navy-deep);}
+
+  /* ---------- QUICK JUMP ---------- */
+  .path-chooser{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:8px;}
+  @media (max-width:700px){.path-chooser{grid-template-columns:1fr;}}
+  .path-card{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-lg); padding:22px 24px;
+    box-shadow:var(--shadow-sm); text-align:left; text-decoration:none; display:block; transition:border-color .15s var(--ease), transform .12s var(--ease);}
+  .path-card:hover{border-color:var(--navy-deep); transform:translateY(-1px);}
+  .path-card .path-q{font-size:15px; font-weight:700; color:var(--navy-deep); margin-bottom:10px;}
+  .path-card .path-btn-label{display:inline-flex; align-items:center; gap:6px; font-size:13px; font-weight:800; color:var(--coral-deep);}
+
+  .path-head{display:flex; align-items:center; gap:14px; margin:32px 0 16px;}
+  .path-head:first-of-type{margin-top:36px;}
+  .path-num{width:34px; height:34px; border-radius:50%; background:var(--navy-deep); color:#fff; display:flex; align-items:center;
+    justify-content:center; font-weight:800; font-size:15px; flex-shrink:0;}
+  .path-head h2{font-family:'DM Serif Display',serif; font-weight:400; font-size:21px; color:var(--navy-deep);}
+  .path-head .path-head-sub{font-size:13px; color:var(--ink-faint); margin-top:2px;}
+
+  /* ---------- RESULT-STYLE BLOCKS (reused across both paths) ---------- */
+  .ss-result-block{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px;}
+  .ss-result-block h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+  .ss-result-block p:last-child, .ss-result-block ol:last-child, .ss-result-block ul:last-child{margin-bottom:0;}
+  .ss-result-block-indigo{background:#ECEDFA;}
+  .ss-result-block-focus{background:#EEF2FA;}
+
+  .ss-result-bullets{margin:0 0 12px; padding-left:20px;}
+  .ss-result-bullets li{margin-bottom:6px; font-size:14.5px; color:var(--ink);}
+  .ss-result-bullets li:last-child{margin-bottom:0;}
+
+  .ss-result-ai{background:#EAF7F6; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--teal-deep);}
+  .ss-result-ai h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:8px;}
+  .ss-result-ai p:last-child{margin-bottom:0;}
+
+  .ss-result-challenge{background:#FDF1EC; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--coral-deep);}
+  .ss-result-challenge h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--coral-deep); margin-bottom:8px;}
+  .ss-result-challenge p{margin-bottom:0; font-weight:600; color:var(--ink);}
+
+  .ss-next-box{background:var(--navy-deep); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:16px;}
+  .ss-next-box h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:rgba(255,255,255,.65); margin-bottom:8px;}
+  .ss-next-box p{color:rgba(255,255,255,.92);}
+  .ss-next-box p:last-child{margin-bottom:14px;}
+
+  .fill-template{background:var(--pale); border:1.5px dashed var(--line); border-radius:var(--radius-sm); padding:18px 20px;
+    font-size:14px; color:var(--ink); line-height:1.9; margin-bottom:16px;}
+  .fill-template .blank{display:inline-block; min-width:120px; border-bottom:1.5px solid var(--navy); color:var(--navy-deep); font-weight:700;}
+
+  .map-table{width:100%; border-collapse:collapse; font-size:13.5px; margin-bottom:0;}
+  .map-table th{background:var(--navy-deep); color:#fff; text-align:left; padding:10px 12px; font-size:11px; text-transform:uppercase; letter-spacing:.03em; font-weight:800;}
+  .map-table th:first-child{border-top-left-radius:8px;}
+  .map-table th:last-child{border-top-right-radius:8px;}
+  .map-table td{padding:11px 12px; border-bottom:1px solid var(--line); color:var(--ink); vertical-align:top;}
+  .map-table tr:last-child td{border-bottom:none;}
+  .map-table .q-cell{font-weight:700; color:var(--navy-deep); width:38%;}
+
+  .prompt-box{background:var(--pale); border-radius:10px; padding:12px 16px; font-size:13.5px; color:var(--navy-deep); font-weight:700; margin-bottom:16px;}
+  .prompt-box span{display:block; font-size:11px; text-transform:uppercase; letter-spacing:.03em; font-weight:800; color:var(--ink-faint); margin-bottom:4px;}
+
+  /* ---------- BUTTONS ---------- */
+  .ss-btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:700;
+    border:none; cursor:pointer; transition:all .15s var(--ease); font-family:inherit;}
+  .ss-btn-primary{background:var(--coral); color:#fff; box-shadow:0 8px 18px rgba(232,113,90,.3);}
+  .ss-btn-primary:hover{background:var(--coral-deep);}
+  .ss-btn-outline{background:#fff; color:var(--navy-deep); border:1.5px solid var(--line);}
+  .ss-btn-outline:hover{border-color:var(--navy-deep);}
+  .ss-actions{display:flex; gap:12px; flex-wrap:wrap; padding:26px 0 46px; border-top:1px solid var(--line); margin-top:10px;}
+
+  .ss-footer{background:var(--navy-deep); color:rgba(255,255,255,.55); padding:22px 0; font-size:12.5px; text-align:center; margin-top:20px;}
+
+  @media print{
+    .no-print{display:none !important;}
+    body{background:#fff;}
+    .hdr{background:#fff; border-bottom:2px solid var(--navy-deep);}
+    .hdr-logo-sub{color:var(--navy-deep) !important;}
+    .hdr-logo-img{background:none !important; padding:0 !important;}
+    .hero{background:#fff !important;}
+    .hero-eye,.hero-title,.hero-sub,.badge{color:var(--navy-deep) !important;}
+    .ss-card, .ss-result-block, .ss-result-ai, .ss-result-challenge, .ss-next-box{page-break-inside:avoid; box-shadow:none;}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-logo">
+      <img src="assets/smart-start-logo.png" alt="SMART Start" class="hdr-logo-img">
+      <span class="hdr-logo-sub">Created by Smart Resource Solutions</span>
+    </div>
+    <div class="hdr-actions no-print">
+      <button class="btn-hdr" onclick="location.href='index.html'">&larr; Back to SMART Start</button>
+      <button class="btn-hdr" onclick="window.print()">Print</button>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <span class="hero-eye">Process and workflow result</span>
+  <h1 class="hero-title serif">The Process <em>Audit</em></h1>
+  <p class="hero-sub">Work out whether this is a knowledge problem or a process problem, then fix the right one.</p>
+  <div class="hero-badges">
+    <div class="badge">About 5 minutes</div>
+    <div class="badge">Nothing is saved, print what you need</div>
+  </div>
+</div>
+
+<main class="wrap ss-main">
+
+  <div class="scope-box">
+    <strong>Why this is worth ten minutes:</strong> a process problem left alone doesn't just cost time, it costs money and goodwill too, through rework, missed deadlines, and people working around a broken system instead of through it.
+    <br><br>
+    There are two common reasons work gets stuck like this. Either one specific task only works because you, or one person, knows how to do it, or a process that already involves several people has just become clunky and error prone. Jump to whichever sounds closer to what's actually happening below.
+  </div>
+
+  <div class="path-chooser">
+    <a href="#path1" class="path-card">
+      <div class="path-q">Is this one task that only works because you, or one person, know how to do it?</div>
+      <span class="path-btn-label">Jump to capture and hand it off &rarr;</span>
+    </a>
+    <a href="#path2" class="path-card">
+      <div class="path-q">Is this a process that already involves several people, and it's just clunky or error prone?</div>
+      <span class="path-btn-label">Jump to map and simplify it &rarr;</span>
+    </a>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PATH 1: CAPTURE AND HAND IT OFF -->
+  <!-- ============================================================ -->
+  <div class="path-head" id="path1">
+    <div class="path-num">1</div>
+    <div>
+      <h2>Capture and hand it off</h2>
+      <div class="path-head-sub">For one task that only works because you, or one person, know how to do it</div>
+    </div>
+  </div>
+
+  <div class="ss-result-block">
+    <h4>Why writing it down doesn't work</h4>
+    <p>Most business owners have tried to write a process document at least once. It usually goes the same way: it takes three hours, it's out of date within a month, and nobody reads it anyway, because reading five pages to learn a task is slower than just asking you.</p>
+    <p>A screen recording fixes all three problems at once. It takes the same amount of time as just doing the task. It shows the real version, mouse clicks, hesitations and all, not the tidied up version you'd write from memory. And people will actually watch a short video before they'll read a manual.</p>
+    <p>If the task is genuinely small or simple, a couple of clear screenshots with a short note on each may be enough, you don't need a full video walkthrough for something that only takes thirty seconds to explain. Save the recording for anything with several steps, or anything where the order matters.</p>
+  </div>
+
+  <div class="prompt-box"><span>Ask yourself</span>If you were unreachable for two weeks, would this task simply stop, or would someone else find a way to muddle through it? If it would genuinely stop, this is worth capturing now.</div>
+
+  <div class="ss-result-block ss-result-block-focus">
+    <h4>The 3-step handoff</h4>
+    <ol class="ss-result-bullets">
+      <li><strong>Record it once, out loud.</strong> Open a screen recorder (Windows' Snipping Tool now records video too, worth checking that's the one you meant) and make sure your sound is turned on before you start. Do the task exactly as you normally would, and narrate it as if you're training someone standing behind you. Say the why, not just the what.</li>
+      <li><strong>Send the raw file, unedited.</strong> Don't trim it, don't add titles, don't wait until you have time to make it good. A slightly messy video sent today beats a polished one sent never.</li>
+      <li><strong>Attach one Definition of Done.</strong> A video shows someone how. It doesn't tell them when they've finished correctly. Pair every recording with the template below.</li>
+    </ol>
+  </div>
+
+  <div class="ss-result-ai">
+    <h4>Definition of Done: fill in the blank</h4>
+    <div class="fill-template">
+      This task, <span class="blank">&nbsp;</span>, is complete when:<br>
+      &nbsp;&nbsp;&bull; <span class="blank">&nbsp;</span> has been sent to <span class="blank">&nbsp;</span><br>
+      &nbsp;&nbsp;&bull; <span class="blank">&nbsp;</span> is true or has been checked<br>
+      &nbsp;&nbsp;&bull; <span class="blank">&nbsp;</span> has been updated with the result<br><br>
+      It is <strong>not</strong> complete if <span class="blank">&nbsp;</span>.<br><br>
+      If something looks wrong or unusual, stop and message <span class="blank">&nbsp;</span> rather than guessing.
+    </div>
+    <button class="ss-btn ss-btn-outline no-print" style="margin-top:14px;" onclick="downloadDefinitionOfDoneWord()">Download as Word</button>
+  </div>
+
+  <div class="ss-result-challenge">
+    <h4>Before you record</h4>
+    <p>Don't wait for the important processes to justify doing this. Start with whichever task you were most recently annoyed to be doing yourself, that's usually the one costing you the most, and the fastest one to hand off.</p>
+  </div>
+
+  <div class="ss-next-box">
+    <h4>Your next step</h4>
+    <p>Once it's recorded, sent, and paired with its Definition of Done, use the Delegation Brief to make sure the handoff actually sticks, who owns it now, what they can decide without checking with you, and when you'll check in. If it turns out this same task keeps landing back on your desk even after handing it off, that's a sign the audit or the decision behind it, not the task, is still yours.</p>
+    <div style="display:flex; gap:12px; flex-wrap:wrap;">
+      <a class="ss-btn ss-btn-primary" href="smart-start-delegation-brief.html">Go to the Delegation Brief</a>
+      <a class="ss-btn ss-btn-outline" style="background:transparent; color:#fff; border-color:rgba(255,255,255,.35);" href="smart-start-task-decision-audit.html">Go to the Task and Decision Audit</a>
+    </div>
+  </div>
+
+  <!-- ============================================================ -->
+  <!-- PATH 2: MAP AND SIMPLIFY IT -->
+  <!-- ============================================================ -->
+  <div class="path-head" id="path2">
+    <div class="path-num">2</div>
+    <div>
+      <h2>Map and simplify it</h2>
+      <div class="path-head-sub">For a process that already involves several people, and is just clunky or error prone</div>
+    </div>
+  </div>
+
+  <div class="ss-result-block">
+    <h4>Why this usually isn't a people problem</h4>
+    <p>When a process feels slow, confusing or error prone, it's tempting to assume someone isn't doing their job properly. Often the truth is simpler: the process itself has too many handoffs, too much re-entering of the same information, or steps that made sense once and never got removed.</p>
+    <p>Hiring more people into the same clunky process just makes the process bigger, not better. Worth mapping it properly before deciding anything else.</p>
+  </div>
+
+  <div class="ss-result-block ss-result-block-indigo">
+    <h4>Map it</h4>
+    <p>Pick the one process causing the most frustration or wasted time. The first two questions just help you see the whole thing clearly, the rest are where the real answers show up.</p>
+    <table class="map-table">
+      <tr><td class="q-cell">What starts the process?</td><td>&nbsp;</td></tr>
+      <tr><td class="q-cell">What happens next?</td><td>&nbsp;</td></tr>
+      <tr><td class="q-cell">Who touches it, and how many people?</td><td>&nbsp;</td></tr>
+      <tr><td class="q-cell">Where does it sit and wait?</td><td>&nbsp;</td></tr>
+      <tr><td class="q-cell">Where is the same information entered more than once?</td><td>&nbsp;</td></tr>
+      <tr><td class="q-cell">Where do mistakes or rework actually happen?</td><td>&nbsp;</td></tr>
+      <tr><td class="q-cell">Which steps could disappear entirely?</td><td>&nbsp;</td></tr>
+    </table>
+  </div>
+
+  <div class="ss-result-block ss-result-block-focus">
+    <h4>What your answers are telling you</h4>
+    <ul class="ss-result-bullets">
+      <li><strong>Three or more people touch it:</strong> that's often too many handoffs, look at who genuinely needs to be involved.</li>
+      <li><strong>The same information gets entered more than once:</strong> a strong candidate for automation, not more capacity.</li>
+      <li><strong>It sits and waits somewhere:</strong> that's usually a queue or an approval step worth questioning, not a workload problem.</li>
+      <li><strong>Mistakes cluster at one particular step:</strong> that step is the one to fix first, not the person currently doing it.</li>
+      <li><strong>You can already name steps that could disappear entirely:</strong> that's usually the fastest, cheapest fix available, remove those before you touch anything else.</li>
+    </ul>
+  </div>
+
+  <div class="ss-result-challenge">
+    <h4>Before you conclude anything</h4>
+    <p>Don't assume the person running the process is the problem until you've mapped it. Most process pain turns out to be structural, and blaming the person doing it just moves the same broken process to someone new.</p>
+  </div>
+
+  <div class="ss-next-box">
+    <h4>Your next step</h4>
+    <p>If simplifying or automating this looks like the answer, "What's the smartest way to get the work done?" can help you work through the options properly.</p>
+    <a class="ss-btn ss-btn-primary" href="smart-start-decision-tree.html">Explore your options</a>
+  </div>
+
+  <div class="ss-actions no-print">
+    <button class="ss-btn ss-btn-outline" onclick="window.print()">Print / Save as PDF</button>
+    <button class="ss-btn ss-btn-outline" onclick="location.href='index.html'">Back to SMART Start</button>
+  </div>
+
+</main>
+
+<footer class="ss-footer no-print">
+  <div class="wrap">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+function docxEsc(s){
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function docxPara(text, opts){
+  opts = opts || {};
+  var runProps = '';
+  if(opts.bold) runProps += '<w:b/>';
+  if(opts.size) runProps += '<w:sz w:val="' + opts.size + '"/>';
+  var pPr = opts.spacingBefore ? '<w:pPr><w:spacing w:before="' + opts.spacingBefore + '"/></w:pPr>' : '';
+  return '<w:p>' + pPr + '<w:r>' + (runProps ? '<w:rPr>' + runProps + '</w:rPr>' : '') + '<w:t xml:space="preserve">' + docxEsc(text) + '</w:t></w:r></w:p>';
+}
+
+function downloadDefinitionOfDoneWord(){
+  if(typeof JSZip === 'undefined'){
+    alert('Word export could not load. Please use Print / Save as PDF instead.');
+    return;
+  }
+  var underline = '_______________________________';
+  var xml = '';
+  xml += docxPara('Definition of Done', {bold:true, size:'32'});
+  xml += docxPara('');
+  xml += docxPara('This task, ' + underline + ', is complete when:');
+  xml += docxPara('    - ' + underline + ' has been sent to ' + underline);
+  xml += docxPara('    - ' + underline + ' is true or has been checked');
+  xml += docxPara('    - ' + underline + ' has been updated with the result');
+  xml += docxPara('');
+  xml += docxPara('It is NOT complete if ' + underline + '.');
+  xml += docxPara('');
+  xml += docxPara('If something looks wrong or unusual, stop and message ' + underline + ' rather than guessing.');
+
+  var documentXml = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+    '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">' +
+    '<w:body>' + xml +
+    '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134"/></w:sectPr>' +
+    '</w:body></w:document>';
+
+  var contentTypes = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">' +
+    '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>' +
+    '<Default Extension="xml" ContentType="application/xml"/>' +
+    '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>' +
+    '</Types>';
+  var rels = '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>' +
+    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">' +
+    '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>' +
+    '</Relationships>';
+
+  var zip = new JSZip();
+  zip.file('[Content_Types].xml', contentTypes);
+  zip.folder('_rels').file('.rels', rels);
+  zip.folder('word').file('document.xml', documentXml);
+
+  zip.generateAsync({type:'blob', mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}).then(function(blob){
+    var url = URL.createObjectURL(blob);
+    var a = document.createElement('a');
+    a.href = url;
+    a.download = 'definition-of-done-template.docx';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }).catch(function(){
+    alert('Word export failed. Please use Print / Save as PDF instead.');
+  });
+}
+</script>
+
+</body>
+</html>

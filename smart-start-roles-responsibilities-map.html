@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>The Roles and Responsibilities Map | SMART Start</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --navy-deep:#0D1F4F; --navy:#1B3A73; --indigo:#3457A6;
+    --teal:#1F9C93; --teal-deep:#146F68;
+    --cyan:#1ED6E6; --cyan-deep:#0E7C90;
+    --coral:#E8715A; --coral-deep:#C0562F;
+    --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
+    --line:#E4E7F0; --pale:#F4F6FB;
+    --radius-lg:20px; --radius-md:14px; --radius-sm:9px;
+    --shadow-sm:0 2px 10px rgba(13,31,79,.07);
+    --shadow-md:0 14px 34px rgba(13,31,79,.14);
+    --ease:cubic-bezier(.22,1,.36,1);
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--pale); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  h1,h2,h3,h4{margin:0; color:var(--navy-deep);}
+  .serif{font-family:'DM Serif Display',serif; font-weight:400;}
+  p{margin:0 0 12px; font-size:15.5px;}
+  :focus-visible{outline:3px solid var(--coral); outline-offset:2px;}
+  .wrap{max-width:860px; margin:0 auto; padding:0 24px;}
+  @media (max-width:600px){.wrap{padding:0 18px;}}
+
+  /* ---------- HEADER ---------- */
+  .hdr{background:var(--navy-deep); padding:0; position:sticky; top:0; z-index:100; box-shadow:0 2px 20px rgba(0,0,0,.25);}
+  .hdr-inner{max-width:860px; margin:0 auto; padding:16px 24px; display:flex; align-items:center; justify-content:space-between; gap:16px; flex-wrap:wrap;}
+  .hdr-logo{display:flex; align-items:center; gap:10px;}
+  .hdr-logo-img{height:32px; width:auto; display:block; background:#fff; border-radius:8px; padding:4px 10px; flex-shrink:0;}
+  .hdr-logo-sub{font-size:11.5px; color:rgba(255,255,255,.62); font-weight:600;}
+  .hdr-actions{display:flex; gap:10px;}
+  .btn-hdr{background:rgba(255,255,255,.08); color:#fff; border:1.5px solid rgba(255,255,255,.25); padding:8px 18px; border-radius:50px;
+    font-size:13px; font-weight:700; cursor:pointer; font-family:'Manrope',sans-serif; transition:all .2s;}
+  .btn-hdr:hover{background:rgba(255,255,255,.18);}
+
+  /* ---------- HERO ---------- */
+  .hero{background:linear-gradient(135deg,var(--navy-deep),var(--navy)); padding:44px 24px 36px; text-align:center; position:relative; overflow:hidden;}
+  .hero::before{content:''; position:absolute; top:-40%; right:-10%; width:400px; height:400px; border-radius:50%; background:rgba(30,214,230,.06); pointer-events:none;}
+  .hero::after{content:''; position:absolute; bottom:-30%; left:-5%; width:300px; height:300px; border-radius:50%; background:rgba(232,113,90,.08); pointer-events:none;}
+  .hero-eye{position:relative; font-size:11px; font-weight:700; letter-spacing:2px; text-transform:uppercase; color:var(--cyan); display:block; margin-bottom:14px;}
+  .hero-title{position:relative; font-size:clamp(26px,5vw,40px); font-weight:400; color:#fff; line-height:1.15; margin-bottom:12px;}
+  .hero-title em{color:var(--cyan); font-style:italic;}
+  .hero-sub{position:relative; font-size:16px; color:rgba(255,255,255,.78); line-height:1.6; max-width:560px; margin:0 auto 24px;}
+  .hero-badges{position:relative; display:flex; gap:12px; justify-content:center; flex-wrap:wrap;}
+  .badge{background:rgba(255,255,255,.1); border:1px solid rgba(255,255,255,.15); color:rgba(255,255,255,.85); font-size:12px; font-weight:600; padding:6px 14px; border-radius:20px;}
+
+  .scope-box{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-md); padding:16px 18px; margin-bottom:24px; font-size:13.5px; color:var(--ink-muted);}
+  .scope-box strong{color:var(--navy-deep);}
+
+  /* ---------- MAIN ---------- */
+  .ss-main{padding:32px 0 20px;}
+  .step-block{margin-bottom:28px;}
+  .step-head{display:flex; align-items:center; gap:12px; margin-bottom:14px;}
+  .step-num{width:32px; height:32px; border-radius:50%; background:var(--navy-deep); color:#fff; display:flex; align-items:center;
+    justify-content:center; font-weight:800; font-size:14px; flex-shrink:0;}
+  .step-head h2{font-family:'DM Serif Display',serif; font-weight:400; font-size:21px;}
+
+  .ss-result-block{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:16px;}
+  .ss-result-block h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:10px;}
+  .ss-result-block p:last-child, .ss-result-block ul:last-child{margin-bottom:0;}
+  .ss-result-block-indigo{background:#ECEDFA;}
+  .ss-result-block-focus{background:#EEF2FA;}
+
+  .ss-result-bullets{margin:0 0 12px; padding-left:20px;}
+  .ss-result-bullets li{margin-bottom:8px; font-size:14.5px; color:var(--ink);}
+  .ss-result-bullets li:last-child{margin-bottom:0;}
+
+  .diagram-card{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-md); padding:20px 22px 14px; margin:16px 0;}
+  .diagram-caption{text-align:center; font-size:12.5px; color:var(--ink-faint); margin-top:8px;}
+
+  .fill-space{background:#fff; border:1.5px dashed var(--line); border-radius:var(--radius-sm); min-height:140px; padding:16px 18px; margin-top:10px;}
+  .fill-space-label{font-size:12px; color:var(--ink-faint); font-style:italic;}
+
+  .chart-table{width:100%; border-collapse:collapse; font-size:13.5px; margin-top:10px;}
+  .chart-table th{background:var(--navy-deep); color:#fff; text-align:left; padding:10px 12px; font-size:11px; text-transform:uppercase; letter-spacing:.03em; font-weight:800;}
+  .chart-table th:first-child{border-top-left-radius:8px;}
+  .chart-table th:last-child{border-top-right-radius:8px;}
+  .chart-table td{padding:12px; border-bottom:1px solid var(--line); color:var(--ink-faint); height:20px;}
+  .chart-table tr:last-child td{border-bottom:none;}
+
+  .ss-result-ai{background:#EAF7F6; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--teal-deep);}
+  .ss-result-ai h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:8px;}
+  .ss-result-ai p:last-child{margin-bottom:0;}
+
+  .ss-result-challenge{background:#FDF1EC; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--coral-deep);}
+  .ss-result-challenge h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--coral-deep); margin-bottom:8px;}
+  .ss-result-challenge p{margin-bottom:0; font-weight:600; color:var(--ink);}
+
+  .ss-result-disclaimer{background:#EEF3FA; border-radius:var(--radius-md); padding:16px 20px; margin-bottom:16px; display:flex; gap:12px; align-items:flex-start;}
+  .ss-disclaimer-icon{display:flex; align-items:center; justify-content:center; width:20px; height:20px; border-radius:50%;
+    background:var(--navy-deep); color:#fff; font-size:12px; font-weight:800; font-style:italic; flex-shrink:0; margin-top:1px;}
+  .ss-result-disclaimer strong{display:block; font-size:12px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy-deep); margin-bottom:6px; font-weight:800;}
+  .ss-result-disclaimer p{margin:0 0 8px; color:var(--ink-muted); font-size:14px;}
+  .ss-result-disclaimer p:last-child{margin-bottom:0;}
+
+  .ss-next-box{background:var(--navy-deep); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:16px;}
+  .ss-next-box h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:rgba(255,255,255,.65); margin-bottom:8px;}
+  .ss-next-box p{color:rgba(255,255,255,.92);}
+  .ss-next-box p:last-child{margin-bottom:14px;}
+
+  .ss-btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:700;
+    border:none; cursor:pointer; text-decoration:none;}
+  .ss-btn-primary{background:var(--coral); color:#fff;}
+  .ss-btn-outline{background:#fff; color:var(--navy-deep); border:1.5px solid var(--line);}
+  .ss-actions{display:flex; gap:12px; flex-wrap:wrap; padding:26px 0 46px; border-top:1px solid var(--line); margin-top:10px;}
+  .ss-footer{background:var(--navy-deep); color:rgba(255,255,255,.55); padding:22px 0; font-size:12.5px; text-align:center; margin-top:20px;}
+
+  @media print{
+    .no-print{display:none !important;}
+    body{background:#fff;}
+    .ss-header{background:#fff; border-bottom:2px solid var(--navy-deep);}
+    .ss-wordmark-sub{color:var(--navy-deep) !important;}
+    .ss-logo{background:none !important; padding:0 !important;}
+    .ss-result-block, .ss-result-ai, .ss-result-challenge, .ss-result-disclaimer, .ss-next-box, .diagram-card{page-break-inside:avoid; box-shadow:none;}
+  }
+
+</style>
+</head>
+<body>
+
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-logo">
+      <img src="assets/smart-start-logo.png" alt="SMART Start" class="hdr-logo-img">
+      <span class="hdr-logo-sub">Created by Smart Resource Solutions</span>
+    </div>
+    <div class="hdr-actions no-print">
+      <button class="btn-hdr" onclick="location.href='index.html'">&larr; Back to SMART Start</button>
+      <button class="btn-hdr" onclick="window.print()">Print</button>
+    </div>
+  </div>
+</div>
+
+<div class="hero">
+  <span class="hero-eye">Ownership and responsibilities result</span>
+  <h1 class="hero-title serif">The Roles and Responsibilities <em>Map</em></h1>
+  <p class="hero-sub">This will produce a clear picture of what the business needs, and who is actually holding it.</p>
+  <div class="hero-badges">
+    <div class="badge">15 to 20 minutes</div>
+    <div class="badge">Nothing is saved, print what you need</div>
+  </div>
+</div>
+
+<main class="wrap ss-main">
+
+  <div class="scope-box">
+    <strong>Before you start:</strong> ownership rarely gets assigned on purpose as a business grows, it accumulates by accident, one urgent moment at a time. This is a three-part exercise to step back and see the whole shape of the business at once, so the gaps and the overloaded people both become visible together, rather than being noticed one crisis at a time. Grab a pen and paper or a whiteboard if you have one, the mapping stage works best when you can freely draw and adjust it.
+  </div>
+
+  <!-- STEP 1 -->
+  <div class="step-block">
+    <div class="step-head"><div class="step-num">1</div><h2>Map everything the business does</h2></div>
+    <div class="ss-result-block">
+      <p>Whatever a business actually does, its work tends to fall into four main areas. Start with these four rather than trying to work your own out from scratch:</p>
+      <ul class="ss-result-bullets">
+        <li><strong>Sales and marketing</strong>, finding and winning the work</li>
+        <li><strong>Operations</strong>, delivering it</li>
+        <li><strong>Finance and admin</strong>, running the numbers and the paperwork</li>
+        <li><strong>People</strong>, everyone who works in the business, and how they're supported</li>
+      </ul>
+      <p>Under each of the four, list the actual, specific tasks that happen day to day, for example "raise an invoice" under finance and admin, or "schedule posts on Instagram" under sales and marketing. You're listing what needs to happen here, not how to do it, the how-to for any of these can be its own document later if it's useful.</p>
+      <p>Don't aim for a perfect or complete list on the first pass. This is a brain dump, the goal is to get everything out of your head and onto the page. You can always come back and add to it.</p>
+
+      <div class="diagram-card">
+        <svg width="100%" viewBox="0 0 680 224" role="img" aria-label="Example map showing sales and marketing, and finance and admin, each with one specific task underneath">
+          <defs>
+            <marker id="pmArrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+              <path d="M2 1L8 5L2 9" fill="none" stroke="#8A93AC" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+            </marker>
+          </defs>
+          <line x1="112" y1="84" x2="115" y2="140" stroke="#8A93AC" stroke-width="1" marker-end="url(#pmArrow)"/>
+          <line x1="414" y1="84" x2="415" y2="140" stroke="#8A93AC" stroke-width="1" marker-end="url(#pmArrow)"/>
+
+          <rect x="40" y="40" width="145" height="44" rx="8" fill="#EAF7F6" stroke="#146F68" stroke-width="1"/>
+          <text x="112" y="62" text-anchor="middle" dominant-baseline="central" fill="#146F68" style="font-family:Manrope,sans-serif; font-size:12.5px; font-weight:700;">Sales &amp; marketing</text>
+
+          <rect x="191" y="40" width="145" height="44" rx="8" fill="#EAF7F6" stroke="#146F68" stroke-width="1"/>
+          <text x="263" y="62" text-anchor="middle" dominant-baseline="central" fill="#146F68" style="font-family:Manrope,sans-serif; font-size:12.5px; font-weight:700;">Operations</text>
+
+          <rect x="342" y="40" width="145" height="44" rx="8" fill="#EAF7F6" stroke="#146F68" stroke-width="1"/>
+          <text x="414" y="62" text-anchor="middle" dominant-baseline="central" fill="#146F68" style="font-family:Manrope,sans-serif; font-size:12.5px; font-weight:700;">Finance &amp; admin</text>
+
+          <rect x="493" y="40" width="145" height="44" rx="8" fill="#EAF7F6" stroke="#146F68" stroke-width="1"/>
+          <text x="565" y="62" text-anchor="middle" dominant-baseline="central" fill="#146F68" style="font-family:Manrope,sans-serif; font-size:12.5px; font-weight:700;">People</text>
+
+          <rect x="25" y="140" width="180" height="44" rx="8" fill="#FDF1EC" stroke="#C0562F" stroke-width="1"/>
+          <text x="115" y="162" text-anchor="middle" dominant-baseline="central" fill="#C0562F" style="font-family:Manrope,sans-serif; font-size:13px; font-weight:700;">New business calls</text>
+
+          <rect x="325" y="140" width="180" height="44" rx="8" fill="#FDF1EC" stroke="#C0562F" stroke-width="1"/>
+          <text x="415" y="162" text-anchor="middle" dominant-baseline="central" fill="#C0562F" style="font-family:Manrope,sans-serif; font-size:13px; font-weight:700;">Sending invoices</text>
+        </svg>
+        <p class="diagram-caption">Teal = one of the four main areas, coral = a specific task within it. Do this for all four, this shows just two as a worked example.</p>
+      </div>
+    </div>
+    <div class="fill-space no-print"><span class="fill-space-label">List the specific tasks under each of the four areas here, or on paper.</span></div>
+  </div>
+
+  <!-- STEP 2 -->
+  <div class="step-block">
+    <div class="step-head"><div class="step-num">2</div><h2>Group related tasks into roles</h2></div>
+    <div class="ss-result-block ss-result-block-indigo">
+      <p>Now look back across everything you've mapped, and start grouping tasks that would make sense for one person to own together. Don't group them the way a large company would, by department, a small business rarely has the headcount for that. Group by what would genuinely work as a single, coherent job in a business your size.</p>
+      <p>A few things worth looking for as you group:</p>
+      <ul class="ss-result-bullets">
+        <li><strong>Similar skills.</strong> Tasks that draw on the same kind of ability often belong together, writing social posts and writing email newsletters are both a form of the same skill.</li>
+        <li><strong>The same point in a process.</strong> Tasks that happen at the same stage often suit the same person, whoever takes the first client call might also make sense to run the onboarding that follows it.</li>
+        <li><strong>Don't force a tidy structure.</strong> In a small team it's completely normal for one role to include things that would sit in three separate departments at a bigger company. That's not messy, that's just what small businesses look like.</li>
+      </ul>
+      <p>You don't need an equal split or a fixed number of roles. Some groupings will end up with five or more tasks in them, others with just one, and that's fine too.</p>
+    </div>
+  </div>
+
+  <!-- STEP 3 -->
+  <div class="step-block">
+    <div class="step-head"><div class="step-num">3</div><h2>Build two simple charts</h2></div>
+    <div class="ss-result-block">
+      <h4>The role chart</h4>
+      <p>Take the groupings you circled in step 2, each one becomes a role here. List each one with what it's responsible for and what it reports into. <strong>This chart shows all the work that needs to happen, as a set of roles, independent of who is actually doing the role right now.</strong> That makes it useful even for a role that doesn't have a dedicated person yet, or one that's currently being covered part time by someone doing several jobs at once.</p>
+      <table class="chart-table">
+        <tr><th>Role</th><th>Responsible for</th><th>Reports to</th></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      </table>
+    </div>
+    <div class="ss-result-block ss-result-block-focus">
+      <h4>The human chart</h4>
+      <p>List each actual person, with their job title and who they report to. One person can, and very often will, be holding more than one role from the chart above at the same time, that's exactly what this chart is designed to reveal. Keeping the two charts separate is what makes the next part possible, you can see the work and the people who are actually carrying it side by side.</p>
+      <table class="chart-table">
+        <tr><th>Person</th><th>Title</th><th>Roles they hold</th><th>Reports to</th></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+        <tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="ss-result-ai">
+    <h4>Spot the overload</h4>
+    <p>Look at the "roles they hold" column on your human chart, the roles you defined in step 3. Anyone holding three or more is worth a closer look, that's usually where things are quietly slipping through the cracks, or exactly where the next hire should go.</p>
+    <p>For each overloaded person, ask: could one of their roles genuinely move to someone else as it stands today? Could it be simplified or automated instead? Or does it point to a real, new role that's worth defining properly?</p>
+  </div>
+
+  <div class="ss-result-disclaimer">
+    <span class="ss-disclaimer-icon" aria-hidden="true">i</span>
+    <div>
+      <strong>Before you act on any of this</strong>
+      <p>If a change coming out of this map could affect someone's contract, hours, pay or job title, get proper HR or legal advice before you make it. What counts as a straightforward internal reshuffle and what counts as a formal restructure isn't always obvious, and getting that wrong creates a real legal problem, not just an awkward conversation.</p>
+      <p>Bring your team into this process itself, not just the outcome. If people sense you're quietly reviewing who does what without knowing why, it reads as surveillance. Be upfront that you're looking at workload and capacity across the business, not evaluating any one person, most people are relieved to hear that, not defensive.</p>
+    </div>
+  </div>
+
+  <div class="ss-result-challenge">
+    <h4>Before you restructure anything</h4>
+    <p>Don't try to fix everything you find here in one sitting. Pick the single most overloaded role, or the clearest gap, and start there. This map will still be true next month if you want to come back and work through the rest of it.</p>
+  </div>
+
+  <div class="ss-next-box">
+    <h4>Your next step</h4>
+    <p>If the overload points toward a genuinely new role, "What does this role need to achieve?" will help you define it properly before writing a job description. If it points to work that could be redesigned, automated or outsourced instead, "What's the smartest way to get the work done?" covers those options.</p>
+    <a class="ss-btn ss-btn-primary" href="smart-start-3-box-role-builder.html">Define the role</a>
+  </div>
+
+  <div class="ss-actions no-print">
+    <button class="ss-btn ss-btn-outline" onclick="window.print()">Print / Save as PDF</button>
+    <button class="ss-btn ss-btn-outline" onclick="location.href='index.html'">Back to SMART Start</button>
+  </div>
+
+</main>
+
+<footer class="ss-footer no-print">
+  <div class="wrap">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</div>
+</footer>
+
+</body>
+</html>

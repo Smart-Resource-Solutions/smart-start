@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hire, Redesign, Automate or Outsource? | SMART Start</title>
+<title>What's the smartest way to get the work done? | SMART Start</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
@@ -108,14 +108,49 @@
   .ss-progress-label{font-size:13px; font-weight:700; color:var(--navy-deep);}
 
   /* ---------- RESULT BANNERS ---------- */
-  .ss-result-primary{background:var(--navy-deep); color:#fff; border-radius:var(--radius-lg); padding:26px 28px; margin-bottom:16px;}
-  .ss-result-primary h3{color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:10px; opacity:.85;}
-  .ss-result-primary .ss-result-name{font-size:23px; font-weight:800; margin-bottom:10px;}
-  .ss-result-primary p{color:rgba(255,255,255,.85);}
+  .ss-result-hero{background:var(--navy-deep); color:#fff; border-radius:var(--radius-lg); padding:22px 26px; margin-bottom:18px;}
+  .ss-result-hero h3{color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:8px; opacity:.85;}
+  .ss-result-hero .ss-result-name{font-size:24px; font-weight:800; margin-bottom:10px;}
+  .ss-result-hero p{color:rgba(255,255,255,.85); margin-bottom:0; font-size:14.5px;}
   .ss-result-secondary{background:var(--pale); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:12px;}
   .ss-result-secondary h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:6px;}
-  .ss-next-box{background:#fff; border:1.5px dashed var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-top:14px;}
-  .ss-next-box h4{font-size:13px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+
+  .ss-result-2col{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  @media (max-width:700px){.ss-result-2col{grid-template-columns:1fr;}}
+
+  .ss-result-block{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px;}
+  .ss-result-block h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+  .ss-result-block p:last-child, .ss-result-block ol:last-child, .ss-result-block ul:last-child{margin-bottom:0;}
+  .ss-result-block-indigo{background:#ECEDFA;}
+  .ss-result-block-focus{background:#EEF2FA;}
+
+  .ss-result-bullets{margin:0 0 12px; padding-left:20px;}
+  .ss-result-bullets li{margin-bottom:6px; font-size:14.5px; color:var(--ink);}
+  .ss-result-bullets li:last-child{margin-bottom:0;}
+
+  .ss-result-ai{background:#EAF7F6; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--teal-deep);}
+  .ss-result-ai h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:8px;}
+  .ss-result-ai p:last-child{margin-bottom:0;}
+
+  .ss-result-challenge{background:#FDF1EC; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--coral-deep);}
+  .ss-result-challenge h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--coral-deep); margin-bottom:8px;}
+  .ss-result-challenge p{margin-bottom:0; font-weight:600; color:var(--ink);}
+
+  .ss-next-box{background:var(--navy-deep); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:16px;}
+  .ss-next-box h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:rgba(255,255,255,.65); margin-bottom:8px;}
+  .ss-next-box p{color:rgba(255,255,255,.92);}
+  .ss-next-box p:last-child{margin-bottom:14px;}
+
+  .ss-result-disclaimer{background:#EEF3FA; border-radius:var(--radius-md); padding:14px 18px; margin-bottom:18px;
+    font-size:12.5px; color:var(--ink-muted); display:flex; gap:10px; align-items:flex-start;}
+  .ss-result-disclaimer strong{display:block; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy-deep); margin-bottom:3px; font-weight:800;}
+  .ss-result-disclaimer p{margin:0; color:var(--ink-muted);}
+  .ss-disclaimer-icon{display:flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:50%;
+    background:var(--navy-deep); color:#fff; font-size:11px; font-weight:800; font-style:italic; flex-shrink:0; margin-top:1px;}
+
+  .ss-pro-disclaimer{font-size:12px; color:var(--ink-faint); line-height:1.5; margin-top:6px;}
+
+  .ss-result-quicknote{font-size:13px; color:var(--ink-muted); font-style:italic; margin:-6px 0 16px;}
 
   /* ---------- BUTTONS ---------- */
   .ss-btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:700;
@@ -150,9 +185,11 @@
     .ss-header{background:#fff; border-bottom:2px solid var(--navy-deep); padding:10px 0;}
     .ss-wordmark-sub{color:var(--navy-deep) !important;}
     .ss-logo{background:none !important; padding:0 !important; height:28px;}
-    .ss-result-primary{background:#fff !important; color:var(--navy-deep) !important; border:2px solid var(--navy-deep);}
-    .ss-result-primary h3, .ss-result-primary p, .ss-result-primary .ss-result-name{color:var(--navy-deep) !important;}
-    .ss-card, .ss-result-secondary, .ss-next-box{page-break-inside:avoid; box-shadow:none;}
+    .ss-result-hero{background:#fff !important; color:var(--navy-deep) !important; border:2px solid var(--navy-deep);}
+    .ss-result-hero h3, .ss-result-hero .ss-result-name, .ss-result-hero p{color:var(--navy-deep) !important;}
+    .ss-next-box{background:#fff !important; border:2px solid var(--navy-deep);}
+    .ss-next-box h4, .ss-next-box p{color:var(--navy-deep) !important;}
+    .ss-card, .ss-result-block, .ss-result-secondary, .ss-result-ai, .ss-result-challenge, .ss-next-box, .ss-result-disclaimer{page-break-inside:avoid; box-shadow:none;}
     textarea{overflow:visible !important;}
     .wrap{max-width:100%;}
     a[href]:after{content:"";}
@@ -173,12 +210,11 @@
 
 <section class="ss-intro">
   <div class="wrap">
-    <p class="ss-eyebrow">How should this need be solved?</p>
-    <h1 class="serif">Hire, Redesign, Automate or Outsource?</h1>
-    <p class="ss-subtitle">Work out the smartest way to get the work done.</p>
+    <h1 class="serif">What's the smartest way to get the work done?</h1>
+    <p class="ss-subtitle">Work out whether to redesign the work, automate it, develop someone internally, outsource it, use flexible support or hire.</p>
     <p class="ss-explain">Come to this with one reasonably clear need in mind. Answer a short series of questions and this will suggest the most likely route, from stopping the work altogether through to recruiting.</p>
     <div class="ss-scope">
-      <strong>What this does not do:</strong> it does not diagnose where a bottleneck is coming from, and it does not rank several competing priorities. The Bottleneck Finder and the Priority Filter can help with those first.
+      <strong>What this does not do:</strong> it does not diagnose where a bottleneck is coming from. "Where is your business getting stuck?" can help with that first.
     </div>
     <p class="ss-reassure">Take your time with this. There are no right or wrong answers, just what's realistic for this particular need.</p>
   </div>
@@ -229,25 +265,69 @@
       ] },
     q2: { text:"Could clearer ownership or redistributing the work among the current team solve this?",
       choices:[
-        { label:"Yes", outcome:"redistribute" },
+        { label:"Yes", next:"q2b" },
         { label:"No", next:"q3" },
         { label:"Maybe", next:"q3" }
       ] },
+    q2b: { text:"Does someone on the team already have the capacity to take this on, not just the right skills?",
+      choices:[
+        { label:"Yes", next:"q2c" },
+        { label:"No", note:"Capacity for whoever takes this on wasn't confirmed, worth checking before handing it over.", next:"q2c" },
+        { label:"Not sure", next:"q2c" }
+      ] },
+    q2c: { text:"Is it clear who would own this once it's redistributed?",
+      choices:[
+        { label:"Yes", outcome:"redistribute" },
+        { label:"No", note:"Ownership will need to be explicitly agreed, not just assumed.", outcome:"redistribute" },
+        { label:"Not sure", note:"Ownership will need to be explicitly agreed, not just assumed.", outcome:"redistribute" }
+      ] },
     q3: { text:"Could the process be simplified before adding any capacity?",
       choices:[
-        { label:"Yes", outcome:"redesign" },
+        { label:"Yes", next:"q3b" },
         { label:"No", next:"q4" }
+      ] },
+    q3b: { text:"Is there someone with the time and authority to actually lead that redesign?",
+      choices:[
+        { label:"Yes", next:"q3c" },
+        { label:"No", note:"Nobody is yet clearly responsible for leading the redesign.", next:"q3c" },
+        { label:"Not sure", next:"q3c" }
+      ] },
+    q3c: { text:"Have you identified roughly which steps in the process are actually causing the problem?",
+      choices:[
+        { label:"Yes", outcome:"redesign" },
+        { label:"Not yet", note:"The specific steps causing friction still need mapping before you start.", outcome:"redesign" }
       ] },
     q4: { text:"Is the work repetitive or rules based enough for technology, automation or AI to help?",
       choices:[
-        { label:"Yes", outcome:"automate" },
+        { label:"Yes", next:"q4b" },
         { label:"No", next:"q5" },
         { label:"Not sure", next:"q5" }
       ] },
+    q4b: { text:"Do you already have a tool or system that could plausibly handle this, or would something new be needed?",
+      choices:[
+        { label:"Already have something", next:"q4c" },
+        { label:"Would need something new", next:"q4c" }
+      ] },
+    q4c: { text:"Is there budget and appetite to introduce or extend a tool for this right now?",
+      choices:[
+        { label:"Yes", outcome:"automate" },
+        { label:"No", note:"Budget or appetite for a new tool isn't confirmed yet, worth checking before committing.", outcome:"automate" },
+        { label:"Not sure", outcome:"automate" }
+      ] },
     q5: { text:"Could someone already in the business be trained or developed to take this on?",
       choices:[
-        { label:"Yes", outcome:"develop" },
+        { label:"Yes", next:"q5b" },
         { label:"No", next:"q6" }
+      ] },
+    q5b: { text:"Do they have enough time to learn this alongside their current role, or would something need to give?",
+      choices:[
+        { label:"Enough time", next:"q5c" },
+        { label:"Something would need to give", note:"This will need protected time, not just goodwill on top of an existing workload.", next:"q5c" }
+      ] },
+    q5c: { text:"Is there a reasonably clear timeframe for them to build this skill?",
+      choices:[
+        { label:"Yes", outcome:"develop" },
+        { label:"Not yet", note:"A timeframe for building the skill still needs agreeing.", outcome:"develop" }
       ] },
     q6: { text:"Does this need specialist expertise the business doesn't currently have in house?",
       choices:[
@@ -263,6 +343,7 @@
       choices:[
         { label:"Yes, specialist freelance or contractor support", outcome:"freelance" },
         { label:"Yes, general temporary support", outcome:"temporary" },
+        { label:"No", note:"Freelance, contractor and temporary support were all considered and ruled out.", next:"q8" },
         { label:"Not sure", outcome:"moreclarity" }
       ] },
     q8: { text:"Is there enough predictable, ongoing work to justify a permanent role?",
@@ -280,24 +361,81 @@
   const OUTCOMES = {
     stop:{ name:"Stop or reduce the work", explain:"The clearest next step is deciding what to stop, simplify or remove, before any capacity is added to it.",
       before:["Confirm with whoever asked for this whether it's genuinely needed.","Identify what could be simplified or dropped altogether."] },
-    redistribute:{ name:"Redistribute it", explain:"Clearer ownership or a different split of work across the current team looks like the most direct answer.",
-      before:["Agree who will own this and by when.","Check nobody is already at capacity before handing work over."] },
-    redesign:{ name:"Redesign the process", explain:"Simplifying how the work gets done looks likely to ease this before any capacity needs to be added.",
-      before:["Map the current steps and spot the ones adding the least value.","Agree who owns making the change."] },
-    automate:{ name:"Explore AI or automation", explain:"This looks repetitive or rules based enough that technology could help. This does not automatically mean replacing a person, it means exploring where a tool could take on part of the work.",
-      before:["Identify the specific repetitive steps, not the whole task.","Check what tools or systems the business already has before buying something new."] },
-    develop:{ name:"Develop someone internally", explain:"Training or developing an existing person looks like a realistic way to build this capability.",
-      before:["Confirm the person has capacity to take on development alongside their current role.","Agree what success looks like and by when."] },
-    freelance:{ name:"Use freelance or contractor support", explain:"Specialist, time-limited support looks like a good fit for this need.",
-      before:["Be clear on the scope and outcome you need, not just hours.","Check current UK guidance on contractor and employment status before engaging anyone."] },
-    temporary:{ name:"Use temporary support", explain:"General temporary support looks like a sensible way to cover this without a permanent commitment.",
-      before:["Confirm how long the support is likely to be needed.","Agree who will manage and brief them."] },
+    redistribute:{ name:"Redistribute it",
+      tellingYou:"Clearer ownership, or a different split of the work across people already in the team, looks like the most direct way to solve this. That usually means the work exists and matters, it just isn't sitting with the right person yet.",
+      recognise:["More than one person could plausibly own this, so nobody fully does.","The work keeps landing with whoever has time, rather than whoever should own it.","Someone with capacity and the right skills is already in the building.","The blocker is really about clarity, not about total workload."],
+      whyItMatters:"Redistributing well is usually faster and cheaper than any other route here, but it only works if ownership is made genuinely clear. A vague redistribution just moves the confusion to a different desk.",
+      focusIntro:"Before you make the change:",
+      focusItems:["Agree exactly who will own this, not just who will help.","Check they actually have the capacity, not just the willingness.","Set a date to check whether it's genuinely sticking.","Tell anyone affected by the change, not just the person taking it on."],
+      aiHelp:"Worth a quick check anyway: even once ownership is clear, part of the work itself might still be worth simplifying or supporting with a tool, so the person taking it on isn't just inheriting the same amount of manual effort.",
+      notYet:"Do not redistribute this and consider it solved without checking back in a few weeks. Silent redistribution has a habit of quietly reversing itself.",
+      nextStepText:"If it turns out only part of this can be redistributed and the rest still needs solving, come back through this tool for what's left." },
+    redesign:{ name:"Redesign the process",
+      tellingYou:"Simplifying the process itself looks like the strongest lever here, before capacity gets added to whatever is currently in place. Adding people or tools to a clunky process usually just makes the clunky process more expensive.",
+      recognise:["People routinely work around the official process rather than through it.","The same information gets typed, copied or checked more than once.","Nobody can clearly explain why a step exists, only that it always has.","Mistakes keep happening at the same point in the process."],
+      whyItMatters:"A process problem dressed up as a capacity problem is one of the more expensive mistakes a growing business can make. It means paying for more hands to run an inefficient process, rather than fixing the process once.",
+      focusIntro:"Pick the one workflow causing the most friction, and ask:",
+      focusItems:["What starts it, and what's supposed to happen at the end?","Which steps add no real value and could disappear?","Where does information get re-entered rather than reused?","Who actually needs to be involved, versus who currently is?"],
+      aiHelp:"This is genuinely one of the better areas to bring in AI or automation, once the process itself has been simplified. Look at repeated data entry, document creation, scheduling and routine follow-ups first.",
+      notYet:"Do not add people or new tools to the process as it currently stands. Fix the shape of it first, or you'll just be paying to run the same inefficiency faster.",
+      nextStepText:"If the redesigned process still needs more hands to run it well, that's a genuine capacity question, worth working through this tool again from that point." },
+    automate:{ name:"Explore AI or automation",
+      tellingYou:"This looks repetitive or rules based enough that technology could take on part of it. That doesn't automatically mean removing a person from the picture, it means exploring where a tool could take the routine part off their plate.",
+      recognise:["The steps are broadly the same every time, with limited judgement involved.","It involves moving information between systems, documents or people.","It's high volume, low complexity work.","Someone capable is spending real time on something a tool could largely handle."],
+      whyItMatters:"Automating the wrong thing wastes money and creates something new to maintain. Automating the right thing quietly returns hours of capacity without adding a single person, which is often the cheapest fix available.",
+      focusIntro:"Before choosing a tool, get specific:",
+      focusItems:["Name the exact repetitive steps, not the whole task or role.","Check what you already pay for, plenty of existing tools do more than people realise.","Work out who will set it up and who will maintain it once it's live.","Decide how you'll know it's actually working."],
+      aiHelp:"This is the question you're already answering. The practical next step is usually a short trial on the highest volume, lowest judgement part of the task, rather than trying to automate the whole thing at once.",
+      notYet:"Do not buy or build anything before mapping the actual steps. Automating a badly defined task just makes the mess move faster.",
+      nextStepText:"If automation only solves part of this and a genuine gap remains, it's worth coming back through this tool for what's left." },
+    develop:{ name:"Develop someone internally",
+      tellingYou:"Training or developing an existing person looks like a realistic way to build this capability, rather than looking outside for it.",
+      recognise:["Someone already has the foundations and the right attitude, just not this specific skill yet.","The gap is genuinely learnable in a reasonable timeframe.","There's enough ongoing need to justify the investment in developing them.","You'd rather grow someone you already trust than take a chance on an unknown hire."],
+      whyItMatters:"Developing someone internally usually costs less than recruiting and tends to build loyalty, but it only works if they're given real time to learn, not just the expectation that they'll pick it up alongside an already full workload.",
+      focusIntro:"Before committing, get clear on:",
+      focusItems:["What specifically they need to learn, not just the general direction.","How much time they'll genuinely be given, protected from their day job.","What support or training they'll actually receive.","What success looks like, and by when."],
+      aiHelp:"AI tools can genuinely speed up how quickly someone picks up a new skill, for research, practice, drafting or getting quick answers, but they support the learning, they don't replace giving someone real time and a real chance.",
+      notYet:"Do not assume development will happen by osmosis alongside a full existing workload. Without protected time, this usually quietly doesn't happen.",
+      nextStepText:"If it turns out nobody currently has the right foundation to build on, that points toward bringing the capability in instead, worth working back through this tool from that point." },
+    freelance:{ name:"Use freelance or contractor support",
+      tellingYou:"Specialist, time-limited support looks like a good fit for this need, rather than a permanent role.",
+      recognise:["The need is real but doesn't come with predictable, ongoing volume.","You need a specific skill for a defined piece of work, not an ongoing function.","Speed matters more than building the capability in house.","You're not yet certain this need will still exist in six months."],
+      whyItMatters:"Freelance or contractor support lets you access a specific skill exactly when you need it, without carrying the ongoing cost and commitment of a permanent role for work that may not be permanent.",
+      focusIntro:"Before engaging anyone:",
+      focusItems:["Be clear on the outcome you need, not just a number of hours or days.","Check current UK guidance on contractor and employment status before agreeing terms.","Agree how the work will be reviewed and signed off.","Confirm who internally will brief and manage them."],
+      aiHelp:"Worth checking anyway: some of what you'd hand to a contractor might be handled directly with the right AI tool, particularly for drafting, research or first pass work, which could reduce the scope, and cost, of what you need externally.",
+      notYet:"Do not skip the scope conversation because you're in a hurry. An unclear brief is the most common reason freelance or contractor work disappoints.",
+      nextStepText:"If this need turns out to be more ongoing than expected once you're into it, it may be worth revisiting whether a permanent role makes more sense." },
+    temporary:{ name:"Use temporary support",
+      tellingYou:"General temporary support looks like a sensible way to cover this without a permanent commitment.",
+      recognise:["You need extra hands for a defined period, not a defined specialism.","The need is likely to ease off again, for example after a busy period or project.","You're not yet ready to commit to a permanent role.","Cover, not new capability, is genuinely what's missing."],
+      whyItMatters:"Temporary support solves a real short-term gap without locking you into a permanent cost once the pressure eases. The risk is treating 'temporary' as permanent by default, simply because replacing it feels like effort.",
+      focusIntro:"Before it starts:",
+      focusItems:["Confirm roughly how long the support is likely to be needed.","Agree who will manage, brief and check in with them.","Set a review point to decide whether it's still needed.","Think ahead to what happens when the cover ends."],
+      aiHelp:"Not the main lever here, this is more of a short-term people question than a technology one. Worth a look later if the same gap keeps recurring.",
+      notYet:"Do not let 'temporary' quietly become permanent by default. Put a review date in the diary now, not just when it starts to feel like a problem.",
+      nextStepText:"If this keeps recurring every few months, that's usually a sign it's actually an ongoing need, worth working back through this tool from that point." },
     moreclarity:{ name:"More clarity needed", explain:"There isn't yet enough certainty here to commit to a particular route.",
-      before:["Revisit this once the picture is clearer, perhaps in a month or after a specific event.","The Priority Filter can help if this is competing with other things for attention."] },
-    recruit:{ name:"Consider recruiting an employee", explain:"This looks like it needs to sit inside the business on an ongoing basis, which points towards recruiting.",
-      before:["Confirm budget and management capacity are genuinely in place.","Use the 3-Box Role Builder before writing a job description."] },
-    outsource:{ name:"Outsource", explain:"This doesn't need to sit inside the business day to day, so outsourcing looks like a realistic route.",
-      before:["Get clear on the outcome you want, not just the task.","Check current UK guidance on contractor and employment status if the arrangement is ongoing."] }
+      before:["Revisit this once the picture is clearer, perhaps in a month or after a specific event.","If this is competing with several other things for your time, it's worth weighing them against each other before deciding."] },
+    recruit:{ name:"Consider recruiting an employee",
+      tellingYou:"This looks like it needs to sit inside the business on an ongoing basis, which points toward recruiting.",
+      recognise:["The need is genuinely ongoing, not a one-off project or seasonal spike.","Redistributing, developing someone internally or bringing in temporary help have all been ruled out or already tried.","You have budget and management capacity genuinely in place, not just hope that it'll work out.","The role would add real, lasting capability rather than just plugging a short-term gap."],
+      whyItMatters:"Recruiting is usually the most expensive and highest-commitment route here, in time, money and management attention, so it's worth being confident the need is real and lasting before you commit to it.",
+      focusIntro:"Before writing a job description:",
+      focusItems:["Confirm budget and management capacity are genuinely, not hopefully, in place.","Get clear on what the role needs to achieve, not just a list of tasks.","Think through who will manage and support them from day one.","Be honest about whether this solves the root cause, or just moves it."],
+      aiHelp:"Before recruiting, it's worth checking whether part of what this role would do could be handled with AI or automation instead, that can sometimes shrink the role into something more focused, or confirm it genuinely needs a full person.",
+      notYet:"Do not write the job description before you're clear what the role needs to achieve. A vague role attracts the wrong candidates and rarely gets fixed later.",
+      nextStepText:"Use \"What does this role need to achieve?\" to get clear on outcomes, ownership and success before you write a job description.",
+      cta:{label:"Define the role", url:ROLE_BUILDER_URL} },
+    outsource:{ name:"Outsource",
+      tellingYou:"This doesn't need to sit inside the business day to day, so outsourcing to a specialist provider looks like a realistic route.",
+      recognise:["The work requires expertise you don't need permanently in house.","A specialist provider could likely do this faster or better than building the capability yourself.","The function is fairly standard, not something that needs deep knowledge of your business specifically.","You'd rather pay for a reliable outcome than manage the process yourself."],
+      whyItMatters:"Outsourcing well can give you access to expertise and reliability you couldn't easily build or afford internally, but it depends entirely on choosing the right provider and being clear about what you're paying for.",
+      focusIntro:"Before agreeing anything:",
+      focusItems:["Get clear on the outcome you want, not just the task you're handing over.","Check current UK guidance on contractor and employment status if the arrangement is ongoing.","Ask how the provider is used by other businesses like yours.","Agree how quality and progress will be reviewed."],
+      aiHelp:"Worth checking before you sign anything: some outsourced functions increasingly use AI themselves to deliver faster or cheaper, which is worth understanding as part of what you're actually paying for.",
+      notYet:"Do not hand this over without a clear outcome defined. An outsourced arrangement with a vague brief tends to disappoint in exactly the same way an unclear hire does.",
+      nextStepText:"If the scope grows into something that increasingly needs to sit inside the business, it may be worth revisiting whether this should move in house instead." }
   };
 
   const STORAGE_KEY = "smartStartDecisionTree";
@@ -339,6 +477,43 @@
     render();
   }
 
+  function paragraphsHtml(text){
+    return text.split(/\n\n+/).map(p => '<p>' + p + '</p>').join('');
+  }
+  function bulletsHtml(items, ordered){
+    const tag = ordered ? 'ol' : 'ul';
+    return '<' + tag + ' class="ss-result-bullets">' + items.map(i => '<li>' + i + '</li>').join('') + '</' + tag + '>';
+  }
+
+  // Full outcomes (everything except the "moreclarity" non-answer) get the
+  // same layered structure as the other SMART Start results: what this
+  // means, the signs it's right, why it matters, what to focus on first,
+  // whether AI or automation is relevant, one challenge before committing,
+  // and a next step.
+  function renderOutcomeDetail(o){
+    let html = '';
+    html += '<div class="ss-result-2col">';
+    html += '<div class="ss-result-block"><h4>What this is telling you</h4>' + paragraphsHtml(o.tellingYou) + '</div>';
+    html += '<div class="ss-result-block ss-result-block-indigo"><h4>You may recognise this if</h4>' + bulletsHtml(o.recognise, false) + '</div>';
+    html += '</div>';
+
+    html += '<div class="ss-result-block"><h4>Why it matters</h4>' + paragraphsHtml(o.whyItMatters) + '</div>';
+
+    html += '<div class="ss-result-block ss-result-block-focus"><h4>What to focus on first</h4><p>' + o.focusIntro + '</p>' + bulletsHtml(o.focusItems, true) + '</div>';
+
+    html += '<div class="ss-result-ai"><h4>Could AI or automation help?</h4>' + paragraphsHtml(o.aiHelp) + '</div>';
+
+    html += '<div class="ss-result-challenge"><h4>Before you commit to this</h4><p>' + o.notYet + '</p></div>';
+
+    html += '<div class="ss-next-box"><h4>Your next step</h4><p>' + o.nextStepText + '</p>';
+    if(o.cta){
+      html += '<a class="ss-btn ss-btn-primary" href="' + o.cta.url + '">' + o.cta.label + '</a>';
+    }
+    html += '</div>';
+
+    return html;
+  }
+
   function render(){
     const treeArea = document.getElementById('tree-area');
     const resultArea = document.getElementById('result-area');
@@ -346,16 +521,39 @@
     if(state.outcome){
       treeArea.innerHTML = '';
       const o = OUTCOMES[state.outcome];
-      let html = '<div class="ss-result-primary"><h3>Your most likely route</h3><div class="ss-result-name">' + o.name + '</div><p>' + o.explain + '</p></div>';
-      html += '<div class="ss-next-box"><h4>Before you act</h4><ul style="margin:0; padding-left:18px;">';
-      o.before.forEach(b => html += '<li style="margin-bottom:6px; font-size:14.5px;">' + b + '</li>');
-      html += '</ul></div>';
+      const answered = state.history.length;
+
+      let html = '<div class="ss-result-hero"><h3>Your most likely route</h3><div class="ss-result-name">' + o.name + '</div></div>';
+
+      if(o.tellingYou){
+        // A fully worked-through outcome: the answers were decisive enough
+        // to reach a clear route, so say so rather than let a short path
+        // read as though something was skipped.
+        if(answered <= 4){
+          html += '<p class="ss-result-quicknote">That was quick, your answers made this clear early on.</p>';
+        } else if(answered >= 7){
+          html += '<p class="ss-result-quicknote">You worked through this in some depth, here\'s where it landed.</p>';
+        }
+        html += '<div class="ss-result-disclaimer"><span class="ss-disclaimer-icon" aria-hidden="true">i</span><div>'
+          + '<strong>About this result</strong>'
+          + '<p>This route is based only on the answers you\'ve given here. It cannot take account of information or context that hasn\'t been included, so use it as a starting point rather than a final decision.</p>'
+          + '</div></div>';
+        html += renderOutcomeDetail(o);
+      } else {
+        // "moreclarity" and any other lightweight outcome without the
+        // full field set: keep this short rather than padding it out.
+        html += '<div class="ss-result-secondary"><p>' + o.explain + '</p></div>';
+        html += '<div class="ss-next-box"><h4>Before you act</h4>' + bulletsHtml(o.before, false) + '</div>';
+      }
+
       if(state.notes.length){
         html += '<div class="ss-result-secondary"><h4>Also worth remembering</h4>' + state.notes.map(n => '<p>' + n + '</p>').join('') + '</div>';
       }
-      if(state.outcome === 'recruit'){
-        html += '<div class="ss-next-box"><h4>What to do next</h4><p>Use the 3-Box Role Builder to get clear on outcomes, ownership and success before you write a job description.</p></div>';
+
+      if(o.tellingYou){
+        html += '<p class="ss-pro-disclaimer">SMART Start provides general business guidance and is not a substitute for professional advice. Where a decision involves legal, employment, financial or other specialist considerations, take appropriate professional advice before acting.</p>';
       }
+
       html += '<div class="no-print" style="margin-top:16px;"><button class="ss-btn ss-btn-outline ss-btn-sm" onclick="goBack()">Back to the previous question</button></div>';
       resultArea.innerHTML = html;
       resultArea.style.display = 'block';

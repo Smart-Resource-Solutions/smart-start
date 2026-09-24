@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The Bottleneck Finder | SMART Start</title>
+<title>Where is your business getting stuck? | SMART Start</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
 <style>
@@ -14,7 +14,7 @@
     --cyan:#1ED6E6; --cyan-deep:#0E7C90;
     --coral:#E8715A; --coral-deep:#C0562F;
     --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
-    --line:#E4E7F0; --pale:#F4F6FB;
+    --line:#E4E7F0; --pale:#F4F6FB; --pale-indigo:#EDEEFA; --pale-disclaimer:#EEF3FA;
     --radius-lg:20px; --radius-md:14px; --radius-sm:9px;
     --shadow-sm:0 2px 10px rgba(13,31,79,.07);
     --shadow-md:0 14px 34px rgba(13,31,79,.14);
@@ -22,7 +22,7 @@
   }
   *{box-sizing:border-box;}
   html{scroll-behavior:smooth;}
-  body{margin:0; background:var(--white); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
+  body{margin:0; background:var(--pale); color:var(--ink); font-family:'Manrope',sans-serif; line-height:1.6; -webkit-font-smoothing:antialiased;}
   h1,h2,h3,h4{margin:0; color:var(--navy-deep);}
   .serif{font-family:'DM Serif Display',serif; font-weight:400;}
   p{margin:0 0 12px; font-size:15.5px;}
@@ -52,7 +52,7 @@
   .ss-back-link:hover{border-color:#fff;}
 
   /* ---------- INTRO ---------- */
-  .ss-intro{padding:44px 0 8px;}
+  .ss-intro{padding:32px 0 4px;}
   .ss-eyebrow{font-size:12.5px; font-weight:800; letter-spacing:.04em; text-transform:uppercase; color:var(--coral-deep); margin-bottom:10px;}
   .ss-intro h1{font-size:clamp(22px, 5vw, 32px); font-weight:800; letter-spacing:-.01em; line-height:1.2; overflow-wrap:break-word;}
   .ss-subtitle{font-size:17px; color:var(--navy); font-weight:700; margin-top:10px;}
@@ -85,9 +85,9 @@
   .ss-box-title{display:flex; align-items:center; font-size:17px; font-weight:800; margin-bottom:4px;}
 
   /* ---------- SCALE / OPTION BUTTONS (bottleneck, decision tree) ---------- */
-  .ss-scale{display:flex; gap:8px; flex-wrap:wrap; margin-top:10px;}
-  .ss-scale-btn{flex:1; min-width:90px; padding:10px 8px; border-radius:var(--radius-sm); border:1.5px solid var(--line);
-    background:#fff; font-size:13px; font-weight:700; color:var(--ink-muted); cursor:pointer; text-align:center; transition:all .15s var(--ease);}
+  .ss-scale{display:flex; gap:6px; flex-wrap:wrap; margin-top:8px;}
+  .ss-scale-btn{flex:1; min-width:80px; padding:7px 8px; border-radius:999px; border:1.5px solid var(--line);
+    background:#fff; font-size:12.5px; font-weight:700; color:var(--ink-muted); cursor:pointer; text-align:center; transition:all .15s var(--ease);}
   .ss-scale-btn:hover{border-color:var(--navy);}
   .ss-scale-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
   .ss-statement{font-size:14.5px; font-weight:700; color:var(--navy-deep); margin-bottom:4px;}
@@ -98,24 +98,78 @@
   .ss-choice-btn:hover{border-color:var(--navy);}
   .ss-choice-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
 
+  /* ---------- RADIO-STYLE QUESTION OPTIONS (matches SMART Start check-in) ---------- */
+  .q-block{padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line);}
+  .q-block:last-child{margin-bottom:0; padding-bottom:0; border-bottom:none;}
+  .q-statement{font-size:15px; font-weight:700; color:var(--navy-deep); margin-bottom:10px;}
+  .q-options{display:grid; grid-template-columns:repeat(4, 1fr); gap:8px 10px;}
+  @media (max-width:600px){.q-options{grid-template-columns:repeat(2, 1fr);}}
+  .q-option{display:flex; align-items:center; gap:8px; padding:10px 12px; min-height:44px; border-radius:999px;
+    border:1.5px solid var(--line); background:#fff; cursor:pointer; transition:border-color .15s var(--ease), background .15s var(--ease);}
+  .q-option:hover{border-color:var(--navy);}
+  .q-option.is-selected{border-color:var(--navy-deep); background:var(--pale);}
+  .q-option:focus-within{outline:2px solid var(--coral); outline-offset:2px;}
+  .q-option input{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;}
+  .q-option-radio{width:17px; height:17px; border-radius:50%; border:2px solid var(--line); flex-shrink:0; position:relative; transition:border-color .15s var(--ease);}
+  .q-option.is-selected .q-option-radio{border-color:var(--navy-deep);}
+  .q-option.is-selected .q-option-radio::after{content:""; position:absolute; inset:3px; border-radius:50%; background:var(--navy-deep);}
+  .q-option-text{font-size:12.5px; font-weight:600; color:var(--ink); line-height:1.3;}
+
   /* ---------- CHECKLIST ---------- */
   .ss-check-item{display:flex; align-items:flex-start; gap:12px; padding:11px 0; border-bottom:1px solid var(--line);}
   .ss-check-item:last-child{border-bottom:none;}
   .ss-check-item input[type=checkbox]{width:19px; height:19px; margin-top:2px; accent-color:var(--teal-deep); flex-shrink:0;}
   .ss-check-item label{font-weight:600; color:var(--ink); margin:0; cursor:pointer; font-size:14.5px;}
-  .ss-progress-track{height:10px; background:var(--line); border-radius:999px; overflow:hidden; margin:12px 0 6px;}
-  .ss-progress-fill{height:100%; background:linear-gradient(90deg, var(--teal), var(--cyan)); border-radius:999px; transition:width .3s var(--ease);}
-  .ss-progress-label{font-size:13px; font-weight:700; color:var(--navy-deep);}
+  .ss-progress-track{height:4px; background:var(--line); border-radius:999px; overflow:hidden; margin:6px 0 24px;}
+  .ss-progress-fill{height:100%; background:var(--navy-deep); border-radius:999px; transition:width .3s var(--ease);}
+  .ss-progress-label{font-size:11.5px; font-weight:700; letter-spacing:.04em; text-transform:uppercase; color:var(--ink-faint);}
 
   /* ---------- RESULT BANNERS ---------- */
-  .ss-result-primary{background:var(--navy-deep); color:#fff; border-radius:var(--radius-lg); padding:26px 28px; margin-bottom:16px;}
-  .ss-result-primary h3{color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:10px; opacity:.85;}
-  .ss-result-primary .ss-result-name{font-size:23px; font-weight:800; margin-bottom:10px;}
-  .ss-result-primary p{color:rgba(255,255,255,.85);}
+  .ss-result-hero{background:var(--navy-deep); color:#fff; border-radius:var(--radius-lg); padding:22px 26px; margin-bottom:18px;}
+  .ss-result-hero h3{color:#fff; font-size:13px; text-transform:uppercase; letter-spacing:.05em; font-weight:800; margin-bottom:8px; opacity:.85;}
+  .ss-result-hero .ss-result-name{font-size:24px; font-weight:800; margin-bottom:10px;}
+  .ss-result-hero p{color:rgba(255,255,255,.85); margin-bottom:0; font-size:14.5px;}
   .ss-result-secondary{background:var(--pale); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:12px;}
   .ss-result-secondary h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:6px;}
-  .ss-next-box{background:#fff; border:1.5px dashed var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-top:14px;}
-  .ss-next-box h4{font-size:13px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+
+  .ss-result-2col{display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-bottom:16px;}
+  @media (max-width:700px){.ss-result-2col{grid-template-columns:1fr;}}
+
+  .ss-result-block{background:#fff; border:1.5px solid var(--line); border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px;}
+  .ss-result-block h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--navy-deep); margin-bottom:8px;}
+  .ss-result-block p:last-child, .ss-result-block ol:last-child, .ss-result-block ul:last-child{margin-bottom:0;}
+  .ss-result-block-indigo{background:#ECEDFA;}
+  .ss-result-block-focus{background:#EEF2FA;}
+
+  .ss-result-bullets{margin:0 0 12px; padding-left:20px;}
+  .ss-result-bullets li{margin-bottom:6px; font-size:14.5px; color:var(--ink);}
+  .ss-result-bullets li:last-child{margin-bottom:0;}
+
+  .ss-result-ai{background:#EAF7F6; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--teal-deep);}
+  .ss-result-ai h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:8px;}
+  .ss-result-ai p:last-child, .ss-result-ai ul:last-child{margin-bottom:0;}
+
+  .ss-result-challenge{background:#FDF1EC; border-radius:var(--radius-md); padding:18px 20px; margin-bottom:16px; border-left:4px solid var(--coral-deep);}
+  .ss-result-challenge h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--coral-deep); margin-bottom:8px;}
+  .ss-result-challenge p{margin-bottom:0; font-weight:600; color:var(--ink);}
+
+  .ss-next-box{background:var(--navy-deep); border-radius:var(--radius-md); padding:20px 22px; margin-bottom:16px;}
+  .ss-next-box h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:rgba(255,255,255,.65); margin-bottom:8px;}
+  .ss-next-box p{color:rgba(255,255,255,.92);}
+  .ss-next-box p:last-child{margin-bottom:14px;}
+
+  .ss-result-disclaimer{background:var(--pale-disclaimer); border-radius:var(--radius-md); padding:14px 18px; margin-bottom:18px;
+    font-size:12.5px; color:var(--ink-muted); display:flex; gap:10px; align-items:flex-start;}
+  .ss-result-disclaimer strong{display:block; font-size:11.5px; text-transform:uppercase; letter-spacing:.04em; color:var(--navy-deep); margin-bottom:3px; font-weight:800;}
+  .ss-result-disclaimer p{margin:0; color:var(--ink-muted);}
+  .ss-disclaimer-icon{display:flex; align-items:center; justify-content:center; width:18px; height:18px; border-radius:50%;
+    background:var(--navy-deep); color:#fff; font-size:11px; font-weight:800; font-style:italic; flex-shrink:0; margin-top:1px;}
+
+  .ss-pro-disclaimer{font-size:12px; color:var(--ink-faint); line-height:1.5; margin-top:6px;}
+
+  .ss-result-secondary-mini{background:var(--pale); border-radius:var(--radius-md); padding:16px 20px; margin-top:4px;}
+  .ss-result-secondary-mini h4{font-size:12px; text-transform:uppercase; letter-spacing:.04em; font-weight:800; color:var(--teal-deep); margin-bottom:6px;}
+  .ss-result-secondary-mini p{margin-bottom:0; font-size:14px; color:var(--ink-muted);}
 
   /* ---------- BUTTONS ---------- */
   .ss-btn{display:inline-flex; align-items:center; gap:8px; padding:13px 22px; border-radius:999px; font-size:14px; font-weight:700;
@@ -150,9 +204,11 @@
     .ss-header{background:#fff; border-bottom:2px solid var(--navy-deep); padding:10px 0;}
     .ss-wordmark-sub{color:var(--navy-deep) !important;}
     .ss-logo{background:none !important; padding:0 !important; height:28px;}
-    .ss-result-primary{background:#fff !important; color:var(--navy-deep) !important; border:2px solid var(--navy-deep);}
-    .ss-result-primary h3, .ss-result-primary p, .ss-result-primary .ss-result-name{color:var(--navy-deep) !important;}
-    .ss-card, .ss-result-secondary, .ss-next-box{page-break-inside:avoid; box-shadow:none;}
+    .ss-result-hero{background:#fff !important; color:var(--navy-deep) !important; border:2px solid var(--navy-deep);}
+    .ss-result-hero h3, .ss-result-hero .ss-result-name, .ss-result-hero p{color:var(--navy-deep) !important;}
+    .ss-next-box{background:#fff !important; border:2px solid var(--navy-deep);}
+    .ss-next-box h4, .ss-next-box p{color:var(--navy-deep) !important;}
+    .ss-card, .ss-result-block, .ss-result-secondary, .ss-result-ai, .ss-result-challenge, .ss-next-box, .ss-result-disclaimer{page-break-inside:avoid; box-shadow:none;}
     textarea{overflow:visible !important;}
     .wrap{max-width:100%;}
     a[href]:after{content:"";}
@@ -173,20 +229,23 @@
 
 <section class="ss-intro">
   <div class="wrap">
-    <p class="ss-eyebrow">Where is the pressure coming from?</p>
-    <h1 class="serif">The Bottleneck Finder</h1>
-    <p class="ss-subtitle">Spot where work, ownership or capacity is getting stuck.</p>
-    <p class="ss-explain">Rate a short set of statements across six areas of the business. This shows you where the pressure is really coming from, so you can work out what to do about it with a clearer picture.</p>
-    <div class="ss-scope">
-      <strong>What this does not do:</strong> it does not rank competing priorities, decide whether to hire, decide whether to outsource, or design a role. Once you know where the pressure is coming from, the Priority Filter, the Decision Tree and the 3-Box Role Builder can help with those next steps.
-    </div>
-    <p class="ss-reassure">Take your time with this. There are no right or wrong answers, just what feels true today.</p>
+    <h1 class="serif">Where is your business getting stuck?</h1>
+    <p class="ss-explain">Answer a few quick statements and we'll show you what stands out and where to focus next.</p>
+    <p class="ss-reassure">About 2 minutes.</p>
   </div>
 </section>
 
 <main class="wrap ss-main">
 
-  <div id="question-area"></div>
+  <div id="question-view">
+    <div class="ss-progress-label" id="q-progress-label"></div>
+    <div class="ss-progress-track"><div class="ss-progress-fill" id="q-progress-fill"></div></div>
+    <div id="question-area" class="ss-card"></div>
+    <div class="ss-actions no-print" style="border-top:none; padding:10px 0 0;">
+      <button class="ss-btn ss-btn-outline" id="q-back" onclick="goBackPage()">Back</button>
+      <button class="ss-btn ss-btn-primary" id="q-next" onclick="goNextPage()" disabled>Next &rarr;</button>
+    </div>
+  </div>
 
   <div id="result-area" style="display:none;"></div>
 
@@ -207,84 +266,224 @@
   const PRIORITY_FILTER_URL = "smart-start-priority-filter.html";
   const DECISION_TREE_URL = "smart-start-decision-tree.html";
   const ROLE_BUILDER_URL = "smart-start-3-box-role-builder.html";
+  const TASK_DECISION_AUDIT_URL = "smart-start-task-decision-audit.html";
+  const FOUR_AREAS_URL = "smart-start-4-areas-review-before-hire.html";
+  const ROLES_MAP_URL = "smart-start-roles-responsibilities-map.html";
+  const PROCESS_AUDIT_URL = "smart-start-process-audit.html";
+  const CAPABILITY_FILTER_URL = "smart-start-capability-filter.html";
   const SUCCESS_CHECKLIST_URL = "smart-start-30-day-success-checklist.html";
   const JD_TEMPLATE_URL = "smart-start-jd-person-spec-template.html";
   const JOB_ADVERT_URL = "smart-start-job-advert-template.html";
   const INTERVIEW_SCORECARD_URL = "smart-start-interview-scorecard.html";
 
   // Six bottleneck categories, each with three short statements rated on a
-  // 0 to 3 scale (Not an issue / Sometimes / Often / Major issue).
+  // 0 to 3 scale (Hardly ever / Sometimes / Often / Nearly always).
   const CATEGORIES = [
-    { key:"owner", name:"Owner / leadership bottleneck",
+    { key:"owner", name:"Owner / leadership",
+      interpretation:"Your answers suggest too much may still depend on you, or another senior person, to keep things moving. That pattern tends to cap how much the business can take on, however hard everyone else is working.",
       statements:[
         "Most day to day decisions rely on me, or one other senior person.",
         "Work regularly waits for my approval before it can move forward.",
         "I keep getting pulled back into hands on delivery instead of leading."
       ],
-      explain:"Decisions and work are routing through one person more than the business can comfortably sustain.",
-      next:"Once you're clear this is where the pressure sits, the Decision Tree can help you work out whether the answer is redistributing work, redesigning a process, or something else. If several things are competing for your time, try the Priority Filter first."
+      oneLiner:"Too much still runs through you or one other senior person.",
+      tellingYou:"Too much of the business appears to depend on you, or another senior person, to keep work moving. Decisions, approvals and delivery may be flowing through too few people, which can make the business feel busy while still slowing growth.",
+      recognise:[
+        "People regularly wait for your decision before moving forward.",
+        "You keep getting pulled back into day to day delivery.",
+        "Work slows down when you are unavailable.",
+        "Too many decisions still come back to you.",
+        "You know you should be working on the business, but operational work keeps taking over."
+      ],
+      whyItMatters:"When too much sits with one person, that person can become the limit on how much the business can take on. Adding more people does not necessarily solve it if decisions, knowledge and ownership still come back to you.",
+      focusIntro:"Start by asking:",
+      focusItems:[
+        "Which decisions genuinely need to stay with you?",
+        "What could someone else own completely?",
+        "Where are people waiting for approval that could be removed?",
+        "Which work are you still doing because you have always done it?",
+        "What could be standardised so it no longer relies on your involvement?"
+      ],
+      aiHelp:"Some of the work flowing back to you may not need another person at all.\n\nLook for repeat decisions, reporting, administration, scheduling, follow-ups, information gathering, meeting summaries and routine communication that could be standardised, supported by AI or automated.\n\nTechnology will not replace leadership, but it may remove work that should not need your personal involvement.",
+      notYet:"Do not hire someone simply to take tasks off your plate without first deciding what you should stop owning.",
+      nextStepText:"Use the Task and Decision Audit to look back over your week and work out what could stop, be automated, be delegated, or be outsourced, rather than staying with you by default.",
+      cta:{label:"Start the audit", url:TASK_DECISION_AUDIT_URL}
     },
     { key:"capacity", name:"Capacity",
+      interpretation:"Your answers suggest the team may not have enough room to comfortably absorb the work and priorities already on its plate. That is usually worth taking seriously before anything else gets decided.",
       statements:[
         "People in the team are consistently stretched beyond a sustainable workload.",
         "Deadlines are slipping more often than they used to.",
         "Reactive, urgent work keeps crowding out the important work."
       ],
-      explain:"The team has more demand than it currently has capacity to absorb.",
-      next:"The Decision Tree will help you work through whether the answer is redesigning how work is organised, automating part of it, bringing in temporary support, or recruiting. If new capability looks like a clear part of the answer, the 3-Box Role Builder can help you define it."
+      oneLiner:"The team has more coming in than it can comfortably absorb.",
+      tellingYou:"There appears to be more work coming into the business than the current team can comfortably absorb. That does not automatically mean you need another employee, but it does mean the way the work is being handled needs attention.",
+      recognise:[
+        "Deadlines are starting to slip.",
+        "Important work keeps being pushed back by urgent work.",
+        "People are regularly working beyond what feels sustainable.",
+        "There is little spare capacity when something unexpected happens.",
+        "Growth opportunities are being delayed because the team is already full."
+      ],
+      whyItMatters:"When a team operates at full stretch for too long, quality can fall, mistakes increase and good people can become frustrated. Growth can also stall because there is no room to take on anything new.",
+      focusIntro:"Before increasing headcount, look at what is creating the demand. Ask:",
+      focusItems:[
+        "What work genuinely needs to be done?",
+        "What could be stopped or deprioritised?",
+        "What could be simplified?",
+        "What could move to someone else?",
+        "Which tasks are consuming time without adding enough value?"
+      ],
+      aiHelp:"Quite possibly.\n\nLook particularly at repetitive administration, reporting, scheduling, data entry, document creation, customer follow-ups, internal updates and routine research.\n\nAI and workflow automation may not remove the need for additional capacity, but they may reduce how much extra capacity you need.",
+      notYet:"Do not assume busy means you need another employee.",
+      nextStepText:"Before considering a hire, use \"4 Areas to Review Before You Hire\" to check whether the process, automation, cross-training or what you're actually spending capacity on could solve this instead.",
+      cta:{label:"Review the 4 areas", url:FOUR_AREAS_URL},
+      secondaryCta:{label:"Or define the role", url:ROLE_BUILDER_URL}
     },
     { key:"ownership", name:"Ownership and responsibilities",
+      interpretation:"Your answers suggest greater clarity around ownership and decision-making could make a significant difference. Small gaps in who owns what tend to compound as a team grows.",
       statements:[
         "It isn't always clear who owns a particular piece of work.",
         "The same task sometimes gets duplicated by more than one person.",
         "People are unsure who has the authority to make certain decisions."
       ],
-      explain:"Responsibilities and decision rights are not clearly assigned across the team.",
-      next:"This is often solved through clarity rather than headcount. The Decision Tree can help you think through whether clearer ownership or redistribution solves this before you consider adding anyone."
+      oneLiner:"It is not always clear who owns what, or who decides.",
+      tellingYou:"The issue may not be a lack of people. It may be a lack of clarity around who owns what, who makes which decisions and where responsibility begins and ends.",
+      recognise:[
+        "Work gets duplicated because two people think they own it.",
+        "Tasks fall between roles because everyone assumes someone else is handling them.",
+        "People regularly ask who should make a decision.",
+        "Work keeps being escalated to senior people unnecessarily.",
+        "Responsibilities have evolved as the business has grown, but roles have not caught up."
+      ],
+      whyItMatters:"Unclear ownership creates hidden waste.\n\nPeople spend time checking, chasing, duplicating work and waiting for decisions. It also makes performance harder to manage because responsibility itself is unclear.",
+      focusIntro:"Start by identifying the work that causes the most confusion. Ask:",
+      focusItems:[
+        "Who should own the outcome?",
+        "What decisions should they be able to make without approval?",
+        "Where are responsibilities overlapping?",
+        "What work currently has no clear owner?",
+        "What is still sitting with the owner or leadership team unnecessarily?"
+      ],
+      aiHelp:"Technology can support clearer ownership, but it cannot create accountability on its own.\n\nWorkflow tools can make handoffs visible, assign tasks automatically, trigger reminders and show where work is waiting.\n\nAI can also help document processes, create role summaries and turn informal ways of working into clearer instructions.\n\nBut someone still needs to decide who owns what.",
+      notYet:"Do not add another person into unclear responsibilities.",
+      nextStepText:"Use the Roles and Responsibilities Map to see the whole shape of the business at once, so unclear ownership and overloaded people both become visible together.",
+      cta:{label:"Go to the Map", url:ROLES_MAP_URL}
     },
     { key:"process", name:"Process and workflow",
+      interpretation:"Your answers suggest the way work moves through the business may be creating unnecessary friction. That kind of problem is often more fixable, and cheaper to fix, than it first looks.",
       statements:[
         "The same manual work gets repeated in a way that feels avoidable.",
         "Work regularly gets stuck or delayed between stages or handoffs.",
         "We often redo work because something wasn't right the first time."
       ],
-      explain:"The way work moves through the business is creating friction, independent of who is doing it.",
-      next:"The Decision Tree covers whether simplifying the process, or technology and automation, could ease this before you look at adding people."
+      oneLiner:"The way work moves through the business is creating friction.",
+      tellingYou:"The way work moves through the business may be making things harder than they need to be. The problem may sit in the process rather than with the people doing the work.",
+      recognise:[
+        "The same information is entered in several places.",
+        "Work regularly gets stuck between people or departments.",
+        "People rely on workarounds to get things done.",
+        "Tasks are repeated manually that feel as though they should be easier.",
+        "Mistakes regularly lead to work being redone."
+      ],
+      whyItMatters:"Poor processes quietly absorb time and money.\n\nAs the business grows, those inefficiencies multiply. Hiring more people into the same inefficient system can simply make the process bigger rather than better.",
+      focusIntro:"Choose one workflow that is causing the most frustration or wasted time. Ask:",
+      focusItems:[
+        "What starts the process?",
+        "What happens next?",
+        "Who touches it?",
+        "Where does it wait?",
+        "Where is information re-entered?",
+        "Where do mistakes or rework happen?",
+        "Which steps could disappear completely?"
+      ],
+      aiHelp:"This is one of the strongest areas to explore.\n\nLook for:",
+      aiHelpList:[
+        "repeated data entry",
+        "transferring information between systems",
+        "routine emails and follow-ups",
+        "meeting notes and summaries",
+        "document drafting",
+        "reporting",
+        "scheduling",
+        "extracting information from forms or documents",
+        "repetitive customer communication",
+        "approval workflows"
+      ],
+      aiHelpAfter:"Sometimes the best answer is not a new person. It is removing work that no longer needs a person doing it.",
+      notYet:"Do not hire someone to manage work that could be removed, simplified or automated.",
+      nextStepText:"Use the Process Audit to work out whether this is a single task that only lives in one person's head, or a process involving several people that's just become clunky and error prone.",
+      cta:{label:"Go to the Process Audit", url:PROCESS_AUDIT_URL}
     },
     { key:"capability", name:"Capability",
+      interpretation:"Your answers suggest the business may be missing some of the skills or expertise it needs for what comes next. That is a different problem from simply being busy, and it needs a different answer.",
       statements:[
         "There are skills the business needs that nobody currently has.",
         "Important work relies heavily on one specialist person.",
         "New opportunities are appearing that the team can't currently deliver."
       ],
-      explain:"This looks less like a workload problem and more like a genuine capability gap.",
-      next:"If a new capability clearly looks necessary, the 3-Box Role Builder will help you define what that person needs to deliver. The Decision Tree can help you check whether training an existing person, outsourcing or a contractor could meet the need first."
-    },
-    { key:"people", name:"People and performance",
-      statements:[
-        "An existing role isn't delivering what the business genuinely needs.",
-        "Expectations for at least one role aren't clearly understood.",
-        "A performance issue exists that hasn't been properly addressed."
+      oneLiner:"A specific skill or specialism the business needs may be missing.",
+      tellingYou:"The business may need knowledge, experience or specialist skills that are not currently available within the team. This is different from simply having too much work.",
+      recognise:[
+        "Opportunities are appearing that the team cannot currently deliver.",
+        "A particular skill is missing altogether.",
+        "One specialist person has become a single point of dependency.",
+        "You rely heavily on external help because nobody internally has the capability.",
+        "The business is moving into an area where existing skills are no longer enough."
       ],
-      explain:"This points to an existing team or performance issue rather than a capacity or hiring question.",
-      next:"This is usually a direct conversation about expectations and performance, not a recruitment decision. If it turns out a role does need to be redefined once that conversation has happened, the 3-Box Role Builder can help."
+      whyItMatters:"A genuine capability gap can limit growth even when the existing team has enough time.\n\nIt may stop you taking on new work, developing new products, improving performance or reducing dependency on one individual.",
+      focusIntro:"Be very clear about the capability you actually need. Ask:",
+      focusItems:[
+        "What does the business need to be able to do that it cannot do today?",
+        "Is this capability needed every day or occasionally?",
+        "Does it need to sit inside the business?",
+        "Could someone existing develop it?",
+        "Would a specialist, contractor or partner be a better fit?"
+      ],
+      aiHelp:"Potentially, but think of AI as a capability multiplier rather than an automatic replacement for expertise.\n\nAI may help with research, drafting, analysis, documentation, coding, content creation, data interpretation and routine specialist tasks.\n\nWhere judgement, accountability, deep expertise or client trust matter, human capability will still be important.\n\nThe better question is which parts need genuine expertise, and which parts can technology make faster or easier.",
+      notYet:"Do not build a permanent role around a capability you only need occasionally.",
+      nextStepText:"Before writing a job description, use the Capability Filter to check whether auditing internal talent, upskilling, borrowing capability in, or a piece of technology could close the gap instead.",
+      cta:{label:"Go to the Capability Filter", url:CAPABILITY_FILTER_URL},
+      secondaryCta:{label:"Or define the role", url:ROLE_BUILDER_URL}
     }
   ];
 
-  const SCALE = ["Not an issue", "Sometimes", "Often", "Major issue"];
+  const SCALE = ["Hardly ever", "Sometimes", "Often", "Nearly always"];
   const STORAGE_KEY = "smartStartBottleneckFinder";
 
+  // Fixed order that interleaves the five categories so the three
+  // questions on any one page never come from the same section, and no
+  // section heading is shown, so it isn't obvious what is being measured.
+  const QUESTION_ORDER = [
+    [4,0],[1,0],[0,0],
+    [2,0],[3,0],[0,1],
+    [1,1],[4,1],[2,1],
+    [3,1],[0,2],[1,2],
+    [2,2],[3,2],[4,2]
+  ];
+  const PAGE_SIZE = 3;
+  const TOTAL_PAGES = Math.ceil(QUESTION_ORDER.length / PAGE_SIZE);
+
   let ratings = {}; // "catIndex-stmtIndex" -> 0..3
+  let currentPage = 0;
 
   function loadSaved(){
     try {
       const raw = localStorage.getItem(STORAGE_KEY);
-      if(raw) ratings = JSON.parse(raw) || {};
-    } catch(e){ ratings = {}; }
+      const parsed = raw ? JSON.parse(raw) : null;
+      if(parsed && parsed.ratings){
+        ratings = parsed.ratings;
+        currentPage = parsed.page || 0;
+      } else if(parsed){
+        ratings = parsed; // older saved format, before pagination existed
+        currentPage = 0;
+      }
+    } catch(e){ ratings = {}; currentPage = 0; }
+    if(currentPage < 0 || currentPage >= TOTAL_PAGES) currentPage = 0;
   }
   function persist(){
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(ratings));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify({ratings, page: currentPage}));
       document.getElementById('save-note').style.display = 'flex';
     } catch(e){ /* fail quietly */ }
   }
@@ -292,35 +491,66 @@
   function rate(catIndex, stmtIndex, value){
     ratings[catIndex + "-" + stmtIndex] = value;
     persist();
-    renderQuestions();
+    renderPage();
   }
 
-  function renderQuestions(){
+  function pageQuestions(pageIndex){
+    return QUESTION_ORDER.slice(pageIndex * PAGE_SIZE, pageIndex * PAGE_SIZE + PAGE_SIZE);
+  }
+  function pageIsComplete(pageIndex){
+    return pageQuestions(pageIndex).every(([ci,si]) => typeof ratings[ci+"-"+si] !== 'undefined');
+  }
+
+  function renderPage(){
     const area = document.getElementById('question-area');
     area.innerHTML = '';
-    CATEGORIES.forEach((cat, ci) => {
-      const card = document.createElement('div');
-      card.className = 'ss-card';
-      let inner = '<div class="ss-section-head"><h2>' + (ci+1) + '. ' + cat.name + '</h2></div>';
-      cat.statements.forEach((s, si) => {
-        const current = ratings[ci + "-" + si];
-        inner += '<div class="ss-field"><p class="ss-statement">' + s + '</p><div class="ss-scale" role="radiogroup" aria-label="' + s.replace(/"/g,"'") + '">';
-        SCALE.forEach((label, val) => {
-          const active = current === val ? ' is-active' : '';
-          inner += '<button type="button" class="ss-scale-btn' + active + '" aria-pressed="' + (current===val) + '" onclick="rate(' + ci + ',' + si + ',' + val + ')">' + label + '</button>';
-        });
-        inner += '</div></div>';
+
+    pageQuestions(currentPage).forEach(([ci, si]) => {
+      const s = CATEGORIES[ci].statements[si];
+      const current = ratings[ci + "-" + si];
+      const block = document.createElement('div');
+      block.className = 'q-block';
+      let inner = '<p class="q-statement">' + s + '</p><div class="q-options" role="radiogroup" aria-label="' + s.replace(/"/g,"'") + '">';
+      SCALE.forEach((label, val) => {
+        const isSelected = current === val;
+        inner += '<label class="q-option' + (isSelected ? ' is-selected' : '') + '">'
+          + '<input type="radio" name="q-' + ci + '-' + si + '" value="' + val + '"' + (isSelected ? ' checked' : '') + ' onchange="rate(' + ci + ',' + si + ',' + val + ')">'
+          + '<span class="q-option-radio" aria-hidden="true"></span>'
+          + '<span class="q-option-text">' + label + '</span>'
+          + '</label>';
       });
-      card.innerHTML = inner;
-      area.appendChild(card);
+      inner += '</div>';
+      block.innerHTML = inner;
+      area.appendChild(block);
     });
 
-    const totalStatements = CATEGORIES.reduce((n,c)=>n+c.statements.length,0);
-    const answered = Object.keys(ratings).length;
-    const btnRow = document.createElement('div');
-    btnRow.style.marginTop = '10px';
-    btnRow.innerHTML = '<button class="ss-btn ss-btn-primary" ' + (answered < totalStatements ? 'disabled' : '') + ' onclick="showResult()">See my main bottleneck (' + answered + ' of ' + totalStatements + ' rated)</button>';
-    area.appendChild(btnRow);
+    document.getElementById('q-progress-label').textContent = 'Step ' + (currentPage + 1) + ' of ' + TOTAL_PAGES;
+    document.getElementById('q-progress-fill').style.width = (((currentPage + 1) / TOTAL_PAGES) * 100) + '%';
+    document.getElementById('q-back').style.visibility = currentPage === 0 ? 'hidden' : 'visible';
+
+    const nextBtn = document.getElementById('q-next');
+    const isLastPage = currentPage === TOTAL_PAGES - 1;
+    nextBtn.textContent = isLastPage ? 'See my main growth blocker' : 'Next \u2192';
+    nextBtn.disabled = !pageIsComplete(currentPage);
+  }
+
+  function goNextPage(){
+    if(!pageIsComplete(currentPage)) return;
+    if(currentPage === TOTAL_PAGES - 1){
+      showResult();
+      return;
+    }
+    currentPage++;
+    persist();
+    renderPage();
+    window.scrollTo({top:0, behavior:'smooth'});
+  }
+  function goBackPage(){
+    if(currentPage === 0) return;
+    currentPage--;
+    persist();
+    renderPage();
+    window.scrollTo({top:0, behavior:'smooth'});
   }
 
   function scoreCategories(){
@@ -331,24 +561,74 @@
     }).sort((a,b) => b.score - a.score);
   }
 
+  function paragraphsHtml(text){
+    return text.split(/\n\n+/).map(p => '<p>' + p + '</p>').join('');
+  }
+  function bulletsHtml(items, ordered){
+    const tag = ordered ? 'ol' : 'ul';
+    return '<' + tag + ' class="ss-result-bullets">' + items.map(i => '<li>' + i + '</li>').join('') + '</' + tag + '>';
+  }
+
+  function renderCategoryResult(cat){
+    let html = '';
+
+    html += '<div class="ss-result-disclaimer"><span class="ss-disclaimer-icon" aria-hidden="true">i</span><div>'
+      + '<strong>About this result</strong>'
+      + '<p>This result is based only on the answers you have provided. It cannot take account of information, context or circumstances that have not been included, so use it as a starting point for reflection rather than a definitive assessment of your business.</p>'
+      + '</div></div>';
+
+    html += '<div class="ss-result-2col">';
+    html += '<div class="ss-result-block"><h4>What this is telling you</h4>' + paragraphsHtml(cat.tellingYou) + '</div>';
+    html += '<div class="ss-result-block ss-result-block-indigo"><h4>You may recognise this if</h4>' + bulletsHtml(cat.recognise, false) + '</div>';
+    html += '</div>';
+
+    html += '<div class="ss-result-block"><h4>Why it matters</h4>' + paragraphsHtml(cat.whyItMatters) + '</div>';
+
+    html += '<div class="ss-result-block ss-result-block-focus"><h4>What to focus on first</h4><p>' + cat.focusIntro + '</p>' + bulletsHtml(cat.focusItems, true) + '</div>';
+
+    html += '<div class="ss-result-ai"><h4>Could AI or automation help?</h4>' + paragraphsHtml(cat.aiHelp);
+    if(cat.aiHelpList) html += bulletsHtml(cat.aiHelpList, false);
+    if(cat.aiHelpAfter) html += '<p>' + cat.aiHelpAfter + '</p>';
+    html += '</div>';
+
+    html += '<div class="ss-result-challenge"><h4>Before you add another person...</h4><p>' + cat.notYet + '</p></div>';
+
+    html += '<div class="ss-next-box"><h4>Your next step</h4><p>' + cat.nextStepText + '</p>';
+    if(cat.cta || cat.secondaryCta){
+      html += '<div style="display:flex; gap:10px; flex-wrap:wrap;">';
+      if(cat.cta){
+        html += '<a class="ss-btn ss-btn-primary" href="' + cat.cta.url + '">' + cat.cta.label + '</a>';
+      }
+      if(cat.secondaryCta){
+        html += '<a class="ss-btn ss-btn-outline" style="background:transparent; color:#fff; border-color:rgba(255,255,255,.35);" href="' + cat.secondaryCta.url + '">' + cat.secondaryCta.label + '</a>';
+      }
+      html += '</div>';
+    }
+    html += '</div>';
+
+    return html;
+  }
+
   function showResult(){
+    document.getElementById('question-view').style.display = 'none';
     const ranked = scoreCategories();
     const top = ranked[0];
     const area = document.getElementById('result-area');
     area.style.display = 'block';
 
     if(top.score === 0){
-      area.innerHTML = '<div class="ss-result-secondary"><h4>No clear bottleneck yet</h4><p>Nothing scored as an issue across these six areas today. That is a good position to be in. Revisit this whenever something starts to feel stuck.</p></div>';
+      area.innerHTML = '<div class="ss-result-secondary"><h4>No clear growth blocker today</h4><p>Nothing stood out as a recurring issue across these six areas. That is a genuinely good position to be in. Come back and revisit this whenever something starts to feel stuck.</p></div>';
     } else {
-      let html = '<div class="ss-result-primary"><h3>Your main bottleneck</h3><div class="ss-result-name">' + top.cat.name + '</div><p>' + top.cat.explain + ' (' + top.score + ' of ' + top.max + ')</p></div>';
-      const also = ranked.slice(1).filter(r => r.score > 0 && r.score >= top.score * 0.6);
-      if(also.length){
-        html += '<div class="ss-section-head"><h2>Worth looking at</h2></div>';
-        also.forEach(r => {
-          html += '<div class="ss-result-secondary"><h4>' + r.cat.name + '</h4><p>' + r.cat.explain + ' (' + r.score + ' of ' + r.max + ')</p></div>';
-        });
+      let html = '<div class="ss-result-hero"><h3>Where to focus first</h3><div class="ss-result-name">' + top.cat.name + '</div><p>' + top.cat.interpretation + '</p></div>';
+      html += renderCategoryResult(top.cat);
+
+      const second = ranked[1];
+      if(second && second.score > 0 && second.score >= top.score * 0.6){
+        html += '<div class="ss-result-secondary-mini"><h4>Another area worth watching</h4><p><strong>' + second.cat.name + '.</strong> ' + second.cat.oneLiner + ' This may also be contributing to what is happening with ' + top.cat.name.toLowerCase() + '.</p></div>';
       }
-      html += '<div class="ss-next-box"><h4>What to do next</h4><p>' + top.cat.next + '</p></div>';
+
+      html += '<p class="ss-pro-disclaimer">SMART Start provides general business guidance and is not a substitute for professional advice. Where a decision involves legal, employment, financial or other specialist considerations, take appropriate professional advice before acting.</p>';
+
       area.innerHTML = html;
     }
     area.scrollIntoView({behavior:'smooth', block:'start'});
@@ -356,11 +636,13 @@
 
   function clearAll(){
     ratings = {};
+    currentPage = 0;
     try { localStorage.removeItem(STORAGE_KEY); } catch(e){}
     document.getElementById('result-area').style.display = 'none';
     document.getElementById('result-area').innerHTML = '';
+    document.getElementById('question-view').style.display = 'block';
     document.getElementById('save-note').style.display = 'none';
-    renderQuestions();
+    renderPage();
     window.scrollTo({top:0, behavior:'smooth'});
   }
 
@@ -383,7 +665,7 @@
   })();
 
   loadSaved();
-  renderQuestions();
+  renderPage();
   if(Object.keys(ratings).length) document.getElementById('save-note').style.display = 'flex';
 </script>
 </body>

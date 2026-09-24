@@ -176,7 +176,7 @@
     <p class="ss-eyebrow">How is the role formally described?</p>
     <h1 class="serif">Job Description + Person Specification Template</h1>
     <p class="ss-subtitle">Turn a clearly defined role into something candidates and managers can understand.</p>
-    <p class="ss-explain">If you've worked through the 3-Box Role Builder, keep that snapshot beside you while you fill this in.</p>
+    <p class="ss-explain">If you've worked through "What does this role need to achieve?", keep that snapshot beside you while you fill this in.</p>
     <p class="ss-reassure">Take your time with this. There are no right or wrong answers, just what this role genuinely needs.</p>
   </div>
 </section>
@@ -340,11 +340,11 @@
   function showRoleImportBanner(mode){
     const banner = document.getElementById('role-import-banner');
     if(mode === 'auto'){
-      banner.innerHTML = '<div class="ss-next-box no-print"><p style="margin:0;">We\'ve brought across the information from your 3-Box Role Builder. Review and refine it below.</p></div>';
+      banner.innerHTML = '<div class="ss-next-box no-print"><p style="margin:0;">We\'ve brought across your answers from "What does this role need to achieve?". Review and refine it below.</p></div>';
     } else {
-      banner.innerHTML = '<div class="ss-next-box no-print"><p style="margin:0 0 12px;">You already have a Job Description in progress. Would you like to bring across your latest Role Builder information?</p>'
+      banner.innerHTML = '<div class="ss-next-box no-print"><p style="margin:0 0 12px;">You already have a Job Description in progress. Would you like to bring across your latest answers from "What does this role need to achieve?"</p>'
         + '<div style="display:flex; gap:10px; flex-wrap:wrap;">'
-        + '<button type="button" class="ss-btn ss-btn-navy ss-btn-sm" onclick="acceptRoleImport()">Bring across Role Builder information</button>'
+        + '<button type="button" class="ss-btn ss-btn-navy ss-btn-sm" onclick="acceptRoleImport()">Bring across my answers</button>'
         + '<button type="button" class="ss-btn ss-btn-outline ss-btn-sm" onclick="dismissRoleImport()">Keep my current JD</button>'
         + '</div></div>';
     }

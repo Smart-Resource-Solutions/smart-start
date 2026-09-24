@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Delegation Brief | SMART Start</title>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--navy-deep:#0D1F4F;--navy:#1B3A73;--indigo:#3457A6;--teal:#1F9C93;--teal-deep:#146F68;--cyan:#1ED6E6;--cyan-deep:#0E7C90;--coral:#E8715A;--coral-deep:#C0562F;--pale:#F4F6FB;--line:#E4E7F0;--grey-text:#6B7A99;--ink:#12203D;--ink-muted:#4C5A78;--ink-faint:#8A93AC;--white:#fff;--shadow:0 4px 24px rgba(13,31,79,.08);}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Manrope',sans-serif;background:var(--pale);color:var(--ink);min-height:100vh;}
+.serif{font-family:'DM Serif Display',serif;font-weight:400;}
+.hdr{background:var(--navy-deep);padding:0;position:sticky;top:0;z-index:100;box-shadow:0 2px 20px rgba(0,0,0,.25);}
+.hdr-inner{max-width:860px;margin:0 auto;padding:16px 24px;display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;}
+.hdr-logo{display:flex;align-items:center;gap:10px;}
+.hdr-logo-img{height:32px;width:auto;display:block;background:#fff;border-radius:8px;padding:4px 10px;flex-shrink:0;}
+.hdr-logo-sub{font-size:11.5px;color:rgba(255,255,255,.62);font-weight:600;}
+.hdr-actions{display:flex;gap:10px;}
+.btn-hdr{background:rgba(255,255,255,.08);color:#fff;border:1.5px solid rgba(255,255,255,.25);padding:8px 18px;border-radius:50px;font-size:13px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-hdr:hover{background:rgba(255,255,255,.18);}
+.hero{background:linear-gradient(135deg,var(--navy-deep),var(--navy));padding:44px 24px 36px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'';position:absolute;top:-40%;right:-10%;width:400px;height:400px;border-radius:50%;background:rgba(30,214,230,.06);pointer-events:none;}
+.hero::after{content:'';position:absolute;bottom:-30%;left:-5%;width:300px;height:300px;border-radius:50%;background:rgba(232,113,90,.08);pointer-events:none;}
+.hero-eye{position:relative;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--cyan);display:block;margin-bottom:14px;}
+.hero-title{position:relative;font-size:clamp(26px,5vw,40px);font-weight:400;color:#fff;line-height:1.15;margin-bottom:12px;}
+.hero-title em{color:var(--cyan);font-style:italic;}
+.hero-sub{position:relative;font-size:15px;color:rgba(255,255,255,.78);line-height:1.6;max-width:520px;margin:0 auto 24px;}
+.hero-badges{position:relative;display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.badge{background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.85);font-size:12px;font-weight:600;padding:6px 14px;border-radius:20px;}
+.prog-wrap{background:#fff;border-bottom:1px solid var(--line);}
+.prog-inner{max-width:860px;margin:0 auto;padding:14px 24px;}
+.prog-label{display:flex;justify-content:space-between;margin-bottom:7px;}
+.prog-label span{font-size:13px;font-weight:700;color:var(--navy-deep);}
+.prog-pct{font-size:13px;color:var(--coral-deep);font-weight:700;}
+.prog-track{height:5px;background:var(--line);border-radius:3px;overflow:hidden;}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--navy-deep),var(--cyan));border-radius:3px;transition:width .4s ease;width:0%;}
+.main{max-width:860px;margin:0 auto;padding:32px 24px 60px;}
+.steps-nav{display:flex;gap:0;margin-bottom:28px;background:#fff;border-radius:14px;box-shadow:var(--shadow);overflow:hidden;overflow-x:auto;}
+.step-tab{flex:1;padding:14px 10px;text-align:center;cursor:pointer;font-size:12px;font-weight:700;color:var(--grey-text);transition:all .2s;border-right:1px solid var(--line);user-select:none;min-width:80px;}
+.step-tab:last-child{border-right:none;}
+.step-tab.active{background:var(--navy-deep);color:#fff;}
+.step-tab.done{background:#EAF7F6;color:var(--teal-deep);}
+.step-tab .step-num{font-size:10px;display:block;margin-bottom:3px;opacity:.7;text-transform:uppercase;letter-spacing:.03em;}
+.section{background:#fff;border-radius:16px;padding:28px;margin-bottom:20px;box-shadow:var(--shadow);display:none;}
+.section.active{display:block;}
+.section h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:22px;color:var(--navy-deep);margin-bottom:6px;}
+.section .sec-sub{font-size:14px;color:var(--grey-text);margin-bottom:24px;line-height:1.5;}
+.field-group{margin-bottom:20px;}
+.field-group label{display:block;font-size:13px;font-weight:700;color:var(--navy-deep);margin-bottom:6px;}
+.field-group .hint{font-size:12px;color:var(--grey-text);margin-bottom:7px;display:block;}
+.field-group input[type=text],.field-group input[type=date],.field-group textarea{width:100%;border:1.5px solid var(--line);border-radius:10px;padding:12px 14px;font-family:'Manrope',sans-serif;font-size:14px;color:var(--ink);outline:none;transition:border-color .2s;background:#fff;}
+.field-group input:disabled{background:var(--pale);color:var(--ink-faint);cursor:not-allowed;}
+.field-group input:focus,.field-group textarea:focus{border-color:var(--navy);}
+.field-group textarea{resize:vertical;min-height:80px;line-height:1.5;}
+.field-group input::placeholder,.field-group textarea::placeholder{color:var(--ink-faint);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.quality-row{display:flex;gap:10px;flex-wrap:wrap;}
+.quality-opt{cursor:pointer;}
+.quality-opt input{display:none;}
+.quality-opt span{display:block;padding:8px 16px;border:1.5px solid var(--line);border-radius:50px;font-size:13px;font-weight:700;color:var(--grey-text);transition:all .2s;}
+.quality-opt input:checked+span{border-color:var(--coral-deep);background:#FDF1EC;color:var(--coral-deep);}
+.checklist{display:flex;flex-direction:column;gap:10px;}
+.check-item{display:flex;align-items:flex-start;gap:12px;padding:14px;background:var(--pale);border-radius:10px;cursor:pointer;}
+.check-item input[type=checkbox]{margin-top:2px;flex-shrink:0;accent-color:var(--teal);width:16px;height:16px;cursor:pointer;}
+.check-item label{font-size:14px;color:var(--ink);cursor:pointer;line-height:1.4;}
+.check-item.checked{background:#EAF7F6;}
+.nav-btns{display:flex;justify-content:space-between;margin-top:28px;gap:12px;}
+.btn-back{background:none;border:1.5px solid var(--line);color:var(--grey-text);padding:12px 24px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-back:hover{border-color:var(--navy-deep);color:var(--navy-deep);}
+.btn-next{background:var(--navy-deep);color:#fff;border:none;padding:12px 28px;border-radius:50px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Manrope',sans-serif;transition:all .2s;}
+.btn-next:hover{background:var(--coral-deep);}
+.summary-box{background:linear-gradient(135deg,var(--navy-deep),var(--navy));border-radius:16px;padding:28px;color:#fff;margin-bottom:20px;}
+.summary-box h2{font-family:'DM Serif Display',serif;font-weight:400;font-size:22px;margin-bottom:20px;color:#fff;}
+.sum-item{background:rgba(255,255,255,.08);border-radius:10px;padding:14px 16px;margin-bottom:10px;border:1px solid rgba(255,255,255,.1);}
+.sum-label{font-size:11px;font-weight:800;letter-spacing:1px;text-transform:uppercase;color:rgba(255,255,255,.5);margin-bottom:5px;}
+.sum-val{font-size:14px;color:#fff;line-height:1.5;}
+.save-note{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-faint);margin:0 0 14px;}
+.save-dot{width:7px;height:7px;border-radius:50%;background:var(--teal);}
+.next-box{background:var(--navy-deep);border-radius:14px;padding:20px 22px;margin-bottom:20px;}
+.export-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:20px;}
+.export-row .btn-next{flex:1; min-width:160px; text-align:center;}
+.next-box h4{font-size:12px;text-transform:uppercase;letter-spacing:.04em;font-weight:800;color:rgba(255,255,255,.65);margin-bottom:8px;}
+.next-box p{color:rgba(255,255,255,.92);font-size:14.5px;margin-bottom:14px;}
+footer{padding:20px 0 46px;text-align:center;color:var(--ink-faint);font-size:12.5px;}
+@media(max-width:600px){.two-col{grid-template-columns:1fr;}.step-tab{min-width:80px;}.hdr-inner{gap:8px;}}
+@media print{
+  .no-print{display:none!important;}
+  .section{display:block!important;}
+  .section:not(#step5){display:none!important;}
+  .summary-box{background:#fff!important;color:#000!important;padding:0!important;}
+  .summary-box h2{color:var(--navy-deep)!important;}
+  .sum-item{background:none!important;border:1px solid var(--line)!important;}
+  .sum-val,.sum-label{color:var(--ink)!important;}
+  body{background:#fff;}
+}
+</style>
+</head>
+<body>
+<div class="hdr">
+  <div class="hdr-inner">
+    <div class="hdr-logo">
+      <img src="assets/smart-start-logo.png" alt="SMART Start" class="hdr-logo-img">
+      <span class="hdr-logo-sub">Created by Smart Resource Solutions</span>
+    </div>
+    <div class="hdr-actions no-print">
+      <button class="btn-hdr" onclick="location.href='smart-start-task-decision-audit.html'">&larr; Back to the audit</button>
+      <button class="btn-hdr" onclick="downloadPrint()">Print to PDF</button>
+      <button class="btn-hdr" onclick="clearAll()">Clear</button>
+    </div>
+  </div>
+</div>
+<div class="hero">
+  <span class="hero-eye">Owner / leadership micro-resource</span>
+  <h1 class="hero-title serif">Delegation <em>Brief</em></h1>
+  <p class="hero-sub">Write one clear brief and watch what changes. The clearer your brief, the less you'll need to check in.</p>
+  <div class="hero-badges">
+    <div class="badge">About 10 minutes</div>
+    <div class="badge">Your data stays in this browser</div>
+  </div>
+</div>
+<div class="prog-wrap no-print">
+  <div class="prog-inner">
+    <div class="prog-label"><span>Brief progress</span><span class="prog-pct" id="progPct">0% complete</span></div>
+    <div class="prog-track"><div class="prog-fill" id="progFill"></div></div>
+  </div>
+</div>
+<div class="main">
+  <div class="steps-nav no-print">
+    <div class="step-tab active" id="tab0" onclick="goStep(0)"><span class="step-num">Step 1</span>Overview</div>
+    <div class="step-tab" id="tab1" onclick="goStep(1)"><span class="step-num">Step 2</span>Done = ?</div>
+    <div class="step-tab" id="tab2" onclick="goStep(2)"><span class="step-num">Step 3</span>Standard</div>
+    <div class="step-tab" id="tab3" onclick="goStep(3)"><span class="step-num">Step 4</span>Resources</div>
+    <div class="step-tab" id="tab4" onclick="goStep(4)"><span class="step-num">Step 5</span>Check-ins</div>
+    <div class="step-tab" id="tab5" onclick="goStep(5)"><span class="step-num">Step 6</span>Summary</div>
+  </div>
+
+  <div class="section active" id="step0">
+    <h2>Task overview</h2>
+    <p class="sec-sub">What task or decision are you looking to delegate? Start by naming it clearly, then get clear on who's taking it on and when it needs to happen by. The more specific you are here, the easier every later step becomes.</p>
+    <div class="field-group"><label>Task name</label><input type="text" id="taskName" placeholder="e.g. Write the April newsletter" oninput="updateProg()"></div>
+    <div class="two-col">
+      <div class="field-group"><label>Who is responsible?</label><input type="text" id="responsible" placeholder="Name or role" oninput="updateProg()"></div>
+      <div class="field-group">
+        <label>Deadline</label>
+        <input type="date" id="deadline" oninput="updateProg()">
+        <label class="check-item" style="margin-top:8px; padding:10px 12px;">
+          <input type="checkbox" id="isOngoing" onchange="toggleOngoing()">
+          <span style="font-size:13px;">This is ongoing, not a one-off task</span>
+        </label>
+      </div>
+    </div>
+    <div class="field-group"><label>Why does this task matter right now?</label><span class="hint">Context helps people prioritise properly</span><textarea id="why" placeholder="e.g. We need this ready before the client event next week..." oninput="updateProg()"></textarea></div>
+    <div class="nav-btns"><span></span><button class="btn-next" onclick="goStep(1)">Next: what does done look like? &rarr;</button></div>
+  </div>
+
+  <div class="section" id="step1">
+    <h2>What "done" looks like</h2>
+    <p class="sec-sub">Describe the finished result in concrete terms. What will you see, read, or receive when this is complete? Be specific, a vague definition creates a vague result.</p>
+    <div class="field-group"><label>When this task is complete, I will have, see, or receive...</label><textarea id="done" rows="5" placeholder="e.g. A 400-word newsletter draft, with a subject line, formatted correctly, in our email tool, ready to review..." oninput="updateProg()"></textarea></div>
+    <div class="field-group"><label>What does this task NOT include?</label><span class="hint">Be clear about scope so nothing unexpected lands back on your desk</span><textarea id="notInclude" placeholder="e.g. This does not include sourcing images or scheduling, just the copy..." oninput="updateProg()"></textarea></div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="goStep(0)">&larr; Back</button>
+      <button class="btn-next" onclick="goStep(2)">Next: the standard required &rarr;</button>
+    </div>
+  </div>
+
+  <div class="section" id="step2">
+    <h2>The standard required</h2>
+    <p class="sec-sub">This is where most delegation breaks down. Be honest about what level of quality this task actually needs.</p>
+    <div class="field-group">
+      <label>Quality level required</label>
+      <div class="quality-row">
+        <label class="quality-opt"><input type="radio" name="quality" value="draft" onchange="updateProg()"><span>Rough draft</span></label>
+        <label class="quality-opt"><input type="radio" name="quality" value="good" onchange="updateProg()"><span>Good enough</span></label>
+        <label class="quality-opt"><input type="radio" name="quality" value="client" onchange="updateProg()"><span>Client ready</span></label>
+        <label class="quality-opt"><input type="radio" name="quality" value="publish" onchange="updateProg()"><span>Publication standard</span></label>
+      </div>
+    </div>
+    <div class="field-group"><label>Specific standards to maintain</label><span class="hint">Tone, format, brand guidelines, anything that matters to you</span><textarea id="standards" placeholder="e.g. Friendly but professional tone. No jargon..." oninput="updateProg()"></textarea></div>
+    <div class="field-group"><label>Common mistakes to avoid</label><span class="hint">What have you had to fix before? Say it upfront.</span><textarea id="mistakes" placeholder="e.g. Don't go over 500 words..." oninput="updateProg()"></textarea></div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="goStep(1)">&larr; Back</button>
+      <button class="btn-next" onclick="goStep(3)">Next: resources &amp; context &rarr;</button>
+    </div>
+  </div>
+
+  <div class="section" id="step3">
+    <h2>Resources &amp; context</h2>
+    <p class="sec-sub">Give them everything they need before they start, not after they get stuck.</p>
+    <div class="field-group"><label>Access or tools needed</label><textarea id="access" placeholder="e.g. Access to Mailchimp, the brand folder in Google Drive..." oninput="updateProg()"></textarea></div>
+    <div class="field-group"><label>Files or documents to refer to</label><textarea id="files" placeholder="e.g. Last month's newsletter, brand guidelines PDF..." oninput="updateProg()"></textarea></div>
+    <div class="field-group"><label>People they can ask for help</label><textarea id="people" placeholder="e.g. Ask Sarah for the stats, check with me before contacting any clients..." oninput="updateProg()"></textarea></div>
+    <div class="field-group"><label>Background context they need to know</label><textarea id="context" placeholder="e.g. This replaces our old update email. The audience is existing clients, not prospects..." oninput="updateProg()"></textarea></div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="goStep(2)">&larr; Back</button>
+      <button class="btn-next" onclick="goStep(4)">Next: check-in points &rarr;</button>
+    </div>
+  </div>
+
+  <div class="section" id="step4">
+    <h2>Check-in points</h2>
+    <p class="sec-sub">Agree check-ins upfront. This removes the need to hover, and gives them confidence to move forward without you.</p>
+    <div class="field-group">
+      <label>Does this have an end date?</label>
+      <div class="quality-row">
+        <label class="quality-opt"><input type="radio" name="checkinType" value="dated" onchange="toggleCheckinType()"><span>Yes, it has an end date</span></label>
+        <label class="quality-opt"><input type="radio" name="checkinType" value="ongoing" onchange="toggleCheckinType()"><span>No, this is ongoing</span></label>
+      </div>
+    </div>
+    <div id="checkinDated">
+      <div class="two-col">
+        <div class="field-group"><label>Midpoint check-in date</label><input type="date" id="midpoint" oninput="updateProg()"></div>
+        <div class="field-group"><label>Final handover date</label><input type="date" id="handover" oninput="updateProg()"></div>
+      </div>
+    </div>
+    <div id="checkinOngoing" style="display:none;">
+      <div class="field-group">
+        <label>How often should you check in?</label>
+        <span class="hint">Enough to catch problems early, not so often it defeats the point of delegating</span>
+        <div class="quality-row">
+          <label class="quality-opt"><input type="radio" name="cadence" value="weekly" onchange="updateProg()"><span>Weekly</span></label>
+          <label class="quality-opt"><input type="radio" name="cadence" value="fortnightly" onchange="updateProg()"><span>Fortnightly</span></label>
+          <label class="quality-opt"><input type="radio" name="cadence" value="monthly" onchange="updateProg()"><span>Monthly</span></label>
+          <label class="quality-opt"><input type="radio" name="cadence" value="quarterly" onchange="updateProg()"><span>Quarterly</span></label>
+        </div>
+      </div>
+    </div>
+    <div class="field-group"><label>How should they flag if they're stuck?</label><textarea id="stuck" placeholder="e.g. Message me on Teams, don't wait until it's too late to fix..." oninput="updateProg()"></textarea></div>
+    <div class="field-group"><label>How will you confirm it's complete and meets the standard?</label><div class="checklist" id="signoff">
+      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>I will review against the "done looks like" description</label></div>
+      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>I will confirm the standard has been met before marking complete</label></div>
+      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>I will give specific written feedback if changes are needed</label></div>
+      <div class="check-item" onclick="toggleCheck(this)"><input type="checkbox"><label>I will not take the task back, I will ask for revisions instead</label></div>
+    </div></div>
+    <div class="nav-btns">
+      <button class="btn-back" onclick="goStep(3)">&larr; Back</button>
+      <button class="btn-next" onclick="goStep(5)">View my complete brief &rarr;</button>
+    </div>
+  </div>
+
+  <div class="section" id="step5">
+    <div class="summary-box">
+      <h2>Your complete delegation brief</h2>
+      <div id="summaryContent"></div>
+    </div>
+
+    <div class="export-row no-print">
+      <button class="btn-next" onclick="downloadPrint()">Print to PDF</button>
+      <button class="btn-next" onclick="downloadWord()" style="background:var(--coral-deep);">Print to Word</button>
+    </div>
+
+    <div class="next-box no-print">
+      <h4>Before you send this</h4>
+      <p>Share this brief with the person taking the task on, don't just keep it for your own reference. If they can't see what "done well" looks like or what they can decide without you, the handoff hasn't actually happened yet.</p>
+      <button class="btn-hdr" onclick="location.href='smart-start-task-decision-audit.html'">Back to the Task and Decision Audit</button>
+    </div>
+
+    <p class="save-note no-print" id="saveNote" style="display:none;"><span class="save-dot"></span> Your answers are saved in this browser.</p>
+
+    <div style="text-align:center;margin-top:16px;" class="no-print">
+      <button class="btn-back" onclick="goStep(4)">&larr; Edit brief</button>
+    </div>
+  </div>
+</div>
+
+<footer class="no-print">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+<script>
+var SK='smartStartDelegationBrief';
+var cur=0;
+
+function goStep(n){
+  document.querySelectorAll('.section').forEach(function(s,i){
+    s.classList.toggle('active',i===n);
+  });
+  document.querySelectorAll('.step-tab').forEach(function(t,i){
+    t.classList.remove('active','done');
+    if(i===n)t.classList.add('active');
+    else if(i<n)t.classList.add('done');
+  });
+  cur=n;
+  if(n===5)buildSummary();
+  updateProg();
+  window.scrollTo(0,0);
+}
+
+function toggleCheck(el){
+  var cb=el.querySelector('input[type=checkbox]');
+  cb.checked=!cb.checked;
+  el.classList.toggle('checked',cb.checked);
+  saveData();
+}
+
+function toggleOngoing(){
+  var ongoing=document.getElementById('isOngoing').checked;
+  var deadlineEl=document.getElementById('deadline');
+  deadlineEl.disabled=ongoing;
+  if(ongoing) deadlineEl.value='';
+  updateProg();
+}
+
+function toggleCheckinType(){
+  var type=document.querySelector('input[name=checkinType]:checked');
+  var isOngoing=type&&type.value==='ongoing';
+  document.getElementById('checkinDated').style.display=isOngoing?'none':'block';
+  document.getElementById('checkinOngoing').style.display=isOngoing?'block':'none';
+  if(isOngoing){document.getElementById('midpoint').value='';document.getElementById('handover').value='';}
+  else{document.querySelectorAll('input[name=cadence]').forEach(function(el){el.checked=false;});}
+  updateProg();
+}
+
+function val(id){return(document.getElementById(id)||{}).value||'';}
+
+function buildSummary(){
+  var quality=document.querySelector('input[name=quality]:checked');
+  var qLabel=quality?{draft:'Rough draft',good:'Good enough',client:'Client ready',publish:'Publication standard'}[quality.value]:'Not specified';
+  var isOngoing=document.getElementById('isOngoing').checked;
+  var checkinType=document.querySelector('input[name=checkinType]:checked');
+  var cadence=document.querySelector('input[name=cadence]:checked');
+  var cadenceLabel=cadence?{weekly:'Weekly',fortnightly:'Fortnightly',monthly:'Monthly',quarterly:'Quarterly'}[cadence.value]:'';
+  function fmt(d){if(!d)return'Not set';var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0];}
+  var html='';
+  function row(label,content){if(content&&content.trim())html+='<div class="sum-item"><div class="sum-label">'+label+'</div><div class="sum-val">'+content.replace(/\n/g,'<br>')+'</div></div>';}
+  row('Task',val('taskName'));
+  row('Who is responsible',val('responsible'));
+  row('Deadline',isOngoing?'Ongoing, no fixed deadline':fmt(val('deadline')));
+  row('Why this matters',val('why'));
+  row('What done looks like',val('done'));
+  row('What this does not include',val('notInclude'));
+  row('Quality level required',qLabel);
+  row('Standards to maintain',val('standards'));
+  row('Mistakes to avoid',val('mistakes'));
+  row('Access needed',val('access'));
+  row('Files to refer to',val('files'));
+  row('People to ask for help',val('people'));
+  row('Background context',val('context'));
+  if(checkinType&&checkinType.value==='ongoing'){
+    row('Check-in schedule',cadenceLabel?cadenceLabel+' check-ins, no fixed end date':'Ongoing, cadence not yet set');
+  } else {
+    row('Midpoint check-in',fmt(val('midpoint')));
+    row('Final handover',fmt(val('handover')));
+  }
+  row('If stuck',val('stuck'));
+  document.getElementById('summaryContent').innerHTML=html||'<div class="sum-item"><div class="sum-val" style="opacity:.6">Fill in the previous steps to see your complete brief here.</div></div>';
+}
+
+function updateProg(){
+  var fields=['taskName','responsible','deadline','done','standards'];
+  var filled=fields.filter(function(f){return val(f).trim();}).length;
+  var pct=Math.round(filled/fields.length*100);
+  document.getElementById('progFill').style.width=pct+'%';
+  document.getElementById('progPct').textContent=pct+'% complete';
+  saveData();
+}
+
+function saveData(){
+  try{
+    var d={taskName:val('taskName'),responsible:val('responsible'),deadline:val('deadline'),why:val('why'),done:val('done'),notInclude:val('notInclude'),standards:val('standards'),mistakes:val('mistakes'),access:val('access'),files:val('files'),people:val('people'),context:val('context'),midpoint:val('midpoint'),handover:val('handover'),stuck:val('stuck')};
+    d.isOngoing=document.getElementById('isOngoing').checked;
+    var q=document.querySelector('input[name=quality]:checked');
+    d.quality=q?q.value:'';
+    var ct=document.querySelector('input[name=checkinType]:checked');
+    d.checkinType=ct?ct.value:'';
+    var cad=document.querySelector('input[name=cadence]:checked');
+    d.cadence=cad?cad.value:'';
+    var checks=[];
+    document.querySelectorAll('#signoff input[type=checkbox]').forEach(function(cb,i){checks[i]=cb.checked;});
+    d.checks=checks;
+    localStorage.setItem(SK,JSON.stringify(d));
+    document.getElementById('saveNote').style.display='flex';
+  }catch(e){}
+}
+
+function loadData(){
+  try{
+    var d=JSON.parse(localStorage.getItem(SK)||'{}');
+    var fields=['taskName','responsible','deadline','why','done','notInclude','standards','mistakes','access','files','people','context','midpoint','handover','stuck'];
+    fields.forEach(function(f){var el=document.getElementById(f);if(el&&d[f])el.value=d[f];});
+    if(d.quality){var q=document.querySelector('input[name=quality][value="'+d.quality+'"]');if(q)q.checked=true;}
+    if(d.isOngoing){document.getElementById('isOngoing').checked=true;document.getElementById('deadline').disabled=true;}
+    if(d.checkinType){
+      var ct=document.querySelector('input[name=checkinType][value="'+d.checkinType+'"]');
+      if(ct){ct.checked=true;toggleCheckinType();}
+    }
+    if(d.cadence){var cad=document.querySelector('input[name=cadence][value="'+d.cadence+'"]');if(cad)cad.checked=true;}
+    if(Array.isArray(d.checks)){
+      document.querySelectorAll('#signoff .check-item').forEach(function(item,i){
+        if(d.checks[i]){item.querySelector('input[type=checkbox]').checked=true;item.classList.add('checked');}
+      });
+    }
+    return d;
+  }catch(e){return{};}
+}
+
+function clearAll(){
+  try{localStorage.removeItem(SK);}catch(e){}
+  document.querySelectorAll('.field-group input[type=text],.field-group input[type=date],.field-group textarea').forEach(function(el){el.value='';});
+  document.querySelectorAll('input[name=quality]').forEach(function(el){el.checked=false;});
+  document.getElementById('isOngoing').checked=false;
+  document.getElementById('deadline').disabled=false;
+  document.querySelectorAll('input[name=checkinType]').forEach(function(el){el.checked=false;});
+  document.querySelectorAll('input[name=cadence]').forEach(function(el){el.checked=false;});
+  document.getElementById('checkinDated').style.display='block';
+  document.getElementById('checkinOngoing').style.display='none';
+  document.querySelectorAll('#signoff .check-item').forEach(function(item){
+    item.querySelector('input[type=checkbox]').checked=false;
+    item.classList.remove('checked');
+  });
+  document.getElementById('saveNote').style.display='none';
+  goStep(0);
+}
+
+function downloadPrint(){
+  buildSummary();
+  window.print();
+}
+
+function docxEsc(s){
+  return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+}
+function docxPara(text,opts){
+  opts=opts||{};
+  var runProps='';
+  if(opts.bold) runProps+='<w:b/>';
+  if(opts.size) runProps+='<w:sz w:val="'+opts.size+'"/>';
+  var pPr=opts.spacingBefore?'<w:pPr><w:spacing w:before="'+opts.spacingBefore+'"/></w:pPr>':'';
+  var lines=(text||'').split('\n');
+  var runs=lines.map(function(line,i){
+    var br=i>0?'<w:br/>':'';
+    return '<w:r>'+(runProps?'<w:rPr>'+runProps+'</w:rPr>':'')+br+'<w:t xml:space="preserve">'+docxEsc(line)+'</w:t></w:r>';
+  }).join('');
+  return '<w:p>'+pPr+runs+'</w:p>';
+}
+
+function buildDocxXml(){
+  var isOngoing=document.getElementById('isOngoing').checked;
+  var quality=document.querySelector('input[name=quality]:checked');
+  var qLabel=quality?{draft:'Rough draft',good:'Good enough',client:'Client ready',publish:'Publication standard'}[quality.value]:'Not specified';
+  var checkinType=document.querySelector('input[name=checkinType]:checked');
+  var cadence=document.querySelector('input[name=cadence]:checked');
+  var cadenceLabel=cadence?{weekly:'Weekly',fortnightly:'Fortnightly',monthly:'Monthly',quarterly:'Quarterly'}[cadence.value]:'';
+  function fmt(d){if(!d)return'Not set';var p=d.split('-');return p[2]+'/'+p[1]+'/'+p[0];}
+
+  var xml='';
+  var title=val('taskName')?('Delegation brief: '+val('taskName')):'Delegation brief';
+  xml+=docxPara(title,{bold:true,size:'32'});
+  xml+=docxPara('');
+
+  function row(label,content){
+    if(!content||!content.trim()) return;
+    xml+=docxPara(label,{bold:true,size:'22',spacingBefore:'160'});
+    xml+=docxPara(content);
+  }
+
+  row('Who is responsible',val('responsible'));
+  row('Deadline',isOngoing?'Ongoing, no fixed deadline':fmt(val('deadline')));
+  row('Why this matters',val('why'));
+  row('What done looks like',val('done'));
+  row('What this does not include',val('notInclude'));
+  row('Quality level required',qLabel);
+  row('Standards to maintain',val('standards'));
+  row('Mistakes to avoid',val('mistakes'));
+  row('Access needed',val('access'));
+  row('Files to refer to',val('files'));
+  row('People to ask for help',val('people'));
+  row('Background context',val('context'));
+  if(checkinType&&checkinType.value==='ongoing'){
+    row('Check-in schedule',cadenceLabel?cadenceLabel+' check-ins, no fixed end date':'Ongoing, cadence not yet set');
+  } else {
+    row('Midpoint check-in',fmt(val('midpoint')));
+    row('Final handover',fmt(val('handover')));
+  }
+  row('If stuck',val('stuck'));
+
+  return '<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">'+
+    '<w:body>'+xml+
+    '<w:sectPr><w:pgSz w:w="11906" w:h="16838"/><w:pgMar w:top="1134" w:right="1134" w:bottom="1134" w:left="1134"/></w:sectPr>'+
+    '</w:body></w:document>';
+}
+
+function downloadWord(){
+  if(typeof JSZip==='undefined'){
+    alert('Word export could not load. Please use Print to PDF instead, or try again in a moment.');
+    return;
+  }
+  var contentTypes='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">'+
+    '<Default Extension="rels" ContentType="application/vnd.openxmlformats-package.relationships+xml"/>'+
+    '<Default Extension="xml" ContentType="application/xml"/>'+
+    '<Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>'+
+    '</Types>';
+  var rels='<?xml version="1.0" encoding="UTF-8" standalone="yes"?>'+
+    '<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">'+
+    '<Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>'+
+    '</Relationships>';
+
+  var zip=new JSZip();
+  zip.file('[Content_Types].xml',contentTypes);
+  zip.folder('_rels').file('.rels',rels);
+  zip.folder('word').file('document.xml',buildDocxXml());
+
+  zip.generateAsync({type:'blob',mimeType:'application/vnd.openxmlformats-officedocument.wordprocessingml.document'}).then(function(blob){
+    var url=URL.createObjectURL(blob);
+    var a=document.createElement('a');
+    var name=(val('taskName')||'delegation-brief').replace(/[^a-z0-9]+/gi,'-').toLowerCase();
+    a.href=url;
+    a.download='delegation-brief-'+name+'.docx';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+    URL.revokeObjectURL(url);
+  }).catch(function(){
+    alert('Word export failed. Please use Print to PDF instead.');
+  });
+}
+
+var loaded=loadData();
+updateProg();
+if(Object.keys(loaded).some(function(k){return loaded[k] && (typeof loaded[k]!=='object' ? true : Array.isArray(loaded[k]) && loaded[k].some(Boolean));})) document.getElementById('saveNote').style.display='flex';
+</script>
+</body>
+</html>
