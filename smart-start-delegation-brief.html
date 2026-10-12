@@ -6,9 +6,9 @@
 <title>Delegation Brief | SMART Start</title>
 <meta name="description" content="A short brief for anything you're handing off, so the work stays with the person you've given it to.">
 <meta name="robots" content="noindex, follow">
-<!-- EXTERNAL DEPENDENCIES (launch review): fonts and JSZip (Word export) are self-hosted in assets/. Analytics is prepared in assets/smart-start-analytics.js and stays OFF until a real Measurement ID and consent are in place. -->
+<!-- EXTERNAL DEPENDENCIES (launch review): fonts and JSZip (Word export) are self-hosted in assets/. Analytics is prepared in assets/smart-start-events.js and stays OFF until a real Measurement ID and consent are in place. -->
 <link rel="stylesheet" href="assets/smart-start-fonts.css">
-<script src="assets/smart-start-analytics.js"></script>
+<script src="assets/smart-start-events.js"></script>
 <script src="assets/smart-start-a11y.js" defer></script>
 <style>
 :root{--navy-deep:#0D1F4F;--navy:#1B3A73;--indigo:#3457A6;--teal:#1F9C93;--teal-deep:#146F68;--cyan:#1ED6E6;--cyan-deep:#0E7C90;--coral:#E8715A;--coral-deep:#C0562F;--pale:#F4F6FB;--line:#E4E7F0;--grey-text:#5E6C8A;--ink:#12203D;--ink-muted:#4C5A78;--ink-faint:#636D88;--white:#fff;--shadow:0 4px 24px rgba(13,31,79,.08);}
@@ -295,9 +295,9 @@ footer{padding:20px 0 46px;text-align:center;color:var(--ink-faint);font-size:12
   </div>
 </aside>
 
-<footer class="no-print">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</footer>
+<footer class="no-print">Created by Smart Resource Solutions.<br>Helping businesses grow by creating more capacity from the team they already have.</footer>
 
-<script src="assets/vendor/jszip.min.js"></script><!-- JSZip 3.10.1, self-hosted, used only to build the Word download in the browser -->
+<script src="assets/jszip.min.js"></script><!-- JSZip 3.10.1, self-hosted, used only to build the Word download in the browser -->
 <script>
 var SK='smartStartDelegationBrief';
 var cur=0;
@@ -553,7 +553,7 @@ updateProg();
 if(Object.keys(loaded).some(function(k){return loaded[k] && (typeof loaded[k]!=='object' ? true : Array.isArray(loaded[k]) && loaded[k].some(Boolean));})) document.getElementById('saveNote').style.display='flex';
 </script>
 <script>
-  // Analytics (inactive until configured, see assets/smart-start-analytics.js):
+  // Analytics (inactive until configured, see assets/smart-start-events.js):
   // sends only this page's name when the support link is clicked.
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('.ss-bridge a');

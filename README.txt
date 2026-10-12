@@ -35,8 +35,8 @@ repository, keeping the structure exactly as it is:
         smart-start-logo.png
         support-call-photo.jpg
         smart-start-fonts.css
-        fonts/      (Manrope and DM Serif Display, self-hosted)
-        vendor/     (jszip.min.js, used for Word downloads)
+        Font files (.woff2) for Manrope and DM Serif Display
+        jszip.min.js (used for Word downloads)
     README.txt
 
 Do not move index.html into a subfolder, and do not rename any of the
@@ -48,7 +48,7 @@ inside every page's <script> block (see "Renaming files" below).
 Every page loads its fonts from assets/smart-start-fonts.css and the
 logo from assets/smart-start-logo.png. The Support view uses
 assets/support-call-photo.jpg (compressed to about 115KB). The Word
-download buttons load assets/vendor/jszip.min.js. If the assets folder
+download buttons load assets/jszip.min.js. If the assets folder
 is renamed, moved or not uploaded in full, fonts, images or Word
 downloads will break.
 
@@ -128,7 +128,7 @@ terms-of-use.html
     Holds a placeholder. Insert the final approved Terms of Use copy
     before publication.
 
-assets/smart-start-analytics.js
+assets/smart-start-events.js
     GA_MEASUREMENT_ID       empty. Paste the real GA4 ID (starts "G-").
     hasAnalyticsConsent()   returns false. Connect it to a consent tool.
     Analytics stays completely off until BOTH are done. Events are

@@ -6,9 +6,9 @@
 <title>The Process Audit | SMART Start</title>
 <meta name="description" content="Work out whether a process problem sits with one person or across several people, and what to simplify or automate.">
 <meta name="robots" content="noindex, follow">
-<!-- EXTERNAL DEPENDENCIES (launch review): fonts and JSZip (Word export) are self-hosted in assets/. Analytics is prepared in assets/smart-start-analytics.js and stays OFF until a real Measurement ID and consent are in place. -->
+<!-- EXTERNAL DEPENDENCIES (launch review): fonts and JSZip (Word export) are self-hosted in assets/. Analytics is prepared in assets/smart-start-events.js and stays OFF until a real Measurement ID and consent are in place. -->
 <link rel="stylesheet" href="assets/smart-start-fonts.css">
-<script src="assets/smart-start-analytics.js"></script>
+<script src="assets/smart-start-events.js"></script>
 <script src="assets/smart-start-a11y.js" defer></script>
 <style>
 
@@ -331,10 +331,10 @@
 </aside>
 
 <footer class="ss-footer no-print">
-  <div class="wrap">SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</div>
+  <div class="wrap">Created by Smart Resource Solutions.<br>Helping businesses grow by creating more capacity from the team they already have.</div>
 </footer>
 
-<script src="assets/vendor/jszip.min.js"></script><!-- JSZip 3.10.1, self-hosted, used only to build the Word download in the browser -->
+<script src="assets/jszip.min.js"></script><!-- JSZip 3.10.1, self-hosted, used only to build the Word download in the browser -->
 <script>
 function docxEsc(s){
   return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
@@ -404,7 +404,7 @@ function downloadDefinitionOfDoneWord(){
 </script>
 
 <script>
-  // Analytics (inactive until configured, see assets/smart-start-analytics.js):
+  // Analytics (inactive until configured, see assets/smart-start-events.js):
   // sends only this page's name when the support link is clicked.
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('.ss-bridge a');
