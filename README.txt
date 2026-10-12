@@ -34,6 +34,9 @@ repository, keeping the structure exactly as it is:
     assets/
         smart-start-logo.png
         support-call-photo.jpg
+        smart-start-fonts.css
+        fonts/      (Manrope and DM Serif Display, self-hosted)
+        vendor/     (jszip.min.js, used for Word downloads)
     README.txt
 
 Do not move index.html into a subfolder, and do not rename any of the
@@ -42,22 +45,16 @@ inside every page's <script> block (see "Renaming files" below).
 
 3. KEEP THE ASSETS FOLDER INTACT
 -----------------------------------
-Two images live in the assets folder:
+Every page loads its fonts from assets/smart-start-fonts.css and the
+logo from assets/smart-start-logo.png. The Support view uses
+assets/support-call-photo.jpg (compressed to about 115KB). The Word
+download buttons load assets/vendor/jszip.min.js. If the assets folder
+is renamed, moved or not uploaded in full, fonts, images or Word
+downloads will break.
 
-    assets/smart-start-logo.png
-    assets/support-call-photo.jpg
-
-Every page references the logo with the relative path
-"assets/smart-start-logo.png", and the homepage's Support page
-references the photo the same way. If the assets folder is renamed,
-moved, or not uploaded in full, those images will show as broken on
-the site.
-
-Note: support-call-photo.jpg is about 2.2MB. The site will work fine
-as is, but it is worth compressing that file (any online JPEG
-compressor, aiming for under 300-400KB, will do) before or after
-going live, since it is by far the largest thing anyone visiting the
-Support page has to download.
+SMART Start makes no requests to third-party servers. The only
+outbound link is the booking page, opened when a visitor clicks
+Talk with us on the Support view.
 
 4. ENABLE GITHUB PAGES
 -------------------------
@@ -92,18 +89,11 @@ identical across all pages for exactly this reason):
     const JOB_ADVERT_URL = "smart-start-job-advert-template.html";
     const INTERVIEW_SCORECARD_URL = "smart-start-interview-scorecard.html";
 
-Note: smart-start-task-decision-audit.html is newer than the rest of
-the package and does not yet share this same constants block or the
-shared page header/footer the other nine pages use (it carries its
-own, separately-styled header from a different layout). If you rename
-it, the only place that needs updating right now is TASK_DECISION_AUDIT_URL
-inside smart-start-bottleneck-finder.html.
-
 The hub (index.html) also has its own list of the same URLs, in a
-constant called TOOL_URLS, which drives every "Open resource" button
-on the hub - update that too if you rename a file. It does not yet
-include an entry for the Task and Decision Audit, since that page
-isn't wired into the hub's routing or resource cards yet.
+constant called TOOL_URLS, which drives every resource button on the
+hub. Update that too if you rename a file. The questionnaire
+(smart-start-bottleneck-finder.html) has its own URL constants for
+the pages it recommends.
 
 7. LOCALSTORAGE AND SAME-ORIGIN HOSTING
 -------------------------------------------
@@ -124,5 +114,32 @@ Hosting some pages elsewhere, or opening pages directly from a local
 disk with file:// URLs instead of through the published site, will
 break the saved-progress and role-to-JD handoff features.
 
-No visitor data is ever sent anywhere externally - everything stays in
-that visitor's own browser.
+What visitors enter into the tools is not submitted to Smart Resource
+Solutions. It stays in their own browser unless they choose to print,
+save or download it.
+
+8. LAUNCH SETTINGS
+---------------------
+index.html
+    const BOOKING_URL       the live Microsoft Bookings link (set)
+    const LEGAL_URLS        Privacy & Cookie Statement and Terms of Use (set)
+
+terms-of-use.html
+    Holds a placeholder. Insert the final approved Terms of Use copy
+    before publication.
+
+assets/smart-start-analytics.js
+    GA_MEASUREMENT_ID       empty. Paste the real GA4 ID (starts "G-").
+    hasAnalyticsConsent()   returns false. Connect it to a consent tool.
+    Analytics stays completely off until BOTH are done. Events are
+    prepared for: questionnaire_start, questionnaire_complete,
+    shortcut_click, browse_area_click, resource_open, talk_with_us_click,
+    booking_click. No answers, results or typed text are ever sent.
+
+9. SEARCH INDEXING
+---------------------
+index.html, terms-of-use.html and every smart-start-*.html page carry
+<meta name="robots" content="noindex, follow">. This keeps them out of
+search results without blocking access. It is not access control.
+The public landing page is the only page meant to be indexed. Its
+robots.txt and sitemap.xml belong at the root of the site that hosts it.

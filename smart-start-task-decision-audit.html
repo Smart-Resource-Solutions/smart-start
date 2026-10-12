@@ -4,15 +4,20 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>Task and Decision Audit | SMART Start</title>
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<meta name="description" content="Look back over your week and work out what you should keep, stop, delegate, automate or hand over.">
+<meta name="robots" content="noindex, follow">
+<!-- EXTERNAL DEPENDENCIES (launch review): fonts are self-hosted in assets/. Analytics is prepared in assets/smart-start-analytics.js and stays OFF until a real Measurement ID and consent are in place. -->
+<link rel="stylesheet" href="assets/smart-start-fonts.css">
+<script src="assets/smart-start-analytics.js"></script>
+<script src="assets/smart-start-a11y.js" defer></script>
 <style>
 :root {
   --navy-deep:#0D1F4F; --navy:#1B3A73; --indigo:#3457A6;
   --teal:#1F9C93; --teal-deep:#146F68;
   --cyan:#1ED6E6; --cyan-deep:#0E7C90;
   --coral:#E8715A; --coral-deep:#C0562F;
-  --pale:#F4F6FB; --line:#E4E7F0; --grey-text:#6B7A99;
-  --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
+  --pale:#F4F6FB; --line:#E4E7F0; --grey-text:#5E6C8A;
+  --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#636D88;
   --white:#ffffff;
   --shadow: 0 4px 24px rgba(13,31,79,0.08);
   --shadow-lg: 0 12px 48px rgba(13,31,79,0.14);
@@ -109,7 +114,7 @@ body { font-family: 'Manrope', sans-serif; background: var(--pale); color: var(-
 .cat-delegate .cat-bar { background: var(--cyan); }
 .cat-outsource .cat-bar { background: var(--indigo); }
 .cat-num { font-size: 17px; font-weight: 800; color: white; }
-.cat-label { font-size: 10.5px; color: rgba(255,255,255,0.6); font-weight: 700; margin-top: 4px; }
+.cat-label { font-size: 11.5px; color: rgba(255,255,255,0.6); font-weight: 700; margin-top: 4px; }
 
 /* REFLECTION */
 .reflection { background: white; border-radius: 16px; padding: 26px 28px; margin-bottom: 24px; box-shadow: var(--shadow); }
@@ -156,6 +161,24 @@ footer { padding: 20px 0 46px; text-align: center; color: var(--ink-faint); font
   .sc-num { color: var(--navy-deep) !important; }
 }
 </style>
+<style>
+  /* Support bridge: shared, understated route to the Support view.
+     Visually separate from the tool: pale tint, accent border, clear button. */
+  .ss-bridge{max-width:860px; margin:56px auto 48px; padding:0 20px;}
+  .ss-bridge-inner{background:#EEF2FA; border:1px solid #DCE3F1; border-left:5px solid #0D1F4F; border-radius:14px; padding:26px 28px;}
+  .ss-bridge h2{font-family:'Manrope',system-ui,sans-serif; font-size:17px; font-weight:800; color:#0D1F4F; margin:0 0 8px; letter-spacing:0;}
+  .ss-bridge p{font-family:'Manrope',system-ui,sans-serif; font-size:14.5px; line-height:1.55; color:#4C5A78; margin:0 0 18px; max-width:620px;}
+  .ss-bridge a{font-family:'Manrope',system-ui,sans-serif; display:inline-flex; align-items:center; min-height:44px; padding:0 22px; border-radius:999px; background:#0D1F4F; color:#FFFFFF; font-size:14px; font-weight:800; text-decoration:none;}
+  .ss-bridge a:hover{background:#1B3A73;}
+  @media (max-width:640px){.ss-bridge-inner{padding:22px 20px;}}
+  @media print{.ss-bridge{display:none;}}
+</style>
+<style>
+  /* Accessibility: text contrast fixes (WCAG AA) */
+  .challenge-box h4, .ss-warning, .ss-result-challenge h4{color:#A3441F;}
+  .step-tab .step-num{opacity:1;}
+  .step-tab:focus-visible{outline:3px solid #E8715A; outline-offset:-3px;}
+</style>
 </head>
 <body>
 
@@ -179,7 +202,7 @@ footer { padding: 20px 0 46px; text-align: center; color: var(--ink-faint); font
   <p class="hero-sub">Look back over your week in one sitting. See what's actually still yours to hold, and what could stop, be automated, be delegated, or be outsourced.</p>
   <div class="hero-badges">
     <div class="badge">One sitting, about 8 minutes</div>
-    <div class="badge">Your data stays in this browser</div>
+    <div class="badge">Nothing you enter is sent to us</div>
   </div>
 </div>
 
@@ -272,6 +295,15 @@ footer { padding: 20px 0 46px; text-align: center; color: var(--ink-faint); font
   <p class="save-note no-print" id="saveNote" style="display:none;"><span class="save-dot"></span> Your answers are saved in this browser.</p>
 
 </div>
+
+<!-- SUPPORT BRIDGE: links to the Support view on the SMART Start homepage -->
+<aside class="ss-bridge no-print" style="max-width:992px;" aria-label="Personalised support">
+  <div class="ss-bridge-inner">
+    <h2>Want help putting this into practice?</h2>
+    <p>Has this highlighted that too much still sits with you? We can help you work through what needs to change next.</p>
+    <a href="index.html#support">Talk with us &rarr;</a>
+  </div>
+</aside>
 
 <footer>SMART Start is created by Smart Resource Solutions.<br>Helping growing businesses build the right team at the right time.</footer>
 
@@ -435,6 +467,14 @@ document.getElementById('q2').value = data.q2 || '';
 document.getElementById('q3').value = data.q3 || '';
 updateSummary();
 if(data.tasks.some(function(t){return t.task || t.action;}) || data.q1 || data.q2 || data.q3) document.getElementById('saveNote').style.display = 'flex';
+</script>
+<script>
+  // Analytics (inactive until configured, see assets/smart-start-analytics.js):
+  // sends only this page's name when the support link is clicked.
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('.ss-bridge a');
+    if(a && window.ssTrack) ssTrack('talk_with_us_click', { resource_name: document.title.split(' | ')[0] });
+  });
 </script>
 </body>
 </html>

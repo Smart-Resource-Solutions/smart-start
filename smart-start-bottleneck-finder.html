@@ -4,8 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Where is your business getting stuck? | SMART Start</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<meta name="description" content="A short questionnaire to help you see what may be limiting your capacity and where to focus first.">
+<meta name="robots" content="noindex, follow">
+<!-- EXTERNAL DEPENDENCIES (launch review): fonts are self-hosted in assets/. Analytics is prepared in assets/smart-start-analytics.js and stays OFF until a real Measurement ID and consent are in place. -->
+<link rel="stylesheet" href="assets/smart-start-fonts.css">
+<script src="assets/smart-start-analytics.js"></script>
+<script src="assets/smart-start-a11y.js" defer></script>
 <style>
 
   :root{
@@ -13,7 +17,7 @@
     --teal:#1F9C93; --teal-deep:#146F68;
     --cyan:#1ED6E6; --cyan-deep:#0E7C90;
     --coral:#E8715A; --coral-deep:#C0562F;
-    --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#8A93AC;
+    --white:#FFFFFF; --ink:#12203D; --ink-muted:#4C5A78; --ink-faint:#636D88;
     --line:#E4E7F0; --pale:#F4F6FB; --pale-indigo:#EDEEFA; --pale-disclaimer:#EEF3FA;
     --radius-lg:20px; --radius-md:14px; --radius-sm:9px;
     --shadow-sm:0 2px 10px rgba(13,31,79,.07);
@@ -98,7 +102,7 @@
   .ss-choice-btn:hover{border-color:var(--navy);}
   .ss-choice-btn.is-active{background:var(--navy-deep); border-color:var(--navy-deep); color:#fff;}
 
-  /* ---------- RADIO-STYLE QUESTION OPTIONS (matches SMART Start check-in) ---------- */
+  /* ---------- RADIO-STYLE QUESTION OPTIONS ---------- */
   .q-block{padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line);}
   .q-block:last-child{margin-bottom:0; padding-bottom:0; border-bottom:none;}
   .q-statement{font-size:15px; font-weight:700; color:var(--navy-deep); margin-bottom:10px;}
@@ -215,6 +219,27 @@
   }
 
 </style>
+<style>
+  /* Support bridge: shared, understated route to the Support view.
+     Visually separate from the tool: pale tint, accent border, clear button. */
+  .ss-bridge{max-width:860px; margin:56px auto 48px; padding:0 20px;}
+  .ss-also-list{margin:10px 0 0; padding:0; list-style:none;}
+  .ss-also-list li{margin:8px 0 0; font-size:14px; color:var(--ink-muted); line-height:1.5;}
+  .ss-also-list a{color:var(--navy-deep); font-weight:700; text-decoration:underline; text-underline-offset:3px; white-space:nowrap;}
+  .ss-bridge-inner{background:#EEF2FA; border:1px solid #DCE3F1; border-left:5px solid #0D1F4F; border-radius:14px; padding:26px 28px;}
+  .ss-bridge h2{font-family:'Manrope',system-ui,sans-serif; font-size:17px; font-weight:800; color:#0D1F4F; margin:0 0 8px; letter-spacing:0;}
+  .ss-bridge p{font-family:'Manrope',system-ui,sans-serif; font-size:14.5px; line-height:1.55; color:#4C5A78; margin:0 0 18px; max-width:620px;}
+  .ss-bridge a{font-family:'Manrope',system-ui,sans-serif; display:inline-flex; align-items:center; min-height:44px; padding:0 22px; border-radius:999px; background:#0D1F4F; color:#FFFFFF; font-size:14px; font-weight:800; text-decoration:none;}
+  .ss-bridge a:hover{background:#1B3A73;}
+  @media (max-width:640px){.ss-bridge-inner{padding:22px 20px;}}
+  @media print{.ss-bridge{display:none;}}
+</style>
+<style>
+  /* Accessibility: text contrast fixes (WCAG AA) */
+  .challenge-box h4, .ss-warning, .ss-result-challenge h4{color:#A3441F;}
+  .step-tab .step-num{opacity:1;}
+  .step-tab:focus-visible{outline:3px solid #E8715A; outline-offset:-3px;}
+</style>
 </head>
 <body>
 <header class="ss-header no-print">
@@ -276,7 +301,7 @@
   const JOB_ADVERT_URL = "smart-start-job-advert-template.html";
   const INTERVIEW_SCORECARD_URL = "smart-start-interview-scorecard.html";
 
-  // Six bottleneck categories, each with three short statements rated on a
+  // Five bottleneck categories, each with three short statements rated on a
   // 0 to 3 scale (Hardly ever / Sometimes / Often / Nearly always).
   const CATEGORIES = [
     { key:"owner", name:"Owner / leadership",
@@ -307,7 +332,8 @@
       aiHelp:"Some of the work flowing back to you may not need another person at all.\n\nLook for repeat decisions, reporting, administration, scheduling, follow-ups, information gathering, meeting summaries and routine communication that could be standardised, supported by AI or automated.\n\nTechnology will not replace leadership, but it may remove work that should not need your personal involvement.",
       notYet:"Do not hire someone simply to take tasks off your plate without first deciding what you should stop owning.",
       nextStepText:"Use the Task and Decision Audit to look back over your week and work out what could stop, be automated, be delegated, or be outsourced, rather than staying with you by default.",
-      cta:{label:"Start the audit", url:TASK_DECISION_AUDIT_URL}
+      cta:{label:"Open Task and Decision Audit \u2192", url:TASK_DECISION_AUDIT_URL},
+      area:{key:"roles", label:"Roles & ownership"}
     },
     { key:"capacity", name:"Capacity",
       interpretation:"Your answers suggest the team may not have enough room to comfortably absorb the work and priorities already on its plate. That is usually worth taking seriously before anything else gets decided.",
@@ -337,7 +363,8 @@
       aiHelp:"Quite possibly.\n\nLook particularly at repetitive administration, reporting, scheduling, data entry, document creation, customer follow-ups, internal updates and routine research.\n\nAI and workflow automation may not remove the need for additional capacity, but they may reduce how much extra capacity you need.",
       notYet:"Do not assume busy means you need another employee.",
       nextStepText:"Before considering a hire, use \"4 Areas to Review Before You Hire\" to check whether the process, automation, cross-training or what you're actually spending capacity on could solve this instead.",
-      cta:{label:"Review the 4 areas", url:FOUR_AREAS_URL},
+      cta:{label:"Open 4 Areas to Review Before You Hire \u2192", url:FOUR_AREAS_URL},
+      area:{key:"workforce", label:"Capacity & future needs"},
       secondaryCta:{label:"Or define the role", url:ROLE_BUILDER_URL}
     },
     { key:"ownership", name:"Ownership and responsibilities",
@@ -368,7 +395,8 @@
       aiHelp:"Technology can support clearer ownership, but it cannot create accountability on its own.\n\nWorkflow tools can make handoffs visible, assign tasks automatically, trigger reminders and show where work is waiting.\n\nAI can also help document processes, create role summaries and turn informal ways of working into clearer instructions.\n\nBut someone still needs to decide who owns what.",
       notYet:"Do not add another person into unclear responsibilities.",
       nextStepText:"Use the Roles and Responsibilities Map to see the whole shape of the business at once, so unclear ownership and overloaded people both become visible together.",
-      cta:{label:"Go to the Map", url:ROLES_MAP_URL}
+      cta:{label:"Open Roles and Responsibilities Map \u2192", url:ROLES_MAP_URL},
+      area:{key:"roles", label:"Roles & ownership"}
     },
     { key:"process", name:"Process and workflow",
       interpretation:"Your answers suggest the way work moves through the business may be creating unnecessary friction. That kind of problem is often more fixable, and cheaper to fix, than it first looks.",
@@ -413,7 +441,8 @@
       aiHelpAfter:"Sometimes the best answer is not a new person. It is removing work that no longer needs a person doing it.",
       notYet:"Do not hire someone to manage work that could be removed, simplified or automated.",
       nextStepText:"Use the Process Audit to work out whether this is a single task that only lives in one person's head, or a process involving several people that's just become clunky and error prone.",
-      cta:{label:"Go to the Process Audit", url:PROCESS_AUDIT_URL}
+      cta:{label:"Open Process Audit \u2192", url:PROCESS_AUDIT_URL},
+      area:{key:"organisation", label:"Ways of working"}
     },
     { key:"capability", name:"Capability",
       interpretation:"Your answers suggest the business may be missing some of the skills or expertise it needs for what comes next. That is a different problem from simply being busy, and it needs a different answer.",
@@ -443,10 +472,18 @@
       aiHelp:"Potentially, but think of AI as a capability multiplier rather than an automatic replacement for expertise.\n\nAI may help with research, drafting, analysis, documentation, coding, content creation, data interpretation and routine specialist tasks.\n\nWhere judgement, accountability, deep expertise or client trust matter, human capability will still be important.\n\nThe better question is which parts need genuine expertise, and which parts can technology make faster or easier.",
       notYet:"Do not build a permanent role around a capability you only need occasionally.",
       nextStepText:"Before writing a job description, use the Capability Filter to check whether auditing internal talent, upskilling, borrowing capability in, or a piece of technology could close the gap instead.",
-      cta:{label:"Go to the Capability Filter", url:CAPABILITY_FILTER_URL},
+      cta:{label:"Open Capability Filter \u2192", url:CAPABILITY_FILTER_URL},
+      area:{key:"workforce", label:"Capacity & future needs"},
       secondaryCta:{label:"Or define the role", url:ROLE_BUILDER_URL}
     }
   ];
+
+  // Support bridge shown under a result (not before one, so it never
+  // reads as a pitch ahead of the useful part).
+  const SUPPORT_BRIDGE_HTML = '<aside class="ss-bridge" style="padding:0; margin:28px 0 20px;" aria-label="Personalised support"><div class="ss-bridge-inner">'
+    + '<h2>Want help putting this into practice?</h2>'
+    + '<p>If this has highlighted something that needs a bigger change, we can help you turn what you\'ve uncovered into a practical plan and put it into action.</p>'
+    + '<a href="' + SMART_START_HOME_URL + '#support">Talk with us &rarr;</a></div></aside>';
 
   const SCALE = ["Hardly ever", "Sometimes", "Often", "Nearly always"];
   const STORAGE_KEY = "smartStartBottleneckFinder";
@@ -489,6 +526,8 @@
   }
 
   function rate(catIndex, stmtIndex, value){
+    // Analytics: event name only, never the answer.
+    if(Object.keys(ratings).length === 0 && window.ssTrack) ssTrack('questionnaire_start');
     ratings[catIndex + "-" + stmtIndex] = value;
     persist();
     renderPage();
@@ -530,7 +569,7 @@
 
     const nextBtn = document.getElementById('q-next');
     const isLastPage = currentPage === TOTAL_PAGES - 1;
-    nextBtn.textContent = isLastPage ? 'See my main growth blocker' : 'Next \u2192';
+    nextBtn.textContent = isLastPage ? 'See where to focus first' : 'Next \u2192';
     nextBtn.disabled = !pageIsComplete(currentPage);
   }
 
@@ -604,12 +643,17 @@
       }
       html += '</div>';
     }
+    if(cat.area){
+      html += '<p class="ss-area-link">More in <a href="' + SMART_START_HOME_URL + '#area-' + cat.area.key + '">' + cat.area.label + ' resources</a></p>';
+    }
     html += '</div>';
 
     return html;
   }
 
   function showResult(){
+    // Analytics: event name only. No answers, scores or result areas are sent.
+    if(window.ssTrack) ssTrack('questionnaire_complete');
     document.getElementById('question-view').style.display = 'none';
     const ranked = scoreCategories();
     const top = ranked[0];
@@ -617,16 +661,22 @@
     area.style.display = 'block';
 
     if(top.score === 0){
-      area.innerHTML = '<div class="ss-result-secondary"><h4>No clear growth blocker today</h4><p>Nothing stood out as a recurring issue across these six areas. That is a genuinely good position to be in. Come back and revisit this whenever something starts to feel stuck.</p></div>';
+      area.innerHTML = '<div class="ss-result-secondary"><h4>Nothing is standing out as an immediate priority</h4><p>Your answers aren\'t highlighting one area that clearly needs attention right now. You can still explore the SMART Start resources or come back to this questionnaire as the business changes.</p>'
+        + '<a class="ss-btn ss-btn-primary" style="margin-top:12px;" href="' + SMART_START_HOME_URL + '#resources">Explore SMART Start resources &rarr;</a></div>';
     } else {
-      let html = '<div class="ss-result-hero"><h3>Where to focus first</h3><div class="ss-result-name">' + top.cat.name + '</div><p>' + top.cat.interpretation + '</p></div>';
+      let html = '<div class="ss-result-hero"><h3>Start here</h3><div class="ss-result-name">' + top.cat.name + '</div><p>' + top.cat.interpretation + '</p></div>';
       html += renderCategoryResult(top.cat);
 
-      const second = ranked[1];
-      if(second && second.score > 0 && second.score >= top.score * 0.6){
-        html += '<div class="ss-result-secondary-mini"><h4>Another area worth watching</h4><p><strong>' + second.cat.name + '.</strong> ' + second.cat.oneLiner + ' This may also be contributing to what is happening with ' + top.cat.name.toLowerCase() + '.</p></div>';
+      // Up to two further areas, using the same closeness rule as before
+      // (a score above zero and at least 60% of the top area's score).
+      const also = ranked.slice(1, 3).filter(r => r.score > 0 && r.score >= top.score * 0.6);
+      if(also.length){
+        html += '<div class="ss-result-secondary-mini"><h4>Also worth reviewing</h4><ul class="ss-also-list">'
+          + also.map(r => '<li><strong>' + r.cat.name + '.</strong> ' + r.cat.oneLiner + (r.cat.cta ? ' <a href="' + r.cat.cta.url + '">' + r.cat.cta.label + '</a>' : '') + '</li>').join('')
+          + '</ul></div>';
       }
 
+      html += SUPPORT_BRIDGE_HTML;
       html += '<p class="ss-pro-disclaimer">SMART Start provides general business guidance and is not a substitute for professional advice. Where a decision involves legal, employment, financial or other specialist considerations, take appropriate professional advice before acting.</p>';
 
       area.innerHTML = html;
@@ -667,6 +717,14 @@
   loadSaved();
   renderPage();
   if(Object.keys(ratings).length) document.getElementById('save-note').style.display = 'flex';
+</script>
+<script>
+  // Analytics (inactive until configured, see assets/smart-start-analytics.js):
+  // sends only this page's name when the support link is clicked.
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('.ss-bridge a');
+    if(a && window.ssTrack) ssTrack('talk_with_us_click', { resource_name: document.title.split(' | ')[0] });
+  });
 </script>
 </body>
 </html>
