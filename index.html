@@ -658,6 +658,10 @@
 </footer>
 
 <script>
+  // Safety net: if assets/smart-start-analytics.js is missing or blocked,
+  // analytics calls do nothing instead of stopping buttons from working.
+  window.ssTrack = window.ssTrack || function(){};
+
   // ============================================================
   // VIEW SWITCHING (Start here / Resources / Support)
   // ============================================================
