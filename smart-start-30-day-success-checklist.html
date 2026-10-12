@@ -6,11 +6,11 @@
 <title>The 30-Day Success Checklist | SMART Start</title>
 <meta name="description" content="A practical checklist to help a new starter have a strong first month.">
 <meta name="robots" content="noindex, follow">
-<!-- EXTERNAL DEPENDENCIES (launch review): fonts and JSZip (Word export) are self-hosted in assets/. Analytics is prepared in assets/smart-start-events.js and stays OFF until a real Measurement ID and consent are in place. -->
-<link rel="stylesheet" href="assets/smart-start-fonts.css">
-<script src="assets/smart-start-events.js"></script>
-<script src="assets/smart-start-a11y.js" defer></script>
-<script src="assets/jszip.min.js"></script><!-- JSZip 3.10.1, self-hosted, used only to build the Word download in the browser -->
+<!-- EXTERNAL DEPENDENCIES (launch review): fonts and JSZip (Word export) are self-hosted in . Analytics is prepared in smart-start-events.js and stays OFF until a real Measurement ID and consent are in place. -->
+<link rel="stylesheet" href="smart-start-fonts.css">
+<script src="smart-start-events.js"></script>
+<script src="smart-start-a11y.js" defer></script>
+<script src="jszip.min.js"></script><!-- JSZip 3.10.1, self-hosted, used only to build the Word download in the browser -->
 <style>
 
   :root{
@@ -209,7 +209,7 @@
 <header class="ss-header no-print">
   <div class="ss-header-inner">
     <div class="ss-wordmark">
-      <img src="assets/smart-start-logo.png" alt="SMART Start" class="ss-logo">
+      <img src="smart-start-logo.png" alt="SMART Start" class="ss-logo">
       <span class="ss-wordmark-sub">Created by Smart Resource Solutions</span>
     </div>
     <button class="ss-back-link" onclick="location.href = SMART_START_HOME_URL">&larr; Back to SMART Start</button>
@@ -737,7 +737,7 @@
   if(allItems().some(i => i.checked) || reviewNotes || Object.keys(personalDetails).some(k => personalDetails[k])) document.getElementById('save-note').style.display = 'flex';
 </script>
 <script>
-  // Analytics (inactive until configured, see assets/smart-start-events.js):
+  // Analytics (inactive until configured, see smart-start-events.js):
   // sends only this page's name when the support link is clicked.
   document.addEventListener('click', function(e){
     var a = e.target.closest && e.target.closest('.ss-bridge a');

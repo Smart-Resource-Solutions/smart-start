@@ -10,51 +10,26 @@ HTML, CSS and vanilla JavaScript.
 Create a new repository on GitHub (public or private, either works
 with GitHub Pages on a paid plan; public is required on a free plan).
 
-2. UPLOAD THE PACKAGE WITHOUT CHANGING THE FOLDER STRUCTURE
--------------------------------------------------------------
-Upload every file and folder in this package to the ROOT of the
-repository, keeping the structure exactly as it is:
+2. UPLOAD EVERY FILE TO THE ROOT OF THE REPOSITORY
+-----------------------------------------------------
+This package has NO folders. Every file (the .html pages, the .woff2
+font files, the .css and .js files, the logo, the photo and this README)
+goes straight into the top level of the repository.
 
-    index.html
-    smart-start-bottleneck-finder.html
-    smart-start-priority-filter.html
-    smart-start-decision-tree.html
-    smart-start-3-box-role-builder.html
-    smart-start-jd-person-spec-template.html
-    smart-start-job-advert-template.html
-    smart-start-interview-scorecard.html
-    smart-start-30-day-success-checklist.html
-    smart-start-task-decision-audit.html
-    smart-start-delegation-brief.html
-    smart-start-process-audit.html
-    smart-start-roles-responsibilities-map.html
-    smart-start-capability-filter.html
-    smart-start-freelancer-contractor-checklist.html
-    smart-start-4-areas-review-before-hire.html
-    assets/
-        smart-start-logo.png
-        support-call-photo.jpg
-        smart-start-fonts.css
-        Font files (.woff2) for Manrope and DM Serif Display
-        jszip.min.js (used for Word downloads)
-    README.txt
+In GitHub: Add file > Upload files > choose your files, select them
+all, and commit. Files with the same name are replaced.
 
-Do not move index.html into a subfolder, and do not rename any of the
-smart-start-*.html files unless you also update the matching constant
-inside every page's <script> block (see "Renaming files" below).
-
-3. KEEP THE ASSETS FOLDER INTACT
------------------------------------
-Every page loads its fonts from assets/smart-start-fonts.css and the
-logo from assets/smart-start-logo.png. The Support view uses
-assets/support-call-photo.jpg (compressed to about 115KB). The Word
-download buttons load assets/jszip.min.js. If the assets folder
-is renamed, moved or not uploaded in full, fonts, images or Word
-downloads will break.
+3. WHAT THE SUPPORTING FILES DO
+----------------------------------
+smart-start-fonts.css + the .woff2 files   fonts (self-hosted)
+smart-start-logo.png                        logo on every page
+support-call-photo.jpg                      spare copy (the Support photo is built into index.html)
+smart-start-events.js                       analytics, switched off until configured
+smart-start-a11y.js                         accessibility helper for the tools
+jszip.min.js                                builds the Word downloads
 
 SMART Start makes no requests to third-party servers. The only
-outbound link is the booking page, opened when a visitor clicks
-Talk with us on the Support view.
+outbound links are the booking page and the Privacy & Cookie Statement.
 
 4. ENABLE GITHUB PAGES
 -------------------------
@@ -128,7 +103,7 @@ terms-of-use.html
     Holds a placeholder. Insert the final approved Terms of Use copy
     before publication.
 
-assets/smart-start-events.js
+smart-start-events.js
     GA_MEASUREMENT_ID       empty. Paste the real GA4 ID (starts "G-").
     hasAnalyticsConsent()   returns false. Connect it to a consent tool.
     Analytics stays completely off until BOTH are done. Events are
